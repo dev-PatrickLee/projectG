@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 목록</title>
+  <link rel="stylesheet" href="/css/sideBar.css">
+  <link rel="stylesheet" href="/css/strategyNote.css">
+</head>
+
+<body>
+<div>
+  <div class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">전략 노트</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 헤더 -->
+      <div class="header-container">
+        <div class="filter-wrap top-info">
+          <input type="button" class="term-btn buttons" value="기간">
+          <select class="selection" id="yearSelection">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
+          <select class="selection" id="monthSelection">
+            <option value="1">1월</option>
+            <option value="2">2월</option>
+            <option value="3">3월</option>
+            <option value="4">4월</option>
+            <option value="5">5월</option>
+            <option value="6">6월</option>
+            <option value="7">7월</option>
+            <option value="8">8월</option>
+            <option value="9">9월</option>
+            <option value="10">10월</option>
+            <option value="11">11월</option>
+            <option value="12">12월</option>
+          </select>
+          <select class="selection" id="filterSelection">
+            <option value="all">전체</option>
+          </select>
+          <input type="button" class="confirm-btn buttons" value="조회">
+        </div>
+        <div class="promotion-wrap top-info">
+          <div class="promotion">10월 프로모션</div>
+          <div class="promotion">오프라인 전략</div>
+          <div class="promotion">온라인 전략</div>
+        </div>
+        <div class="message-wrap top-info">
+          <div>GM 메세지</div>
+        </div>
+        <div class="notice-box">
+          <div>
+            ※ FC 매 : 회원 + 라커 + 운동복 + 등록비 + 양수비 + 일일이용권 모든부가세 포함
+          </div>
+          <div>
+          </div>
+        </div>
+<!--        메인 컨텐츠 시작-->
+        <div class="main-content-container">
+          <div class="info-table-wrap">
+            <table class="goal-table">
+              <strong class="table-title">전체목표</strong> ※ 검색기준 / '월~일'까지가 1주 / TOTAL은 모든 매출 합계 / '목표'는 주별 '전체 목표 합산
+              <thead>
+              <tr>
+                <th>월목표</th>
+                <th>FC</th>
+                <th>PT</th>
+                <th>회원권</th>
+                <th>라커</th>
+                <th>운동복</th>
+                <th>등록비</th>
+                <th>양수비</th>
+                <th>일일이용권</th>
+                <th>TOTAL</th>
+              </tr>
+              <tr>
+                <th>목표</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th>현재</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th>건수</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              </thead>
+            </table>
+            <table class="weekly-goal">
+              <thead>
+                <tr>
+                  <th rowspan="2">주간목표</th>
+                  <th colspan="6">FC</th>
+                  <th colspan="6">PT</th>
+                </tr>
+                <tr>
+                  <th>1주차</th>
+                  <th>2주차</th>
+                  <th>3주차</th>
+                  <th>4주차</th>
+                  <th>5주차</th>
+                  <th>6주차</th>
+                  <th>1주차</th>
+                  <th>2주차</th>
+                  <th>3주차</th>
+                  <th>4주차</th>
+                  <th>5주차</th>
+                  <th>6주차</th>
+                </tr>
+                <tr>
+                  <td>목표</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>현재</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="info-table-wrap">
+            <table class="member-report-table">
+              <strong class="table-title">회원현황</strong> ※ 유효회원, 만기회원, 가망고객 : 현재일 기준 / 만기예정 : 현재월의 '현재일 ~ 말일' 기준 / 당월 가망고객 : 검색기준
+              <thead>
+              <tr>
+                <th>FC유효회원</th>
+                <th>FC만기예정</th>
+                <th>FC만기회원</th>
+                <th>PT유효회원</th>
+                <th>PT만기예정</th>
+                <th>PT만기회원</th>
+                <th>가망고객</th>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              </thead>
+            </table>
+            <table class="member-report-table">
+              <thead>
+              <tr>
+                <th>당월즉시 회원가입 (온/오프)</th>
+                <th>다원가망 등록 (온/오프)</th>
+                <th>당월가망 회원가입 (온/오프)</th>
+                <th>당월가망 TM (배정/완료)</th>
+                <th>최종 가망 등록일 / TM 배정일</th>
+              </tr>
+              <tr>
+                <td>- (- / -)</td>
+                <td>- (- / -)</td>
+                <td>- (- / -)</td>
+                <td>- (- / -)</td>
+                <td>- (- / -)</td>
+              </tr>
+              </thead>
+            </table>
+            <table class="member-report-table">
+              <thead>
+              <tr>
+                <th rowspan="3">이름</th>
+                <th rowspan="3">직책</th>
+                <th colspan="5">TM 현황</th>
+                <th colspan="2">홍딩 현황</th>
+                <th colspan="10" >에상 확정 달성 현황</th>
+              </tr>
+              <tr>
+                <th colspan="2">가망</th>
+                <th colspan="2">재등록</th>
+                <th rowspan="2">전체완료</th>
+                <th rowspan="2">홀딩건수</th>
+                <th rowspan="2">달성건수</th>
+                <th colspan="4">FC (예상, 확정 등록자)</th>
+                <th rowspan="2">달성률 %</th>
+                <th colspan="4">PT (예상, 확정 등록자)</th>
+                <th rowspan="2">달성률 %</th>
+              </tr>
+              <tr>
+                <th>배정</th>
+                <th>완료</th>
+                <th>배정</th>
+                <th>완료</th>
+                <th>등록건수</th>
+                <th class="price-box">등록금액</th>
+                <th>달성건수</th>
+                <th class="price-box">달성금액</th>
+                <th>등록건수</th>
+                <th class="price-box">등록금액</th>
+                <th>달성건수</th>
+                <th class="price-box">달성금액</th>
+              </tr>
+              <tr>
+                <td>홍길동</td>
+                <td>트레이너</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00</td>
+              </tr><tr>
+                <th colspan="2">TOTAL</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0.00</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0.00</th>
+              </tr>
+              </thead>
+            </table>
+            <table class="member-report-table">
+              <strong class="table-title">트레이너별 목표 달성 현황</strong> ※ 검색기준 / 퇴사자의 경우, 퇴사일 이후에도 퇴사자의 데이터가 존재하면 모두 출력됨
+              <thead>
+              <tr>
+                <th rowspan="3">이름</th>
+                <th rowspan="3">직책</th>
+                <th colspan="13">매출목표달성현황</th>
+              </tr>
+              <tr>
+                <th colspan="7">FC</th>
+                <th colspan="6">PT</th>
+              </tr>
+              <tr>
+                <th>목표</th>
+                <th colspan="2">현재(회원권 / 기타)</th>
+                <th>예상</th>
+                <th>부족</th>
+                <th>신규</th>
+                <th>재등록</th>
+                <th>목표</th>
+                <th>현재</th>
+                <th>예상</th>
+                <th>부족</th>
+                <th>신규</th>
+                <th>재등록</th>
+              </tr>
+              <tr>
+                <td>홍길동 세미</td>
+                <td>트레이너</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th colspan="2">TOTAL</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+              </tr>
+              </thead>
+            </table>
+            <table class="member-report-table goal-table">
+              <thead>
+              <tr>
+                <th rowspan="3">이름</th>
+                <th rowspan="3">직책</th>
+                <th colspan="10">
+                  <span>월별 매출 비교 (기준날짜 :</span>
+                  <select name="monthSelection" id="monthSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <span>~</span>
+                  <select name="daySelection" id="daySelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="lastDay">말일</option>
+                  </select>
+                  <span>) 당월 (FC : </span>
+                  <span id="monthFcTotal">-</span>
+                  <span>PT : </span>
+                  <span id="monthPtTotal">-</span>
+                  <span>)</span>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="5">
+                  <span>전전월 (FC : </span>
+                  <span id="prevPrevMonthFc">-</span>
+                  <span> PT : </span>
+                  <span id="prePrevMonthPt">-</span>
+                  <span>)</span>
+                </th>
+                <th colspan="5">
+                  <span>전전월 (FC : </span>
+                  <span id="prevMonthFc">-</span>
+                  <span> PT : </span>
+                  <span id="prevMonthPt">-</span>
+                  <span>)</span>
+                </th>
+              </tr>
+              <tr>
+                <th>FC</th>
+                <th>신규</th>
+                <th>재등록</th>
+                <th>기타</th>
+                <th>PT</th>
+                <th>FC</th>
+                <th>신규</th>
+                <th>재등록</th>
+                <th>기타</th>
+                <th>PT</th>
+              </tr>
+              <tr>
+                <td>홍길동세미</td>
+                <td>트레이너</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th colspan="2">TOTAL</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+              </tr>
+              </thead>
+            </table>
+            <table class="member-report-table">
+              <thead>
+              <tr>
+                <th rowspan="3">이름</th>
+                <th rowspan="3">직책</th>
+                <th colspan="8">OT 실인원 현황</th>
+                <th colspan="2">FC 회원 배정 현황</th>
+                <th colspan="7">당월 업무 현황</th>
+              </tr>
+              <tr>
+                <th colspan="2">OT(진행)</th>
+                <th colspan="2">FOT(진행)</th>
+                <th colspan="2">GPT(진행)</th>
+                <th colspan="2">14D(진행)</th>
+                <th rowspan="2">신규배정</th>
+                <th rowspan="2">변경배정</th>
+                <th colspan="2">FC(담당)</th>
+                <th colspan="2">PT(담당)</th>
+                <th colspan="3">수업(진행)</th>
+              </tr>
+              <tr>
+                <th>현재</th>
+                <th>목표</th>
+                <th>현재</th>
+                <th>목표</th>
+                <th>현재</th>
+                <th>목표</th>
+                <th>현재</th>
+                <th>목표</th>
+                <th>만기예정</th>
+                <th>유효</th>
+                <th>만기예정</th>
+                <th>유효</th>
+                <th>출석</th>
+                <th>결석</th>
+                <th>전체</th>
+              </tr>
+              <tr>
+                <td>홍길동 세미</td>
+                <td>트레이너</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th colspan="2">TOTAL</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+              </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+        <!--        메인 컨텐츠 끝-->
+
+
+      </div>
+      <!-- 내용 섹션 -->
+
+
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+  $(".side-bar").load("sidebar");
+</script>
+<script src="/js/sidebar.js"></script>
+<script>
+  const $name = $("#name");
+  console.log($name.text());
+</script>
+</html>

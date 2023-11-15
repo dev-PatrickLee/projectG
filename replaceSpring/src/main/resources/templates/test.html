@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 상세</title>
+    <link rel="stylesheet" href="../static/css/sideBar.css">
+    <link rel="stylesheet" href="../static/css/memberDetail.css">
+    <link rel="stylesheet" href="../static/css/test.css">
+
+</head>
+
+<body>
+<header>
+    <div class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">회원정보 관리</span>
+        </div>
+        <div class="user-info-container" >
+            <div style="margin-right: 5px">
+                testId
+            </div>
+            <span>/</span>
+            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+        </div>
+    </div>
+</header>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 헤더 -->
+            <div class="prev-button-layout">
+                <div>
+                    <a href="/admin/memberList" style="color: black;">
+                        <img src="/image/prev_icon.png" class="prev-icon">
+                        <span class="prev-title">리스트로 돌아가기</span>
+                    </a>
+                </div>
+            </div>
+            <div class="info-flex">
+                <!-- 내용 섹션 -->
+                <section class="board-task-box">
+                    <div class="daily-task-container">
+                        <div class="today-date-container">
+                            <div id="dateOfToday"></div>
+                        </div>
+
+                        <div class="daily-task-notice-container">
+                            <div class="daily-notice">열람해야 할 금주의 업무가 있습니다</div>
+                            <div class="daily-task">업무 공지</div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button type="button" id="enroll-member-button" class="user-registration-button" style="background-color: #01B0F1">회원 등록</button>
+                        <button type="button" class="user-registration-button" style="background-color: #333333">기업고객 등록</button>
+                    </div>
+
+                </section>
+                <section class="board-search-box">
+                    <input type="text" id="searchInput" placeholder="전체, 이름, 연락처...">
+                    <button type="button" id="searchButton">검색</button>
+                    <select name="searchOption" id="searchOption">
+                        <option value="allSearch" selected>전체 검색</option>
+                        <option value="nameSearch">이름으로 검색</option>
+                        <option value="">연락처로 검색</option>
+                        <option value="name">이메일로 검색</option>
+                        <option value="name">회원 코드로 검색</option>
+                        <option value="name">생년월일로 검색</option>
+                        <option value="name">주소로 검색</option>
+                        <option value="name">방문경로로 검색</option>
+                    </select>
+                </section>
+
+
+                <section class="board-info-box-layout">
+                    <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block; font-size: xx-large;">회원 정보</div>
+                    <div class="member-info-button-container">
+                        <button type="button" class="user-registration-button" id="wearable-button"  style="background-color: #FF416C">웨어러블</button>
+                        <button type="button" class="user-registration-button" id="detail-button" style="background-color: #01B0F1">상세</button>
+                        <button type="button" class="user-registration-button" id="edit-button" style="background-color: #333333">저장</button>
+                    </div>
+                    <table class="member-info-table">
+<!--                        회원코드 , 등록일 , 앱설치-->
+                        <tr>
+                            <td class="td-info-title">회원 코드</td>
+                            <td></td>
+                            <td class="td-info-title">등록일</td>
+                            <td></td>
+                            <td class="td-info-title">앱설치</td>
+                            <td></td>
+                        </tr>
+
+<!--                        이름 , RF카드 , 성별-->
+                        <tr>
+                            <td class="td-info-title">이름</td>
+                            <td>
+                                <input type="text" style="width: 80%">
+                            </td>
+                            <td class="td-info-title">RF카드</td>
+                            <td></td>
+                            <td class="td-info-title">성별</td>
+                            <td>
+                                <input type="radio" name="gender-check"  value="M"> 남성
+                                <input type="radio" name="gender-check"  value="F"> 여성
+                            </td>
+                        </tr>
+
+<!--                        연락처 2 , 생년월일 1-->
+                        <tr>
+                            <td class="td-info-title">연락처</td>
+                            <td colspan="3">
+                                <input type="text">
+                                <a href="#" class="messageButton">문자</a>
+                                <input type="checkbox"> SMS동의
+                                <input type="checkbox"> TM동의
+                            </td>
+                            <td class="td-info-title">생년월일</td>
+                            <td>
+                                <input type="text" style="width: 90%">
+                            </td>
+                        </tr>
+
+<!--                        주소 3-->
+                        <tr>
+                            <td class="td-info-title">주소</td>
+                            <td colspan="5">서울특별시 동작구 흑석동</td>
+
+                        </tr>
+
+<!--                        등록구분 , 방문경로 , 추천인-->
+                        <tr>
+                            <td class="td-info-title">등록구분</td>
+                            <td></td>
+                            <td class="td-info-title">방문경로</td>
+                            <td>
+                                <select name="visitPath" id="visitPath">
+                                    <option value="선택">선택</option>
+                                    <option value="홈페이지">홈페이지</option>
+                                    <option value="광고">광고</option>
+                                    <option value="추천인">추천인</option>
+                                </select>
+                            </td>
+                            <td class="td-info-title">추천인</td>
+                            <td></td>
+                        </tr>
+
+<!--                        담당TM , 이메일 , 적립금-->
+                        <tr>
+                            <td class="td-info-title">담당TM</td>
+                            <td></td>
+                            <td class="td-info-title">이메일</td>
+                            <td></td>
+                            <td class="td-info-title">적립금</td>
+                            <td></td>
+                        </tr>
+
+<!--                        담당강사 , 개인운동 , 운동목표-->
+                        <tr>
+                            <td class="td-info-title">담당강사</td>
+                            <td></td>
+                            <td class="td-info-title">개인운동</td>
+                            <td>
+                                <input type="radio" name="solo-activity"  value="Y"> 예
+                                <input type="radio" name="solo-activity"  value="N"> 아니오
+                            </td>
+                            <td class="td-info-title">운동목표</td>
+                            <td>
+                                <select name="goalOfActiviry" id="goalOfActiviry">
+                                    <option value="선택">선택</option>
+                                    <option value="건강">건강</option>
+                                    <option value="다이어트">다이어트</option>
+                                    <option value="근력증가">근력증가</option>
+                                    <option value="보디빌딩">보디빌딩</option>
+                                </select>
+                            </td>
+                        </tr>
+
+<!--                        메모 3-->
+                        <tr style="line-height: normal">
+                            <td class="td-info-title">메모</td>
+                            <td colspan="5">
+                                <textarea name="enrollMemo" id="memberMemo" cols="80" rows="5"></textarea>
+                            </td>
+
+                        </tr>
+
+
+                    </table>
+                </section>
+                <section class="board-calender-box">
+                    <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block">출석 현황</div>
+                    <div>
+
+                    </div>
+                    <div>
+                        <table class="calendar-table">
+                            <tbody id="calendar">
+                            <tr style="border: 2px solid">
+                                <td>
+                                    <a href="javascript:premonth();" style="color: black;">이전</a>
+                                </td>
+                                <td colspan="5" style="text-align: center; font-weight: bolder; font-size: 15px">
+                                </td>
+                                <td>
+                                    <a href="javascript:nextmonth();" style="color: black;">다음</a>
+                                </td>
+
+
+                            </tr>
+                            <th style="background-color: #f99">일</th>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                            <th style="background-color: #99f">토</th>
+
+                            <tr style="border-top: 2px solid #bbb">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </section>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal">
+    <div class="modal_content"
+         title="클릭하면 창이 닫힙니다.">
+        <div class="modal-top-banner">
+            <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">회원 등록</div>
+        </div>
+        <div class="modal_content_container">
+
+            <table class="member-info-table">
+                <tr>
+                    <td class="td-info-title">이름</td>
+                    <td>
+                        <input type="text" id="enrollName" class="userInfo">
+                    </td>
+                    <td class="td-info-title">RF카드</td>
+                    <td></td>
+                    <td class="td-info-title">성별</td>
+                    <td>
+                        <input type="radio" name="enroll-gender-check"  value="남" checked="checked"> 남
+                        <input type="radio" name="enroll-gender-check"  value="여"> 여
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">연락처</td>
+                    <td colspan="3">
+                        <input type="text" id="enrollPhone" class="userInfo">
+                        <input type="checkbox" id="enrollSMS"> SMS동의
+                        <input type="checkbox" id="enrollTM"> TM동의
+                    </td>
+                    <td class="td-info-title">생년월일</td>
+                    <td>
+                        <input type="date" id="enrollBirthday" class="userInfo">
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td class="td-info-title">주소</td>
+                    <td style="position: absolute">
+                        <input type="text" id="enrollZipCode" class="info-input userInfo" style="width: 100px" placeholder="우편번호">
+                        <input type="button" id="enrollAddressSearchButton" onclick="searchAddress()" value="우편번호 찾기">
+                        <input type="text" id="enrollAddress" class="info-input userInfo" style="width: 300px" placeholder="주소">
+                        <input type="text" id="enrollAddressDetail"class="info-input" placeholder="상세주소">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">등록구분</td>
+                    <td>
+                        <select name="visitPath" id="enrollType">
+                            <option value="직원 등록" selected="selected">직원 등록</option>
+                            <option value="무료체험 등록">무료체험 등록</option>
+                            <option value="PT 문의 등록">PT 문의 등록</option>
+                            <option value="이용권 문의 등록">이용권 문의 등록</option>
+                            <option value="QR 등록">QR 등록</option>
+                        </select>
+                    </td>
+                    <td class="td-info-title">방문경로</td>
+                    <td>
+                        <select name="visitPath" id="enrollVisitPath">
+                            <option value="소개" selected="selected">소개</option>
+                            <option value="TM">TM</option>
+                            <option value="문자">문자</option>
+                            <option value="홈페이지">홈페이지</option>
+                            <option value="오프라인광고">오프라인광고</option>
+                            <option value="온라인광고">온라인광고</option>
+                            <option value="직접방문">직접방문</option>
+                        </select>
+                    </td>
+                    <td class="td-info-title">추천인</td>
+                    <td>
+                        <input type="text" id="enrollRecommenderSearch" placeholder="추천인 검색...">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">개인운동</td>
+                    <td>
+                        <input type="radio" name="enroll-self-workout-check"  value="예" checked="checked"> 예
+                        <input type="radio" name="enroll-self-workout-check"  value="아니오"> 아니오
+                    </td>
+                    <td class="td-info-title">운동목표</td>
+                    <td>
+                        <select name="visitPath" id="enrollWorkoutGoal">
+                            <option value="다이어트" selected="selected">다이어트</option>
+                            <option value="근력증강">근력증강</option>
+                            <option value="보디빌딩">보디빌딩</option>
+                            <option value="건강">건강</option>
+
+                        </select>
+                    </td>
+                    <td class="td-info-title">이메일</td>
+                    <td>
+                        <input type="text" id="enrollEmail" class="userInfo">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">운동시간</td>
+                    <td>
+                        <input type="number" id="enrollWorkoutHour">
+                    </td>
+                    <td class="td-info-title">관심종목</td>
+                    <td>
+                        <select name="visitPath" id="enrollInterest">
+                            <option value="헬스">헬스</option>
+                            <option value="GX">GX</option>
+                            <option value="개인레슨">개인레슨</option>
+                            <option value="복싱">복싱</option>
+                        </select>
+                    </td>
+                <tr>
+                    <td class="td-info-title">메모</td>
+                    <td style="line-height: normal">
+                        <textarea name="enrollMemo" id="enrollMemo" cols="80" rows="5"></textarea>
+                    </td>
+                </tr>
+
+                </tr>
+            </table>
+            <div class="enroll-button-container">
+                <button id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; font-weight: bolder; color: #FFFFFF">등록</button>
+                <button id="enrollCancelButton" class="user-registration-button" style="color: #333333; font-weight: bolder">취소</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    $(".side-bar").load("sidebar");
+</script>
+<script>
+
+    const $calendar = $("#calendar");
+    const $dateOfToday = $("#dateOfToday");
+
+    const days = "일월화수목금토";
+
+    let sdate = new Date();
+    let todayDate = new Date();
+    $dateOfToday.text(todayDate.getFullYear() + "/" + (todayDate.getMonth()+1) + "/" + todayDate.getDate() + "(" + (days[todayDate.getDay()])+ ")");
+
+    console.log(todayDate);
+
+    window.onload = setCalendar()
+    function setCalendar(){
+
+        var edate = new Date(sdate.getFullYear(),sdate.getMonth()+1,1);
+        sdate.setDate(1);
+
+        $calendar.children().eq(0).children().eq(1).text(sdate.getFullYear() + "년 "+(sdate.getMonth()+1) + "월");
+        // 월 = 0, 화 = 1, 수 = 2, 목 = 3, 금 = 4, 토 = 5, 일 = 6
+        console.log("첫요일 : " + days[sdate.getDay()]);
+        console.log("첫일 : " + sdate);
+
+        let y = sdate.getDay();
+
+        for (let x = 2; x < 8; x++){
+            for (; y<7; y++){
+                if (sdate <=edate){
+                    $calendar.children().eq(x).children().eq(y).text(sdate.getDate());
+                    if (sdate.getFullYear() == todayDate.getFullYear() && sdate.getMonth() == todayDate.getMonth() && sdate.getDate() == todayDate.getDate()){
+                        $calendar.children().eq(x).children().eq(y).css("background-color","#999");
+                    }
+                    else{
+                        if (y==0){
+                            $calendar.children().eq(x).children().eq(y).css("background-color","#fbb");
+                        }
+                        else if (y==6){
+                            $calendar.children().eq(x).children().eq(y).css("background-color","#bbf");
+                        }
+                        else{
+                            $calendar.children().eq(x).children().eq(y).css("background-color","#fff");
+                        }
+                    }
+
+
+                    sdate.setDate(sdate.getDate()+1);
+                }
+
+
+            }
+            y = 0;
+        }
+    }
+    function clearCalendar(){
+        for (let x = 2; x < 8; x++){
+            for (let y = 0; y<7; y++){
+
+                $calendar.children().eq(x).children().eq(y).text("");
+
+            }
+
+        }
+    }
+    function premonth(){
+        sdate.setMonth(sdate.getMonth()-2);
+        clearCalendar()
+        setCalendar();
+    }
+    function nextmonth(){
+        sdate.setMonth(sdate.getMonth());
+        clearCalendar()
+
+        setCalendar();
+    }
+
+</script>
+<script>
+    const $enrollMemberButton = $("#enroll-member-button");
+    const $enrollCancelButton = $("#enrollCancelButton");
+    const $enrollButton = $("#enrollButton");
+    const $addressSearchButton = $("#addressSearchButton");
+
+    // 이름		id : enrollName
+    const $enrollName = $("#enrollName");
+
+    // 연락처		id : enrollPhone
+    const $enrollPhone = $("#enrollPhone");
+    // 이메일		id : enrollEmail
+    const $enrollEmail = $("#enrollEmail");
+    // SMS		id : enrollSMS
+    const $enrollSMS = $("#enrollSMS");
+    // TM		id : enrollTM
+    const $enrollTM = $("#enrollTM");
+    // 생년월일		id : enrollBirthday
+    const $enrollBirthday = $("#enrollBirthday");
+    // 주소		id : enrollAddress
+    const $enrollAddress = $("#enrollAddress");
+    const $enrollAddressDetail = $("#enrollAddressDetail");
+    const $enrollZipCode = $("#enrollZipCode");
+    // 등록구분		id : enrollType
+    const $enrollType = $("#enrollType");
+    // 방문경로		id : enrollVisitPath
+    const $enrollVisitPath = $("#enrollVisitPath");
+    // 추천인		id : recommenderSearch
+    const $recommenderSearch = $("#enrollRecommenderSearch");
+    // 운동목표		id : enrollWorkoutGoal
+    const $enrollWorkoutGoal = $("#enrollWorkoutGoal");
+    // 운동시간		id : workoutHour
+    const $enrollWorkoutHour = $("#enrollWorkoutHour");
+    // 관심종목		id : enrollInterest
+    const $enrollInterest = $("#enrollInterest");
+    // 메모		id : enrollMemo
+    const $enrollMemo = $("#enrollMemo");
+    // 개인운동		name : enroll-self-workout-check
+    let $enrollSelfWorkout = $('input[name="enroll-self-workout-check"]');
+    // 성별		name : enroll-gender-check
+    let $enrollGender = $('input[name="enroll-gender-check"]');
+
+
+    $enrollButton.click(function(){
+        let memberData = {
+            name : $enrollName.val(),
+            phone : $enrollPhone.val(),
+            email : $enrollEmail.val(),
+            birthday : $enrollBirthday.val(),
+            zipcode : $enrollZipCode.val() ,
+            address : $enrollAddress.val(),
+            addressdetail : $enrollAddressDetail.val(),
+            type : $enrollType.val(),
+            visitpath : $enrollVisitPath.val(),
+            recommender : $recommenderSearch.val(),
+            goal : $enrollWorkoutGoal.val(),
+            hour : $enrollWorkoutHour.val(),
+            interest : $enrollInterest.val(),
+            memo : $enrollMemo.val(),
+            selfworkout : $enrollSelfWorkout.val(),
+            gender : $enrollGender.val(),
+            sms : $enrollSMS.is(':checked'),
+            tm : $enrollTM.is(':checked')
+        };
+        $(".userInfo").each(function (index,item){
+            if ($(this).val().trim() == ''){
+                console.log("필수항목을 입력해주세요");
+                $(this).css("border-color","#f88");
+            }else{
+                console.log(memberData);
+            }
+        })
+
+
+
+
+        // let msg = "인증번호";
+        // var templateParams = {
+        //     //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
+        //     message: msg
+        // };
+        // emailjs.init('M-uvfE52G7puSTuwi');
+        // emailjs.send('test_email', 'template_2n4pf7o', templateParams).then(function(response) {
+        //     console.log('SUCCESS!', response.status, response.text);
+        // }, function(error) {
+        //     console.log('FAILED...', error);
+        // });
+
+    });
+
+    $enrollMemberButton.click(function (){
+        $(".modal").fadeIn();
+    });
+    $enrollCancelButton.click(function(){
+        $(".modal").fadeOut();
+    });
+
+    function searchAddress() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    addr += " " + extraAddr;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                //우편번호
+                $enrollZipCode.val(data.zonecode);
+                //주소
+                $enrollAddress.val(addr);
+                //상세주소
+                $enrollAddressDetail.focus();
+            }
+        }).open();
+    }
+
+
+</script>
+
+</html>

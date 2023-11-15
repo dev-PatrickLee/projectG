@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+.container {
+    margin-left: 250px;
+    margin-top: 55px;
+}
+
+tr {
+    border-bottom: 0.5px solid #c60a164d;
+    line-height: 50px;
+}
+
+table th, table td {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.checkbox-line {
+    line-height: 1px;
+}
+
+table td {
+    font-weight: 300;
+}
+
+table {
+    text-align : center;
+    width: 100%;
+    border-collapse: collapse
+}
+
+.board-info-box {
+    width: 400px;
+    border: 0.0625rem solid #f2f2f2;
+    box-shadow: 11px 13px 11px -14px grey;
+    background: #fff;
+}
+
+.info-title-box-flex {
+    display: flex;
+    position: fixed;
+    justify-content: flex-start;
+}
+
+.info-title-box {
+    width: 100%;
+    height: 55px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 11px 13px 11px -14px grey;
+}
+
+.info-table {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.info-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.board-info-title-box {
+    padding: 20px 27px 0;
+}
+
+.board-info-title-box {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+
+.header-name{
+    padding-top: 18px;
+    position: relative;
+    width: 60%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.button-box {
+    border: none;
+    height: 50px;
+    background-color: #fff;
+    font-weight: bold;
+}
+.small-button-box {
+    box-shadow: 2px 2px 7px -2px grey;
+    font-family: 'GmarketSansMedium';
+    border: none;
+    width: 60px;
+    height: 20px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.container-margin {
+    margin: 40px 100px 0px;
+}
+
+.board-info-box-layout {
+    margin-top: 30px;
+}
+
+
+.prev-button-layout {
+    position: relative;
+}
+
+.prev-icon {
+    position: absolute;
+    width: 20px;
+    top: 3px;
+}
+
+.prev-title {
+    font-weight: 700;
+    padding-left: 28px;
+}
+
+hr {
+    height: 1px;
+    background: #f2f1f1;
+    border: 0;
+}
+
+.span-bold {
+    font-weight: bold;
+}
+
+.info-member {
+    margin-bottom: 10px;
+}
+
+.member-img-box {
+    margin-top: 20px;
+}
+
+.member-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+}
+
+.member-nickname-box {
+    margin-top : 10px;
+    text-align: center;
+}
+
+.member-nickname-box span {
+    font-size: 14px;
+}
+
+.member-info-box {
+    margin: 32px;
+}
+
+.member-info-tag-box {
+    margin-top : 10px;
+}
+
+.info-tag {
+    font-size: 13px;
+    color: #c1c1c1;
+}
+
+.info span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.member-info {
+    margin: 28px;
+}
+
+div.margin {
+    margin-top : 50px;
+}
+
+div.margin span {
+    font-size: 14px;
+}
+
+.write-count-box {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.count {
+    padding-left : 15px;
+}
+
+.board-info-box-layout2 {
+    height: fit-content;
+}
+
+.board-info-box-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modify-button-box {
+    padding: 20px 27px 15px;
+    font-size: 12px;
+    font-weight: 400;
+    position: relative;
+}
+
+.gear-icon {
+    width: 10px;
+}
+
+.member-button {
+    background-color: red;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+}
+
+.member-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+}
+
+.member-nickname-box {
+    margin-top : 10px;
+    text-align: center;
+}
+
+.member-nickname-box span {
+    font-size: 14px;
+}
+
+.member-info-box {
+    margin : 50px;
+}
+
+.member-info-tag-box {
+    margin-top : 10px;
+}
+
+.info-tag {
+    font-size: 13px;
+    color: #c1c1c1;
+}
+
+div.info-name {
+    margin-top: 0px;
+}
+
+.info {
+    margin-top : 10px;
+}
+
+.member-info {
+    margin : 20px;
+}
+
+input {
+    outline: none;
+    border: none;
+    width: 50%;
+    border-bottom: 1px solid #c1c1c1;
+    height: 20px;
+    font-size: 15px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: #4F6DF5;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+}
+
+.button-box {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.member-status {
+    outline: none;
+    border: none;
+    width: 50%;
+    border-bottom: 1px solid #c1c1c1;
+    height: 20px;
+    font-size: 15px;
+}
+
+.title-name {
+    position: absolute;
+    left: 250px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 목록</title>
+    <link rel="stylesheet" href="/css/sideBar.css">
+    <link rel="stylesheet" href="/css/memberList.css">
+</head>
+
+<body>
+<div>
+    <div class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">회원정보 관리</span>
+        </div>
+    </div>
+</div>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 헤더 -->
+            <div class="">
+                <div class="button-container">
+                    <button class="button-box">선택 회원 탈퇴</button>
+                </div>
+            </div>
+
+            <!-- 내용 섹션 -->
+            <section class="board-info-box-layout">
+
+                <div class="board-info-box">
+                    <div class="board-info-title-box">
+                        <span>회원 목록</span>
+                    </div>
+
+                    <div class="info-table">
+                        <table>
+                            <thead>
+                            <tr style="border-bottom: 4px solid #000">
+                                <th class="checkbox-line">
+                                    <input type="checkbox">
+                                </th>
+                                <th>No</th>
+                                <th>등록일</th>
+                                <th>회원코드</th>
+                                <th>이름</th>
+                                <th>연락처</th>
+                                <th>성별</th>
+                                <th>나이</th>
+                                <th>PT</th>
+                                <th>시작일</th>
+                                <th>종료일</th>
+                                <th>잔여일</th>
+                                <th>최근구매금액</th>
+                                <th>최근결제일</th>
+                                <th>미수금</th>
+                                <th>담당강사</th>
+                                <th>RF카드</th>
+                                <th>APP</th>
+                            </tr>
+                            </thead>
+
+                            <th:block th:each = "member : ${list}">
+                                <tr>
+                                    <td class="checkbox-line">
+                                        <input type="checkbox">
+                                    </td>
+                                    <td th:text="${member.id}">1</td>
+                                    <td th:text="${member.memberEnrollDate}">2023-01-01</td>
+                                    <td>123456789</td>
+                                    <td th:text="${member.memberName}">홍길동</td>
+                                    <td th:text="${member.memberPhone}">010-1234-1234</td>
+                                    <td th:text="${member.memberGender}">남</td>
+                                    <td th:text="${member.memberAge}">20</td>
+                                    <td>이용중</td>
+                                    <td>2023-01-01</td>
+                                    <td>2024-01-01</td>
+                                    <td >365</td>
+                                    <td>390,000</td>
+                                    <td>2023-01-01</td>
+                                    <td>없음</td>
+                                    <td>김철수</td>
+                                    <td th:text="${member.id}">RF카드</td>
+                                    <td>Y</td>
+                                </tr>
+                            </th:block>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 페이지 버튼 -->
+            <div class="page-button-box-layout">
+                <div class="page-button-box">
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/left_icon.png" class="left-button">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 현재 페이지 -->
+                    <div>1</div>
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/right_icon.png" class="right-button ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+    $(".side-bar").load("sidebar");
+</script>
+<script src="/js/sidebar.js"></script>
+<script>
+    const $name = $("#name");
+    console.log($name.text());
+</script>
+</html>

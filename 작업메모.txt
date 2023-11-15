@@ -1,0 +1,225 @@
+회원코드(회원번호)
+등록일
+앱설치(T/F)
+이름
+RF카드
+성별(남/여)
+연락처
+SMS동의
+TM동의
+생년월일
+주소(주소찾기 api)
+등록구분 -------- 추가 정보 필요
+방문경로 -------- 선택항목  정보 필요
+추천인
+담당TM -------- 추가 정보 필요
+이메일
+적립금
+담당강사
+개인운동(예/아니오)
+운동목표 -------- 선택항목 정보 필요
+메모----- 추가정보 필요
+회원사진
+
+추가 질문
+	- 상세 버튼 기능 및 상세 정보 구성
+	- 웨어러블의 기능
+	
+--------------------------------------------
+ERD (Entity Relationship Diagram) 데이터 관계 설계도
+	- 데이터 정보 *
+	- 서버 공간 확보 *
+
+회원용
+ - 회원들의 어플사용
+ - 어플로 공지 확인
+
+센터장용
+ - 회원 관리(센터장들끼리의 회원정보공유x)
+
+총관리자용
+ - 센터장 관리
+
+---------------------------------------------
+ERD
+
+회원번호
+이름
+이메일
+성별 남/여
+연락처
+생년월일
+주소
+등록일
+
+SMS동의 T/F
+TM동의 T/F
+개인운동 T/F
+RF카드
+
+등록구분
+	- 직원등록
+	- 무료체험등록
+	- PT문의등록
+	- 이용권문의등록
+	- QR등록
+방문경로
+	- 소개
+	- TM
+	- 문자
+	- 홈페이지
+	- 오프라인광고
+	- 온라인광고
+	- 직접방문
+
+운동목표
+	- 체중감량
+	- 근력증진
+	...
+
+
+관심종목
+	- 헬스
+	- GX
+	- 개인레슨
+	- 복싱
+추천인
+운동시간
+
+메모
+	- 일반메모 작성
+
+
+
+--------------------------------------------
+ID NUMBER CONSTRAINT PK_MEMBER PRIMARY KEY,
+   MEMBER_NAME VARCHAR2(255) NOT NULL,
+   MEMBER_EMAIL VARCHAR2(255) NOT NULL,
+   MEMBER_PASSWORD VARCHAR2(255),
+   MEMBER_PHONE VARCHAR2(255) NOT NULL,
+   MEMBER_GENDER VARCHAR2(10) CONSTRAINT CHECK_GENDER CHECK(MEMBER_GENDER IN ('남','여')),
+   MEMBER_BIRTHDAY DATE NOT NULL,
+   MEMBER_ZIPCODE VARCHAR2(100) NOT NULL,
+   MEMBER_ADDRESS VARCHAR2(255) NOT NULL,
+   MEMBER_ADDRESS_DETAIL VARCHAR2(255) DEFAULT '',
+   MEMBER_ENROLL_DATE DATE DEFAULT SYSDATE,
+   MEMBER_ENROLL_TYPE VARCHAR2(255) DEFAULT '없음',
+   MEMBER_GOAL VARCHAR2(255) DEFAULT '없음',
+   MEMBER_INTEREST VARCHAR2(255) DEFAULT '없음',
+   MEMBER_WORKOUT_HOUR NUMBER DEFAULT 0,
+   MEMBER_RF_CARD VARCHAR2(255) DEFAULT '없음',
+   MEMBER_SMS_AGREEMENT VARCHAR2(255) DEFAULT 'N' CONSTRAINT CHECK_SMS_AGREEMENT 
+   	CHECK(MEMBER_SMS_AGREEMENT IN ('true','false')),
+   MEMBER_SELF_AGREEMENT VARCHAR2(255) DEFAULT 'N' CONSTRAINT CHECK_INDIVIDUAL_AGREEMENT 
+   	CHECK(MEMBER_SELF_AGREEMENT IN ('true','false')),
+   MEMBER_TYPE VARCHAR2(255) DEFAULT '일반' CONSTRAINT CHECK_TYPE 
+   	CHECK(MEMBER_TYPE IN ('일반','휴면','탈퇴')),
+   MEMBER_MEMO VARCHAR2(2000)
+
+
+----------------------------------------------
+메일 API 정보
+	메일 비번 : hjsl latg ajmf dfll
+	메일id : test_web_email
+
+-----------------------------------------------
+회원 리스트
+
+체크
+회원 번호
+등록일
+회원코드
+이름
+연락처
+성별
+나이
+PT (이용중 Y/N)
+시작일
+종료일
+잔여일
+최근구매금액
+최근결제일
+미수금
+담당강사
+RF카드
+APP설치 여부
+
+-----------------------------------------------
+member 필수 데이터
+
+name
+phone
+email
+birthday
+zipcode
+address
+addressdetail
+type
+visitpath
+recommender
+goal
+hour
+interest
+memo
+selfworkout
+gender
+sms
+tm
+
+long id;
+    String memberName;
+    String memberEmail;
+    String memberPassword;
+    String memberPhone;
+    String memberGender;
+    String memberBirthday;
+    String memberZipcode;
+    String memberAddress;
+    String memberAddressDetail;
+    String memberEnrollDate;
+    String memberEnrollType;
+    String memberGoal;
+    String memberInterest;
+    String memberVisitPath;
+    String memberWorkoutHour;
+    String memberRfCard;
+    String memberSmsAgreement;
+    String memberTmAgreement;
+    String memberSelfAgreement;
+    String memberType;
+    String memberMemo;
+
+
+name=홍길동, 
+enroll-gender-check=남, 
+phone=01012345678, 
+sms=on,
+tm=,
+birthday=2023-11-09, 
+zipcode=12345, 
+address=서울특별시, 
+address-detail=, 
+type=무료체험 등록, 
+visit-path=소개, 
+recommender=, 
+enroll-self-workout-check=예, 
+goal=다이어트, 
+email=email@email.com, 
+workout-hour=1,
+interest=복싱, 
+memo=test memo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

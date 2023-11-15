@@ -1,0 +1,14 @@
+.member-info-table{
+    width: 100%;
+}
+.td-info-title{
+    background-color: #ddd ;
+    width: 10%;
+    font-weight: bolder;
+}
+.messageButton{
+    background-color: cornflowerblue;
+    padding: 4px 9px;
+    border-radius: 4px;
+    margin-right: 5%;
+}
