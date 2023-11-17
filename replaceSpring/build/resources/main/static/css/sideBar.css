@@ -13,7 +13,10 @@ a{
     color: white;
     text-decoration: none;
 }
-
+.container {
+    margin-left: 12%;
+    margin-top: 2%;
+}
 /*사이드 바*/
 .side-bar {
     display: block;
@@ -21,7 +24,7 @@ a{
     top: 55px;
     bottom: 0;
     z-index: 99;
-    width: 220px;
+    width: 11.5%;
     background-color: #4e4e4e;
 }
 

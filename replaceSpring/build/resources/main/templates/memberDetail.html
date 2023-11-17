@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 상세</title>
-    <link rel="stylesheet" href="/css/sideBar.css">
     <link rel="stylesheet" href="/css/memberDetail.css">
     <link rel="stylesheet" href="/css/test.css">
-
+    <link rel="stylesheet" href="/css/sideBar.css">
 </head>
 
 <body>
@@ -77,210 +76,351 @@
                     </select>
                 </section>
 
+                <div class="member-info-flex">
+                    <section class="board-info-box-layout">
+                        <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block; font-size: xx-large;">회원 정보</div>
+                        <div class="member-info-button-container">
+                            <button type="button" class="user-registration-button" id="wearable-button"  style="background-color: #FF416C">웨어러블</button>
+                            <button type="button" class="user-registration-button" id="detail-button" style="background-color: #01B0F1">상세</button>
+                            <button type="button" class="user-registration-button" id="edit-button" style="background-color: #333333">저장</button>
+                        </div>
+                        <table class="member-info-table">
+                            <!--                        회원코드 , 등록일 , 앱설치-->
+                            <tr>
+                                <td class="td-info-title">회원 코드</td>
+                                <td></td>
+                                <td class="td-info-title">등록일</td>
+                                <td></td>
+                                <td class="td-info-title">앱설치</td>
+                                <td></td>
+                            </tr>
 
-                <section class="board-info-box-layout">
-                    <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block; font-size: xx-large;">회원 정보</div>
-                    <div class="member-info-button-container">
-                        <button type="button" class="user-registration-button" id="wearable-button"  style="background-color: #FF416C">웨어러블</button>
-                        <button type="button" class="user-registration-button" id="detail-button" style="background-color: #01B0F1">상세</button>
-                        <button type="button" class="user-registration-button" id="edit-button" style="background-color: #333333">저장</button>
-                    </div>
-                    <table class="member-info-table">
-                        <!--                        회원코드 , 등록일 , 앱설치-->
-                        <tr>
-                            <td class="td-info-title">회원 코드</td>
-                            <td></td>
-                            <td class="td-info-title">등록일</td>
-                            <td></td>
-                            <td class="td-info-title">앱설치</td>
-                            <td></td>
-                        </tr>
-
-                        <!--                        이름 , RF카드 , 성별-->
-                        <tr>
-                            <td class="td-info-title">이름</td>
-                            <td>
-                                <input type="text" style="width: 80%">
-                            </td>
-                            <td class="td-info-title">RF카드</td>
-                            <td></td>
-                            <td class="td-info-title">성별</td>
-                            <td>
-                                <input type="radio" name="gender-check"  value="M"> 남성
-                                <input type="radio" name="gender-check"  value="F"> 여성
-                            </td>
-                        </tr>
-
-                        <!--                        연락처 2 , 생년월일 1-->
-                        <tr>
-                            <td class="td-info-title">연락처</td>
-                            <td colspan="3">
-                                <input type="text">
-                                <a href="#" class="messageButton">문자</a>
-                                <input type="checkbox"> SMS동의
-                                <input type="checkbox"> TM동의
-                            </td>
-                            <td class="td-info-title">생년월일</td>
-                            <td>
-                                <input type="text" style="width: 90%">
-                            </td>
-                        </tr>
-
-                        <!--                        주소 3-->
-                        <tr>
-                            <td class="td-info-title">주소</td>
-                            <td colspan="5"></td>
-
-                        </tr>
-
-                        <!--                        등록구분 , 방문경로 , 추천인-->
-                        <tr>
-                            <td class="td-info-title">등록구분</td>
-                            <td></td>
-                            <td class="td-info-title">방문경로</td>
-                            <td>
-                                <select name="visitPath" id="visitPath">
-                                    <option value="선택">선택</option>
-                                    <option value="홈페이지">홈페이지</option>
-                                    <option value="광고">광고</option>
-                                    <option value="추천인">추천인</option>
-                                </select>
-                            </td>
-                            <td class="td-info-title">추천인</td>
-                            <td></td>
-                        </tr>
-
-                        <!--                        담당TM , 이메일 , 적립금-->
-                        <tr>
-                            <td class="td-info-title">담당TM</td>
-                            <td></td>
-                            <td class="td-info-title">이메일</td>
-                            <td></td>
-                            <td class="td-info-title">적립금</td>
-                            <td></td>
-                        </tr>
-
-                        <!--                        담당강사 , 개인운동 , 운동목표-->
-                        <tr>
-                            <td class="td-info-title">담당강사</td>
-                            <td></td>
-                            <td class="td-info-title">개인운동</td>
-                            <td>
-                                <input type="radio" name="solo-activity"  value="Y"> 예
-                                <input type="radio" name="solo-activity"  value="N"> 아니오
-                            </td>
-                            <td class="td-info-title">운동목표</td>
-                            <td>
-                                <select name="goalOfActiviry" id="goalOfActiviry">
-                                    <option value="선택">선택</option>
-                                    <option value="건강">건강</option>
-                                    <option value="다이어트">다이어트</option>
-                                    <option value="근력증가">근력증가</option>
-                                    <option value="보디빌딩">보디빌딩</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <!--                        메모 3-->
-                        <tr style="line-height: normal">
-                            <td class="td-info-title">메모</td>
-                            <td colspan="5">
-                                <textarea name="enrollMemo" id="memberMemo" cols="80" rows="5"></textarea>
-                            </td>
-
-                        </tr>
-
-
-                    </table>
-                </section>
-                <section class="board-calender-box">
-                    <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block">출석 현황</div>
-                    <div>
-
-                    </div>
-                    <div>
-                        <table class="calendar-table">
-                            <tbody id="calendar">
-                            <tr style="border: 2px solid">
+                            <!--                        이름 , RF카드 , 성별-->
+                            <tr>
+                                <td class="td-info-title">이름</td>
                                 <td>
-                                    <a href="javascript:premonth();" style="color: black;">이전</a>
+                                    <input type="text" style="width: 80%">
                                 </td>
-                                <td colspan="5" style="text-align: center; font-weight: bolder; font-size: 15px">
-                                </td>
+                                <td class="td-info-title">RF카드</td>
+                                <td></td>
+                                <td class="td-info-title">성별</td>
                                 <td>
-                                    <a href="javascript:nextmonth();" style="color: black;">다음</a>
+                                    <input type="radio" name="gender-check"  value="M"> 남성
+                                    <input type="radio" name="gender-check"  value="F"> 여성
+                                </td>
+                            </tr>
+
+                            <!--                        연락처 2 , 생년월일 1-->
+                            <tr>
+                                <td class="td-info-title">연락처</td>
+                                <td colspan="3">
+                                    <input type="text">
+                                    <a href="#" class="messageButton">문자</a>
+                                    <input type="checkbox"> SMS동의
+                                    <input type="checkbox"> TM동의
+                                </td>
+                                <td class="td-info-title">생년월일</td>
+                                <td>
+                                    <input type="text" style="width: 90%">
+                                </td>
+                            </tr>
+
+                            <!--                        주소 3-->
+                            <tr>
+                                <td class="td-info-title">주소</td>
+                                <td colspan="5"></td>
+
+                            </tr>
+
+                            <!--                        등록구분 , 방문경로 , 추천인-->
+                            <tr>
+                                <td class="td-info-title">등록구분</td>
+                                <td></td>
+                                <td class="td-info-title">방문경로</td>
+                                <td>
+                                    <select name="visitPath" id="visitPath">
+                                        <option value="선택">선택</option>
+                                        <option value="홈페이지">홈페이지</option>
+                                        <option value="광고">광고</option>
+                                        <option value="추천인">추천인</option>
+                                    </select>
+                                </td>
+                                <td class="td-info-title">추천인</td>
+                                <td></td>
+                            </tr>
+
+                            <!--                        담당TM , 이메일 , 적립금-->
+                            <tr>
+                                <td class="td-info-title">담당TM</td>
+                                <td></td>
+                                <td class="td-info-title">이메일</td>
+                                <td></td>
+                                <td class="td-info-title">적립금</td>
+                                <td></td>
+                            </tr>
+
+                            <!--                        담당강사 , 개인운동 , 운동목표-->
+                            <tr>
+                                <td class="td-info-title">담당강사</td>
+                                <td></td>
+                                <td class="td-info-title">개인운동</td>
+                                <td>
+                                    <input type="radio" name="solo-activity"  value="Y"> 예
+                                    <input type="radio" name="solo-activity"  value="N"> 아니오
+                                </td>
+                                <td class="td-info-title">운동목표</td>
+                                <td>
+                                    <select name="goalOfActiviry" id="goalOfActiviry">
+                                        <option value="선택">선택</option>
+                                        <option value="건강">건강</option>
+                                        <option value="다이어트">다이어트</option>
+                                        <option value="근력증가">근력증가</option>
+                                        <option value="보디빌딩">보디빌딩</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <!--                        메모 3-->
+                            <tr style="line-height: normal">
+                                <td class="td-info-title">메모</td>
+                                <td colspan="5">
+                                    <textarea name="enrollMemo" id="memberMemo" cols="80" rows="5"></textarea>
                                 </td>
 
+                            </tr>
 
-                            </tr>
-                            <th style="background-color: #f99">일</th>
-                            <th>월</th>
-                            <th>화</th>
-                            <th>수</th>
-                            <th>목</th>
-                            <th>금</th>
-                            <th style="background-color: #99f">토</th>
-
-                            <tr style="border-top: 2px solid #bbb">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            </tbody>
 
                         </table>
-                    </div>
+                    </section>
+                    <section class="board-calender-box">
+                        <div class="member-calendar-img-container">
+                            <div class="member-attendance-info-box">
+                                <div class="table-title" >출석 현황</div>
 
-                </section>
+                                <table class="calendar-table">
+                                    <tbody id="calendar">
+                                    <tr style="border: 2px solid">
+                                        <td>
+                                            <a href="javascript:premonth();" style="color: black;">이전</a>
+                                        </td>
+                                        <td colspan="5" style="text-align: center; font-weight: bolder; font-size: 15px">
+                                        </td>
+                                        <td>
+                                            <a href="javascript:nextmonth();" style="color: black;">다음</a>
+                                        </td>
+
+
+                                    </tr>
+                                    <th style="background-color: #f99">일</th>
+                                    <th>월</th>
+                                    <th>화</th>
+                                    <th>수</th>
+                                    <th>목</th>
+                                    <th>금</th>
+                                    <th style="background-color: #99f">토</th>
+
+                                    <tr style="border-top: 2px solid #bbb">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                            <div class="member-img-info-box">
+                                <div class="table-title">회원 사진</div>
+                                <table class="calendar-table">
+                                    <tr>
+                                        <td>
+                                            <img src="/image/user_icon.png" alt="member-img" class="member-img">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="member-locker-info-wrap">
+                            <div class="table-title">
+                                라커정보
+                            </div>
+                            <ul class="member-locker-info-container">
+                                <li class="member-locker-info-box">
+                                    <div class="member-locker-location member-locker-info">
+                                        <span>라커 > </span>
+                                        <span class="lockerLocation">지점라커</span>
+                                    </div>
+                                    <div class="member-locker-date member-locker-info">
+                                        <span class="lockerStartDate">2023-01-01</span>
+                                        <span> ~ </span>
+                                        <span class="lockerEndDate">2024-01-01</span>
+                                        <span class="lockerRemainDays">(365)</span>
+                                    </div>
+                                    <div class="member-locker-number member-locker-info">
+                                        <span>[</span>
+                                        <span class="memberLockerNumber">100</span>
+                                        <span>]</span>
+                                    </div>
+                                    <div class="member-locker-option-container member-locker-info">
+                                        <a href="#" class="locker-option locker-change">변경</a>
+
+                                        <a href="#" class="locker-option locker-extension">연장결제</a>
+                                    </div>
+                                </li>
+                                <li class="member-locker-info-box">
+                                    <div class="member-locker-location member-locker-info">
+                                        <span>라커 > </span>
+                                        <span class="lockerLocation">지점라커</span>
+                                    </div>
+                                    <div class="member-locker-date member-locker-info">
+                                        <span class="lockerStartDate">2023-01-01</span>
+                                        <span> ~ </span>
+                                        <span class="lockerEndDate">2024-01-01</span>
+                                        <span class="lockerRemainDays">(365)</span>
+                                    </div>
+                                    <div class="member-locker-number member-locker-info">
+                                        <span>[</span>
+                                        <span class="memberLockerNumber"></span>
+                                        <span>]</span>
+                                    </div>
+
+                                    <div class="member-locker-option-container member-locker-info">
+                                        <a href="#" class="locker-assign">배정</a>
+                                    </div>
+                                </li>
+                                <li class="member-locker-info-box">
+                                    <div class="member-locker-location member-locker-info">
+                                        <span>라커 > </span>
+                                        <span class="lockerLocation">지점라커</span>
+                                    </div>
+                                    <div class="member-locker-date member-locker-info">
+                                        <span class="lockerStartDate">2023-01-01</span>
+                                        <span> ~ </span>
+                                        <span class="lockerEndDate">2024-01-01</span>
+                                        <span class="lockerRemainDays">(365)</span>
+                                    </div>
+                                    <div class="member-locker-number member-locker-info">
+                                        <span>[</span>
+                                        <span class="memberLockerNumber"></span>
+                                        <span>]</span>
+                                    </div>
+
+                                    <div class="member-locker-option-container member-locker-info">
+                                        <a href="#" class="locker-assign">배정</a>
+                                    </div>
+                                </li>
+                                <li class="member-locker-info-box">
+                                    <div class="member-locker-location member-locker-info">
+                                        <span>라커 > </span>
+                                        <span class="lockerLocation">지점라커</span>
+                                    </div>
+                                    <div class="member-locker-date member-locker-info">
+                                        <span class="lockerStartDate">2023-01-01</span>
+                                        <span> ~ </span>
+                                        <span class="lockerEndDate">2024-01-01</span>
+                                        <span class="lockerRemainDays">(365)</span>
+                                    </div>
+                                    <div class="member-locker-number member-locker-info">
+                                        <span>[</span>
+                                        <span class="memberLockerNumber"></span>
+                                        <span>]</span>
+                                    </div>
+
+                                    <div class="member-locker-option-container member-locker-info">
+                                        <a href="#" class="locker-assign">배정</a>
+                                    </div>
+                                </li>
+                                <li class="member-locker-info-box">
+                                    <div class="member-locker-location member-locker-info">
+                                        <span>라커 > </span>
+                                        <span class="lockerLocation">지점라커</span>
+                                    </div>
+                                    <div class="member-locker-date member-locker-info">
+                                        <span class="lockerStartDate">2023-01-01</span>
+                                        <span> ~ </span>
+                                        <span class="lockerEndDate">2024-01-01</span>
+                                        <span class="lockerRemainDays">(365)</span>
+                                    </div>
+                                    <div class="member-locker-number member-locker-info">
+                                        <span>[</span>
+                                        <span class="memberLockerNumber"></span>
+                                        <span>]</span>
+                                    </div>
+
+                                    <div class="member-locker-option-container member-locker-info">
+                                        <a href="#" class="locker-assign">배정</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </section>
+                </div>
+                <div class="member-history-wrap">
+                    <table class="member-history-title-talbe">
+                        <tr class="member-history-title-box">
+                            <th onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
+                            <th onclick="titleActive(this)" class="member-history-title">출입내역</th>
+                            <th onclick="titleActive(this)" class="member-history-title">OT내역</th>
+                            <th onclick="titleActive(this)" class="member-history-title">PT내역</th>
+                            <th onclick="titleActive(this)" class="member-history-title">문진표</th>
+                            <th onclick="titleActive(this)" class="member-history-title">추천내역</th>
+                            <th onclick="titleActive(this)" class="member-history-title">라커이력</th>
+                            <th onclick="titleActive(this)" class="member-history-title">수정이력</th>
+                            <th onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
+                        </tr>
+                    </table>
+                </div>
+
 
 
             </div>
@@ -403,11 +543,10 @@
                         </td>
                     </tr>
 
-                    </tr>
                 </table>
                 <div class="enroll-button-container">
                     <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; font-weight: bolder; color: #FFFFFF">등록</button>
-                    <button id="enrollCancelButton" class="user-registration-button" style="color: #333333; font-weight: bolder">취소</button>
+                    <button type="reset" id="enrollCancelButton" class="user-registration-button" style="color: #333333; font-weight: bolder">취소</button>
                 </div>
             </form>
 
@@ -661,6 +800,15 @@
         }).open();
     }
 
+
+</script>
+<script>
+    const $historyTitles = $(".member-history-title");
+
+    function titleActive(data){
+        $historyTitles.removeClass("active-title");
+        $(data).addClass("active-title");
+    }
 
 </script>
 
