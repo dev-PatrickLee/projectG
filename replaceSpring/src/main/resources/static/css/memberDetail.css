@@ -512,3 +512,33 @@ header{
     background-color: #4444cc !important;
     color: white !important;
 }
+.member-history-data-table{
+    background-color: #ddddff;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    table-layout: auto;
+}
+
+.member-payment-history-data-title th{
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    padding: 0;
+
+}
+.member-payment-history-data-title{
+    border-left: none;
+    border-right: none;
+}
+.payment-history-data td{
+    background: white;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+}
+#historyBody{
+    margin-top: 10px;
+}
+#memberMemo{
+    width: 90%;
+}

@@ -1,3 +1,5 @@
+$(".side-bar").load("sidebar");
+
 function clickOption(data){
     // $(".side-list").css("background-color","#4e4e4e");
     $(".sub-list").slideUp(150);
