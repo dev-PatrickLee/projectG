@@ -400,6 +400,7 @@
                                         <a href="#" class="locker-assign">배정</a>
                                     </div>
                                 </li>
+
                             </ul>
                         </div>
 
@@ -408,17 +409,23 @@
                 <div class="member-history-wrap">
                     <table class="member-history-title-talbe">
                         <tr class="member-history-title-box">
-                            <th onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
-                            <th onclick="titleActive(this)" class="member-history-title">출입내역</th>
-                            <th onclick="titleActive(this)" class="member-history-title">OT내역</th>
-                            <th onclick="titleActive(this)" class="member-history-title">PT내역</th>
-                            <th onclick="titleActive(this)" class="member-history-title">문진표</th>
-                            <th onclick="titleActive(this)" class="member-history-title">추천내역</th>
-                            <th onclick="titleActive(this)" class="member-history-title">라커이력</th>
-                            <th onclick="titleActive(this)" class="member-history-title">수정이력</th>
-                            <th onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
+                            <th id="purchaseHistory" onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
+                            <th id="visitHistory" onclick="titleActive(this)" class="member-history-title">출입내역</th>
+                            <th id="otHistory" onclick="titleActive(this)" class="member-history-title">OT내역</th>
+                            <th id="ptHistory" onclick="titleActive(this)" class="member-history-title">PT내역</th>
+                            <th id="documentHistory" onclick="titleActive(this)" class="member-history-title">문진표</th>
+                            <th id="recommendHistory" onclick="titleActive(this)" class="member-history-title">추천내역</th>
+                            <th id="lockerHistory" onclick="titleActive(this)" class="member-history-title">라커이력</th>
+                            <th id="updateHistory" onclick="titleActive(this)" class="member-history-title">수정이력</th>
+                            <th id="wearableHistory" onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
                         </tr>
                     </table>
+                    <div id="historyBody">
+
+
+
+                    </div>
+
                 </div>
 
 
@@ -803,10 +810,13 @@
 </script>
 <script>
     const $historyTitles = $(".member-history-title");
+    const $historyBody = $("#historyBody");
 
+    $historyBody.load("purchaseHistory");
     function titleActive(data){
         $historyTitles.removeClass("active-title");
         $(data).addClass("active-title");
+        $historyBody.load($(data).attr('id'))
     }
 
 </script>

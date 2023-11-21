@@ -106,4 +106,41 @@ public class AdminController {
     public String StrategyNote(){
         return "strategyNote";
     }
+
+    @GetMapping("purchaseHistory")
+    public String purchaseHistory(){
+        return "purchaseHistory";
+    }
+    @GetMapping("visitHistory")
+    public String visitHistory(){
+        return "visitHistory";
+    }
+    @GetMapping("otHistory")
+    public String otHistory(){
+        return "otHistory";
+    }
+    @GetMapping("ptHistory")
+    public String ptHistory(){
+        return "ptHistory";
+    }
+    @GetMapping("documentHistory")
+    public String documentHistory(){
+        return "documentHistory";
+    }
+    @GetMapping("recommendHistory")
+    public String recommendHistory(){
+        return "recommendHistory";
+    }
+    @GetMapping("lockerHistory")
+    public String lockerHistory(){
+        return "lockerHistory";
+    }
+    @GetMapping("updateHistory")
+    public String updateHistory(){
+        return "updateHistory";
+    }
+    @GetMapping("wearableHistory")
+    public String wearableHistory(){
+        return  "wearableHistory";
+    }
 }

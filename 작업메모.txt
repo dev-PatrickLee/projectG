@@ -307,6 +307,16 @@ PT내역
 진행률		(퍼센트바) n kal/ n kal
 
 
+==============================
+purchaseHistory
+visitHistory
+otHistory
+ptHistory
+documentHistory
+recommendHistory
+lockerHistory
+updateHistory
+wearableHistory
 
 
 
