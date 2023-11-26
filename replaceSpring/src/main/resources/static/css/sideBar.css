@@ -15,7 +15,28 @@ a{
 }
 .container {
     margin-left: 12%;
-    margin-top: 2%;
+}
+.title-name {
+    position: absolute;
+    left: 250px;
+}
+.info-title-box-flex {
+    display: flex;
+    position: fixed;
+    justify-content: flex-start;
+}
+.header-name{
+    padding-top: 18px;
+    position: relative;
+    width: 60%;
+    text-align: center;
+    font-weight: 600;
+}
+.wrap{
+    margin-top: 40px;
+}
+.container-margin {
+    margin-right: 1%;
 }
 /*사이드 바*/
 .side-bar {
@@ -85,4 +106,39 @@ li {
 }
 .sub-option:hover{
     background-color: #4e4e4e;
+}
+.title-line{
+    margin: 10px 0;
+}
+.filter-wrap{
+    width: 100%;
+    background-color: #dddddd;
+    border-radius: 3px;
+    padding-left: 10px;
+    margin: 10px 0;
+}
+.filter-confirm-button{
+    margin: 15px 0;
+    height: 30px;
+    border: none;
+    background-color: navy;
+    color: white;
+    border-radius: 2px;
+    width: 70px;
+    font-weight: bolder;
+}
+.filter-contents{
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    width: 10%;
+}
+.filter-name{
+    background-color: #999;
+    border-radius: 3px;
+    padding: 3px 0;
+    margin: 0 5px;
+    width: 4%;
+    display: inline-block;
+    text-align: center
 }

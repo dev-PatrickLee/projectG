@@ -420,11 +420,14 @@
                             <th id="wearableHistory" onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
                         </tr>
                     </table>
-                    <div id="historyBody">
-
-
-
+                    <div class="filter-wrap">
+                        <span class="filter-name">날짜</span>
+                        <input type="date" class="filter-contents">
+                        <span> ~ </span>
+                        <input type="date" class="filter-contents">
+                        <input type="button" value="조회" class="filter-confirm-button">
                     </div>
+                    <div id="historyBody"></div>
 
                 </div>
 
