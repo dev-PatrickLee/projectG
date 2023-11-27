@@ -40,26 +40,110 @@
             <hr class="title-line">
             <div class="filter-wrap">
                 <span class="filter-name">라커분류</span>
-                <select name="locker-type" id="lockerType" class="filter-contents">
+                <select name="locker-type" id="lockerType" class="filter-contents filter-selection">
                     <option value="지점라커">지점라커</option>
                 </select>
 
                 <span class="filter-name">라커상태</span>
-                <select name="locker-condition" id="lockerCondition" class="filter-contents">
+                <select name="locker-condition" id="lockerCondition" class="filter-contents filter-selection">
                     <option value="all">전체</option>
                     <option value="using">사용중</option>
                     <option value="remain15Days">잔여15일</option>
                     <option value="overRemain">잔여 초과</option>
                 </select>
-                <span>남</span>
-                <input type="radio" name="lockerGenderSelection" value="남">
-                <span>여</span>
-                <input type="radio" name="lockerGenderSelection" value="여">
-                <span>공용</span>
-                <input type="radio" name="lockerGenderSelection" value="공용">
+                <span class="filter-contents">남</span>
+                <input type="checkbox" name="lockerGenderSelectionMale" value="남" class="filter-contents">
+                <span class="filter-contents">여</span>
+                <input type="checkbox" name="lockerGenderSelectionFemale" value="여" class="filter-contents">
+                <span class="filter-contents">공용</span>
+                <input type="checkbox" name="lockerGenderSelectionPublic" value="공용" class="filter-contents">
 
                 <input type="button" value="조회" class="filter-confirm-button">
             </div>
+            <section class="main-section">
+                <div class="current-lockers-condition">
+                    <span>사용중(</span><span>n</span><span>)</span>
+                    <span> / </span>
+                    <span>사용가능(</span><span>n</span><span>)</span>
+                    <span> / </span>
+                    <span>잔여15일(</span><span>n</span><span>)</span>
+                    <span> / </span>
+                    <span>잔여초과(</span><span>n</span><span>)</span>
+
+                </div>
+                <div class="locker-list-wrap">
+                    <ul class="locker-list-container">
+                        <li class="locker-status public-locker">
+                            <h4 class="locker-number">n</h4>
+
+                            <div class="locker-number-data">
+                                <span>[</span>
+                                <span >n</span>
+                                <span>]</span>
+                            </div>
+                            <div class="member-name">홍길동</div>
+                            <div class="locker-end-date">yyyy-MM-dd</div>
+                            <div>
+                                <span>(</span>
+                                <span class="locker-remain-dates">n</span>
+                                <span>)</span>
+                            </div>
+                            <a href="#" class="locker-return">회수</a>
+                        </li>
+                        <li class="locker-status male-locker">
+                            <h4 class="locker-number">n</h4>
+
+                            <div class="locker-number-data">
+                                <span>[</span>
+                                <span >n</span>
+                                <span>]</span>
+                            </div>
+                            <div class="member-name">홍길동</div>
+                            <div class="locker-end-date">yyyy-MM-dd</div>
+                            <div>
+                                <span>(</span>
+                                <span class="locker-remain-dates">n</span>
+                                <span>)</span>
+                            </div>
+                            <a href="#" class="locker-return">회수</a>
+                        </li>
+                        <li class="locker-status female-locker">
+                            <h4 class="locker-number">n</h4>
+
+                            <div class="locker-number-data">
+                                <span>[</span>
+                                <span >n</span>
+                                <span>]</span>
+                            </div>
+                            <div class="member-name">홍길동</div>
+                            <div class="locker-end-date">yyyy-MM-dd</div>
+                            <div>
+                                <span>(</span>
+                                <span class="locker-remain-dates">n</span>
+                                <span>)</span>
+                            </div>
+                            <a href="#" class="locker-return">회수</a>
+                        </li>
+                        <li class="locker-status empty-locker">
+                            <h4 class="locker-number">n</h4>
+
+                            <div class="locker-number-data">
+                                <span>[</span>
+                                <span >n</span>
+                                <span>]</span>
+                            </div>
+                            <div class="member-name">홍길동</div>
+                            <div class="locker-end-date">yyyy-MM-dd</div>
+                            <div>
+                                <span>(</span>
+                                <span class="locker-remain-dates">n</span>
+                                <span>)</span>
+                            </div>
+                            <a href="#" class="locker-return">회수</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </div>
 </div>

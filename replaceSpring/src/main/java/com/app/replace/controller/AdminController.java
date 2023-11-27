@@ -92,6 +92,10 @@ public class AdminController {
         return new RedirectView( "/admin/memberList");
     }
 
+    @GetMapping("lockerManagement")
+    public String lockerManagement(){
+        return "lockerManagement";
+    }
     @GetMapping("memberDetail")
     public String detail(){
         return "memberDetail";
@@ -102,45 +106,50 @@ public class AdminController {
         return "sidebar";
     }
 
+    @GetMapping("memberEnrollModal")
+    public String memberEnrollModal(){
+        return "modal/memberEnrollModal";
+    }
+
     @GetMapping("strategyNote")
     public String StrategyNote(){
-        return "strategyNote";
+        return "loadPage/strategyNote";
     }
 
     @GetMapping("purchaseHistory")
     public String purchaseHistory(){
-        return "purchaseHistory";
+        return "loadPage/purchaseHistory";
     }
     @GetMapping("visitHistory")
     public String visitHistory(){
-        return "visitHistory";
+        return "loadPage/visitHistory";
     }
     @GetMapping("otHistory")
     public String otHistory(){
-        return "otHistory";
+        return "loadPage/otHistory";
     }
     @GetMapping("ptHistory")
     public String ptHistory(){
-        return "ptHistory";
+        return "loadPage/ptHistory";
     }
     @GetMapping("documentHistory")
     public String documentHistory(){
-        return "documentHistory";
+        return "loadPage/documentHistory";
     }
     @GetMapping("recommendHistory")
     public String recommendHistory(){
-        return "recommendHistory";
+        return "loadPage/recommendHistory";
     }
     @GetMapping("lockerHistory")
     public String lockerHistory(){
-        return "lockerHistory";
+        return "loadPage/lockerHistory";
     }
     @GetMapping("updateHistory")
     public String updateHistory(){
-        return "updateHistory";
+        return "loadPage/updateHistory";
     }
     @GetMapping("wearableHistory")
     public String wearableHistory(){
-        return  "wearableHistory";
+        return  "loadPage/wearableHistory";
     }
 }

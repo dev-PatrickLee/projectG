@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.main-section{
+    margin: 10px 0;
+}
+.locker-list-container{
+    display: flex;
+    width: 100%;
+    padding: 0;
+}
+.locker-return{
+    color: red;
+}
+.member-name{
+    font-weight: bolder;
+}
+.locker-status{
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid #dfdfdf;
+    padding: 5px 10px;
+    margin: 5px 5px;
+}
+.public-locker{
+    background-color: #dddddd;
+}
+.female-locker{
+    background-color: #ffdddd;
+}
+.male-locker{
+    background-color: #ddddff;
+}
+.empty-locker{
+    background-color: white;
+}
+.locker-number{
+    float: left;
+    margin-right: 100%;
+}
+.locker-list-wrap{
+    margin: 10px 0;
+}

@@ -34,14 +34,7 @@
     <div class="container">
         <div class="container-margin">
             <!-- 헤더 -->
-            <div class="prev-button-layout">
-                <div>
-                    <a href="/admin/memberList" style="color: black;">
-                        <img src="/image/prev_icon.png" class="prev-icon">
-                        <span class="prev-title">리스트로 돌아가기</span>
-                    </a>
-                </div>
-            </div>
+
             <div class="info-flex">
                 <!-- 내용 섹션 -->
                 <section class="board-task-box">
@@ -420,11 +413,14 @@
                             <th id="wearableHistory" onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
                         </tr>
                     </table>
-                    <div id="historyBody">
-
-
-
+                    <div class="filter-wrap">
+                        <span class="filter-name">날짜</span>
+                        <input type="date" class="filter-contents">
+                        <span> ~ </span>
+                        <input type="date" class="filter-contents">
+                        <input type="button" value="조회" class="filter-confirm-button">
                     </div>
+                    <div id="historyBody"></div>
 
                 </div>
 
@@ -434,133 +430,8 @@
         </div>
     </div>
 </div>
-<div class="modal">
-    <div class="modal_content"
-         title="클릭하면 창이 닫힙니다.">
-        <div class="modal-top-banner">
-            <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">회원 등록</div>
-        </div>
-        <div class="modal_content_container">
+<div class="modal" id="modal">
 
-            <form action="/admin/enroll" method="get">
-                <table class="member-info-table">
-                    <tr>
-                        <td class="td-info-title">이름</td>
-                        <td>
-                            <input type="text" name="name" id="enrollName" class="userInfo">
-                        </td>
-                        <td class="td-info-title">RF카드</td>
-                        <td></td>
-                        <td class="td-info-title">성별</td>
-                        <td>
-                            <input type="radio" name="enroll-gender-check"  value="남" checked="checked"> 남
-                            <input type="radio" name="enroll-gender-check"  value="여"> 여
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="td-info-title">연락처</td>
-                        <td colspan="3">
-                            <input type="text" name="phone" id="enrollPhone" class="userInfo">
-                            <input type="checkbox" name="sms" id="enrollSMS" value="on"> SMS동의
-                            <input type="checkbox" name="tm" id="enrollTM"> TM동의
-                        </td>
-                        <td class="td-info-title">생년월일</td>
-                        <td>
-                            <input type="date" name="birthday" id="enrollBirthday" class="userInfo">
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="td-info-title">주소</td>
-                        <td style="position: absolute">
-                            <input type="text" name="zipcode" id="enrollZipCode" class="info-input userInfo" style="width: 100px" placeholder="우편번호">
-                            <input type="button" id="enrollAddressSearchButton" onclick="searchAddress()" value="우편번호 찾기">
-                            <input type="text" name="address" id="enrollAddress" class="info-input userInfo" style="width: 300px" placeholder="주소">
-                            <input type="text" name="address-detail" id="enrollAddressDetail"class="info-input" placeholder="상세주소">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="td-info-title">등록구분</td>
-                        <td>
-                            <select name="type" id="enrollType">
-                                <option value="직원 등록" selected="selected">직원 등록</option>
-                                <option value="무료체험 등록">무료체험 등록</option>
-                                <option value="PT 문의 등록">PT 문의 등록</option>
-                                <option value="이용권 문의 등록">이용권 문의 등록</option>
-                                <option value="QR 등록">QR 등록</option>
-                            </select>
-                        </td>
-                        <td class="td-info-title">방문경로</td>
-                        <td>
-                            <select name="visit-path" id="enrollVisitPath">
-                                <option value="소개" selected="selected">소개</option>
-                                <option value="TM">TM</option>
-                                <option value="문자">문자</option>
-                                <option value="홈페이지">홈페이지</option>
-                                <option value="오프라인광고">오프라인광고</option>
-                                <option value="온라인광고">온라인광고</option>
-                                <option value="직접방문">직접방문</option>
-                            </select>
-                        </td>
-                        <td class="td-info-title">추천인</td>
-                        <td>
-                            <input type="text" name="recommender" id="enrollRecommenderSearch" placeholder="추천인 검색...">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="td-info-title">개인운동</td>
-                        <td>
-                            <input type="radio" name="enroll-self-workout-check"  value="예" checked="checked"> 예
-                            <input type="radio" name="enroll-self-workout-check"  value="아니오"> 아니오
-                        </td>
-                        <td class="td-info-title">운동목표</td>
-                        <td>
-                            <select name="goal" id="enrollWorkoutGoal">
-                                <option value="다이어트" selected="selected">다이어트</option>
-                                <option value="근력증강">근력증강</option>
-                                <option value="보디빌딩">보디빌딩</option>
-                                <option value="건강">건강</option>
-
-                            </select>
-                        </td>
-                        <td class="td-info-title">이메일</td>
-                        <td>
-                            <input type="text" name="email" id="enrollEmail" class="userInfo">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="td-info-title">운동시간</td>
-                        <td>
-                            <input type="text" name="workout-hour" id="enrollWorkoutHour" min="0" value="0">
-                        </td>
-                        <td class="td-info-title">관심종목</td>
-                        <td>
-                            <select name="interest" id="enrollInterest">
-                                <option value="헬스">헬스</option>
-                                <option value="GX">GX</option>
-                                <option value="개인레슨">개인레슨</option>
-                                <option value="복싱">복싱</option>
-                            </select>
-                        </td>
-                    <tr>
-                        <td class="td-info-title">메모</td>
-                        <td style="line-height: normal">
-                            <textarea name="memo" id="enrollMemo" cols="80" rows="5"></textarea>
-                        </td>
-                    </tr>
-
-                </table>
-                <div class="enroll-button-container">
-                    <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; font-weight: bolder; color: #FFFFFF">등록</button>
-                    <button type="reset" id="enrollCancelButton" class="user-registration-button" style="color: #333333; font-weight: bolder">취소</button>
-                </div>
-            </form>
-
-        </div>
-
-
-    </div>
 </div>
 
 </body>
@@ -819,6 +690,10 @@
         $historyBody.load($(data).attr('id'))
     }
 
+</script>
+<script>
+    const $modal = $("#modal");
+    $modal.load("memberEnrollModal");
 </script>
 
 </html>
