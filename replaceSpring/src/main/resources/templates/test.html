@@ -5,153 +5,213 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 상세</title>
-    <link rel="stylesheet" href="../static/css/lockerManagement.css">
-    <link rel="stylesheet" href="../static/css/test.css">
+    <title>회원 목록</title>
     <link rel="stylesheet" href="../static/css/sideBar.css">
+    <link rel="stylesheet" href="../static/css/scheduleManagement.css">
+
 </head>
 
 <body>
-<header>
-    <div class="info-title-box flex">
+<div>
+    <header class="info-title-box flex">
         <div class="header-name">
             <span class="title-name">회원정보 관리</span>
         </div>
-        <div class="user-info-container" >
-            <div style="margin-right: 5px">
-                testId
-            </div>
-            <span>/</span>
-            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
-        </div>
-    </div>
-</header>
+    </header>
+</div>
 <div class="wrap">
 
     <!-- 사이드 바 -->
+
     <aside class="side-bar"></aside>
 
     <div class="container">
         <div class="container-margin">
+            <!-- 내용 섹션 -->
             <h3 class="page-title">
-                회원관리 > 라커관리
+                스케줄관리 &gt; 일별스케줄
             </h3>
-            <!-- 헤더 -->
             <hr class="title-line">
-            <div class="filter-wrap">
-                <span class="filter-name">라커분류</span>
-                <select name="locker-type" id="lockerType" class="filter-contents filter-selection">
-                    <option value="지점라커">지점라커</option>
-                </select>
+            <div class="filter-wrap" style="display: block">
+                <div class="filter-box">
+                    <span class="filter-name">예약일</span>
+                    <input type="date" class="filter-contents filter-input-box-size" id="reservationDate">
 
-                <span class="filter-name">라커상태</span>
-                <select name="locker-condition" id="lockerCondition" class="filter-contents filter-selection">
-                    <option value="all">전체</option>
-                    <option value="using">사용중</option>
-                    <option value="remain15Days">잔여15일</option>
-                    <option value="overRemain">잔여 초과</option>
-                </select>
-                <span class="filter-contents">남</span>
-                <input type="checkbox" name="lockerGenderSelectionMale" value="남" class="filter-contents">
-                <span class="filter-contents">여</span>
-                <input type="checkbox" name="lockerGenderSelectionFemale" value="여" class="filter-contents">
-                <span class="filter-contents">공용</span>
-                <input type="checkbox" name="lockerGenderSelectionPublic" value="공용" class="filter-contents">
+                    <span class="filter-name filter-space">구분</span>
+                    <select name="scheduleFilter" id="scheduleFilter" class="filter-contents filter-input-box-size">
+                        <option value="all">전체</option>
+                    </select>
 
-                <input type="button" value="조회" class="filter-confirm-button">
+                    <span class="filter-name filter-space">상태</span>
+                    <select name="filter-condition" id="rfFilter" class="filter-contents filter-input-box-size">
+                        <option value="all">전체</option>
+                    </select>
+
+                    <span class="filter-name filter-space">GX강사 포함</span>
+                    <input type="checkbox" name="isGXTrainerInclude">
+                    <input type="button" value="조회" class="filter-confirm-button">
+                </div>
             </div>
-            <section class="main-section">
-                <div class="current-lockers-condition">
-                    <span>사용중(</span><span>n</span><span>)</span>
-                    <span> / </span>
-                    <span>사용가능(</span><span>n</span><span>)</span>
-                    <span> / </span>
-                    <span>잔여15일(</span><span>n</span><span>)</span>
-                    <span> / </span>
-                    <span>잔여초과(</span><span>n</span><span>)</span>
+            <div class="notice-box">
+                <div>
+                    <span><strong class="pt-attend-reservation-color">█</strong> PT(예약,출석)</span>
+                    <span><strong class="pt-absent-color">█</strong> PT(결석)</span>
+                    <span><strong class="ot-color">█</strong> OT</span>
+                    <span><strong class="gx-gpt-color">█</strong> GX/GPT</span>
+                    <span style="margin-right: 5px">※ OT, 14D, FOT 는 회원권별 '출석' 회차를 카운트 합니다</span>
 
                 </div>
-                <div class="locker-list-wrap">
-                    <ul class="locker-list-container">
-                        <li class="locker-status public-locker">
-                            <h4 class="locker-number">n</h4>
-
-                            <div class="locker-number-data">
-                                <span>[</span>
-                                <span >n</span>
-                                <span>]</span>
-                            </div>
-                            <div class="member-name">홍길동</div>
-                            <div class="locker-end-date">yyyy-MM-dd</div>
-                            <div>
-                                <span>(</span>
-                                <span class="locker-remain-dates">n</span>
-                                <span>)</span>
-                            </div>
-                            <a href="#" class="locker-return">회수</a>
-                        </li>
-                        <li class="locker-status male-locker">
-                            <h4 class="locker-number">n</h4>
-
-                            <div class="locker-number-data">
-                                <span>[</span>
-                                <span >n</span>
-                                <span>]</span>
-                            </div>
-                            <div class="member-name">홍길동</div>
-                            <div class="locker-end-date">yyyy-MM-dd</div>
-                            <div>
-                                <span>(</span>
-                                <span class="locker-remain-dates">n</span>
-                                <span>)</span>
-                            </div>
-                            <a href="#" class="locker-return">회수</a>
-                        </li>
-                        <li class="locker-status female-locker">
-                            <h4 class="locker-number">n</h4>
-
-                            <div class="locker-number-data">
-                                <span>[</span>
-                                <span >n</span>
-                                <span>]</span>
-                            </div>
-                            <div class="member-name">홍길동</div>
-                            <div class="locker-end-date">yyyy-MM-dd</div>
-                            <div>
-                                <span>(</span>
-                                <span class="locker-remain-dates">n</span>
-                                <span>)</span>
-                            </div>
-                            <a href="#" class="locker-return">회수</a>
-                        </li>
-                        <li class="locker-status empty-locker">
-                            <h4 class="locker-number">n</h4>
-
-                            <div class="locker-number-data">
-                                <span>[</span>
-                                <span >n</span>
-                                <span>]</span>
-                            </div>
-                            <div class="member-name">홍길동</div>
-                            <div class="locker-end-date">yyyy-MM-dd</div>
-                            <div>
-                                <span>(</span>
-                                <span class="locker-remain-dates">n</span>
-                                <span>)</span>
-                            </div>
-                            <a href="#" class="locker-return">회수</a>
-                        </li>
-                    </ul>
+                <div>
+                    <span style="font-weight: bolder">※ PT예약취소 : 수업시작 <strong style="color: red">6시간 전</strong>까지 예약취소 가능 / ※ PT 출석처리 : 수업종료 <strong style="color: red">3시간 후</strong>까지 출석처리 가능 (미출석시 자동 결석처리)</span>
                 </div>
+            </div>
+            <section class="schedule-layout-box">
+                <table class="schedule-table">
+                    <tr class="trainers-box">
+                        <th  class="trainers"></th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>01:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>02:00</td>
+                        <td></td>
+
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>03:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>04:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>05:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>06:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>07:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>08:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>09:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>10:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>11:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>12:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>13:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>14:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>15:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>16:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>17:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>18:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>19:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>20:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>21:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>22:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>23:00</td>
+                        <td></td>
+                    </tr>
+
+                </table>
             </section>
+
         </div>
     </div>
 </div>
-
-
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/sidebar.js"></script>
-
-
 </html>

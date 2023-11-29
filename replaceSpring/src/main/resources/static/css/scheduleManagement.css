@@ -1,0 +1,65 @@
+:root{
+    --pt-attend-reservation-color: #9999ff;
+    --pt-absent-color: #FF416C;
+    --ot-color: #777777;
+    --gx-gpt-color: #ff7f50;
+}
+
+.pt-attend-reservation-color{
+    color: var(--pt-attend-reservation-color);
+}
+.pt-absent-color{
+    color: var(--pt-absent-color);
+}
+.ot-color{
+    color: var(--ot-color);
+}
+.gx-gpt-color{
+    color: var(--gx-gpt-color);
+}
+.schedule-layout-box{
+    width: 100%;
+    margin: 10px 0;
+    overflow: auto;
+    overflow-x: auto;
+
+    height: 700px;
+}
+
+.schedule-table{
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border: 0px;
+}
+.schedule-table tr:nth-child(odd){
+    background-color:  #dddddd;
+}
+
+.schedule-table th, schedule-table td {
+    position: sticky;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    min-width: 150px;
+}
+.trainers-box{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.trainers{
+    background-color: #ddddff;
+}
+
+.trainer-schedule-data td:first-child{
+    width: 100px !important;
+    padding: 0;
+    background: #dddddd;
+    position: sticky;
+    left: 0;
+
+}

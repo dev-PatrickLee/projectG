@@ -126,7 +126,7 @@ li {
     margin: 10px 0;
 }
 .filter-wrap{
-    width: 100%;
+    width: 99%;
     background-color: #dddddd;
     border-radius: 3px;
     padding: 5px 10px;
@@ -137,9 +137,9 @@ li {
 .filter-confirm-button{
     height: 30px;
     border: none;
+    border-radius: 5px;
     background-color: navy;
     color: white;
-    border-radius: 2px;
     width: 70px;
     font-weight: bolder;
     margin: 0 30px;
@@ -159,6 +159,12 @@ li {
     margin: 0 5px;
     display: inline-block;
     text-align: center;
-    padding: 5px 5px;
-
+    padding: 5px 10px;
+    font-weight: bolder;
+}
+.filter-space{
+    margin-left: 20px;
+}
+.notice-box{
+    margin: 10px 0;
 }
