@@ -518,10 +518,10 @@
 </script>
 <script>
     const $modal = $("#modal");
-    $modal.load("memberEnrollModal");
     const $enrollMemberButton = $("#enroll-member-button");
 
     $enrollMemberButton.click(function (){
+        $modal.load("memberEnrollModal");
         $(".modal").fadeIn();
     });
 

@@ -112,7 +112,7 @@ public class AdminController {
 
     @GetMapping("lockerManagementModal")
     public String lockerManagementModal(){
-        return "lockerManagementModal";
+        return "modal/lockerManagementModal";
     }
     @GetMapping("memberEnrollModal")
     public String memberEnrollModal(){

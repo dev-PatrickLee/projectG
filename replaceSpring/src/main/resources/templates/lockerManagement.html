@@ -60,7 +60,7 @@
 
                 <input type="button" value="조회" class="filter-confirm-button">
 
-                <input type="button" value="라커분류설정" class="black-button">
+                <input type="button" value="라커분류설정" class="black-button" id="lockerEnroll">
             </div>
             <section class="main-section">
                 <div class="current-lockers-condition">
@@ -157,10 +157,10 @@
 <script src="/js/sidebar.js"></script>
 <script>
     const $modal = $("#modal");
-    $modal.load("lockerManagementModal");
-    const $enrollMemberButton = $("#enroll-member-button");
+    const $lockerEnroll = $("#lockerEnroll");
 
-    $enrollMemberButton.click(function (){
+    $lockerEnroll.click(function (){
+        $modal.load("lockerManagementModal");
         $(".modal").fadeIn();
     });
 </script>

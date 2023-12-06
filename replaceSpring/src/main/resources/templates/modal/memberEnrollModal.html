@@ -126,7 +126,7 @@
             </table>
             <div class="enroll-button-container">
                 <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; font-weight: bolder; color: #FFFFFF">등록</button>
-                <button type="reset" id="enrollCancelButton" class="user-registration-button" style="color: #333333; font-weight: bolder">취소</button>
+                <button type="reset" class="user-registration-button enrollCancelButton" style="color: #333333; font-weight: bolder">취소</button>
             </div>
         </form>
 
@@ -139,7 +139,6 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
-    const $enrollCancelButton = $("#enrollCancelButton");
     const $enrollButton = $("#enrollButton");
     const $addressSearchButton = $("#addressSearchButton");
 
@@ -289,7 +288,7 @@
             }
         }).open();
     }
-    $enrollCancelButton.click(function(){
+    $(".enrollCancelButton").click(function(){
         $(".modal").fadeOut();
         console.log("cancel button click");
     });
