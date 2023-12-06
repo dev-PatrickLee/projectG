@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="modal_content" title="클릭하면 창이 닫힙니다.">
+    <div class="modal-top-banner">
+        <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">라커 등록</div>
+    </div>
+    <div class="modal_content_container">
+
+        <form action="/admin/lockerEnroll" method="get">
+
+
+
+            <div class="enroll-button-container">
+                <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; color: #FFFFFF">등록</button>
+                <button type="reset" id="enrollCancelButton" class="user-registration-button" style="color: #333333;">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+<script>
+    const $enrollButton = $("#enrollButton");
+    const $enrollCancelButton = $("#enrollCancelButton");
+
+
+    $enrollCancelButton.click(function(){
+        $(".modal").fadeOut();
+        console.log("cancel button click");
+    });
+</script>
+</html>

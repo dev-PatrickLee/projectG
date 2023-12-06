@@ -59,6 +59,8 @@
                 <input type="checkbox" name="lockerGenderSelectionPublic" value="공용" class="filter-contents">
 
                 <input type="button" value="조회" class="filter-confirm-button">
+
+                <input type="button" value="라커분류설정" class="black-button">
             </div>
             <section class="main-section">
                 <div class="current-lockers-condition">
@@ -147,11 +149,21 @@
         </div>
     </div>
 </div>
+<div class="modal" id="modal"></div>
 
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/sidebar.js"></script>
+<script>
+    const $modal = $("#modal");
+    $modal.load("lockerManagementModal");
+    const $enrollMemberButton = $("#enroll-member-button");
+
+    $enrollMemberButton.click(function (){
+        $(".modal").fadeIn();
+    });
+</script>
 
 
 </html>

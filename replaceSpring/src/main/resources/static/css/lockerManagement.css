@@ -41,3 +41,12 @@
 .locker-list-wrap{
     margin: 10px 0;
 }
+.black-button{
+    background-color: black ;
+    color: white;
+    font-weight: bolder;
+    height: 30px;
+    padding: 0 10px;
+    border: none;
+    float: right;
+}
