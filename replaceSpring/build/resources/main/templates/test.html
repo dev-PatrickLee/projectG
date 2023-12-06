@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
     <link rel="stylesheet" href="../static/css/sideBar.css">
-    <link rel="stylesheet" href="../static/css/memberList.css">
     <link rel="stylesheet" href="../static/css/scheduleManagement.css">
 
 </head>
@@ -53,109 +52,180 @@
                     <input type="button" value="조회" class="filter-confirm-button">
                 </div>
             </div>
-            <div>
-                <span><strong class="pt-attend-reservation-color">█</strong> PT(예약,출석)</span>
-                <span><strong class="pt-absent-color">█</strong> PT(결석)</span>
-                <span><strong class="ot-color">█</strong> OT</span>
-                <span><strong class="gx-gpt-color">█</strong> GX/GPT</span>
-                <span style="margin-right: 5px">※ OT, 14D, FOT 는 회원권별 '출석' 회차를 카운트 합니다</span>
+            <div class="notice-box">
+                <div>
+                    <span><strong class="pt-attend-reservation-color">█</strong> PT(예약,출석)</span>
+                    <span><strong class="pt-absent-color">█</strong> PT(결석)</span>
+                    <span><strong class="ot-color">█</strong> OT</span>
+                    <span><strong class="gx-gpt-color">█</strong> GX/GPT</span>
+                    <span style="margin-right: 5px">※ OT, 14D, FOT 는 회원권별 '출석' 회차를 카운트 합니다</span>
 
-            </div>
-            <div>
-                <span style="font-weight: bolder">※ PT예약취소 : 수업시작 <strong style="color: red">6시간 전</strong>까지 예약취소 가능 / ※ PT 출석처리 : 수업종료 <strong style="color: red">3시간 후</strong>까지 출석처리 가능 (미출석시 자동 결석처리)</span>
-            </div>
-
-
-            <div style="margin-top: 10px">
-                <select name="numOfData" id="numOfData" style="width: 3%; height: 25px">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
-                </select>
-                <div style="display: flex; float: right;">
-                    <input type="button" value="담당강사 배정" class="member-list-controll-button">
-                    <input type="button" value="SMS 발송" class="member-list-controll-button">
-                    <input type="button" value="TM전달" class="member-list-controll-button">
+                </div>
+                <div>
+                    <span style="font-weight: bolder">※ PT예약취소 : 수업시작 <strong style="color: red">6시간 전</strong>까지 예약취소 가능 / ※ PT 출석처리 : 수업종료 <strong style="color: red">3시간 후</strong>까지 출석처리 가능 (미출석시 자동 결석처리)</span>
                 </div>
             </div>
-            <section class="board-info-box-layout">
+            <section class="schedule-layout-box">
+                <table class="schedule-table">
+                    <tr class="trainers-box">
+                        <th  class="trainers"></th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
+                        <th class="trainers">test 트레이너</th>
 
-                <div class="board-info-box">
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>01:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>02:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
-                    <div class="info-table">
-                        <table class="member-list-table">
-                            <tr style="border-bottom: 4px solid #000" class="member-list-header">
-                                <th class="checkbox-line">
-                                    <input type="checkbox">
-                                </th>
-                                <th>No</th>
-                                <th>등록일</th>
-                                <th>회원코드</th>
-                                <th>이름</th>
-                                <th>연락처</th>
-                                <th>성별</th>
-                                <th>나이</th>
-                                <th>PT</th>
-                                <th>시작일</th>
-                                <th>종료일</th>
-                                <th>잔여일</th>
-                                <th>최근구매금액</th>
-                                <th>최근결제일</th>
-                                <th>미수금</th>
-                                <th>담당강사</th>
-                                <th>RF카드</th>
-                                <th>APP</th>
-                            </tr>
-                            <tr class="member-list-data">
-                                <td class="checkbox-line">
-                                    <input type="checkbox">
-                                </td>
-                                <td>1</td>
-                                <td>2023-01-01</td>
-                                <td>123456789</td>
-                                <td>홍길동</td>
-                                <td>010-1234-1234</td>
-                                <td>남</td>
-                                <td>20</td>
-                                <td>이용중</td>
-                                <td>2023-01-01</td>
-                                <td>2024-01-01</td>
-                                <td >365</td>
-                                <td>390,000</td>
-                                <td>2023-01-01</td>
-                                <td>없음</td>
-                                <td>김철수</td>
-                                <td>RF카드</td>
-                                <td>Y</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>03:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>04:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>05:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>06:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>07:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>08:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>09:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>10:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>11:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>12:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>13:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>14:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>15:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>16:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>17:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>18:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>19:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>20:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>21:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>22:00</td>
+                        <td></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>23:00</td>
+                        <td></td>
+                    </tr>
+
+                </table>
             </section>
 
-            <!-- 페이지 버튼 -->
-            <div class="page-button-box-layout">
-                <div class="page-button-box">
-                    <div class="">
-                        <div class="page-button-margin">
-                            <div>
-                                <img src="/image/left_icon.png" class="left-button">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 현재 페이지 -->
-                    <div>1</div>
-                    <div class="">
-                        <div class="page-button-margin">
-                            <div>
-                                <img src="/image/right_icon.png" class="right-button ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
