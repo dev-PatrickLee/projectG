@@ -34,7 +34,6 @@
     <div class="container">
         <div class="container-margin">
             <!-- 헤더 -->
-
             <div class="info-flex">
                 <!-- 내용 섹션 -->
                 <section class="board-task-box">
@@ -77,7 +76,7 @@
                             <button type="button" class="user-registration-button" id="detail-button" style="background-color: #01B0F1">상세</button>
                             <button type="button" class="user-registration-button" id="edit-button" style="background-color: #333333">저장</button>
                         </div>
-                        <table class="member-info-table">
+                        <table class="info-table">
                             <!--                        회원코드 , 등록일 , 앱설치-->
                             <tr>
                                 <td class="td-info-title">회원 코드</td>
@@ -437,8 +436,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="/js/sidebar.js"></script>
 
 <script>
@@ -519,164 +517,13 @@
 
 </script>
 <script>
-
+    const $modal = $("#modal");
     const $enrollMemberButton = $("#enroll-member-button");
-    const $enrollCancelButton = $("#enrollCancelButton");
-    const $enrollButton = $("#enrollButton");
-    const $addressSearchButton = $("#addressSearchButton");
-
-    // 이름		id : enrollName
-    const $enrollName = $("#enrollName");
-
-    // 연락처		id : enrollPhone
-    const $enrollPhone = $("#enrollPhone");
-    // 이메일		id : enrollEmail
-    const $enrollEmail = $("#enrollEmail");
-    // SMS		id : enrollSMS
-    const $enrollSMS = $("#enrollSMS");
-    // TM		id : enrollTM
-    const $enrollTM = $("#enrollTM");
-    // 생년월일		id : enrollBirthday
-    const $enrollBirthday = $("#enrollBirthday");
-    // 주소		id : enrollAddress
-    const $enrollAddress = $("#enrollAddress");
-    const $enrollAddressDetail = $("#enrollAddressDetail");
-    const $enrollZipCode = $("#enrollZipCode");
-    // 등록구분		id : enrollType
-    const $enrollType = $("#enrollType");
-    // 방문경로		id : enrollVisitPath
-    const $enrollVisitPath = $("#enrollVisitPath");
-    // 추천인		id : recommenderSearch
-    const $recommenderSearch = $("#enrollRecommenderSearch");
-    // 운동목표		id : enrollWorkoutGoal
-    const $enrollWorkoutGoal = $("#enrollWorkoutGoal");
-    // 운동시간		id : workoutHour
-    const $enrollWorkoutHour = $("#enrollWorkoutHour");
-    // 관심종목		id : enrollInterest
-    const $enrollInterest = $("#enrollInterest");
-    // 메모		id : enrollMemo
-    const $enrollMemo = $("#enrollMemo");
-    // 개인운동		name : enroll-self-workout-check
-    let $enrollSelfWorkout = $('input[name="enroll-self-workout-check"]');
-    // 성별		name : enroll-gender-check
-    let $enrollGender = $('input[name="enroll-gender-check"]');
-
-
-    $enrollButton.click(function(){
-        let memberData = {
-            name : $enrollName.val(),
-            phone : $enrollPhone.val(),
-            email : $enrollEmail.val(),
-            birthday : $enrollBirthday.val(),
-            zipcode : $enrollZipCode.val() ,
-            address : $enrollAddress.val(),
-            addressdetail : $enrollAddressDetail.val(),
-            type : $enrollType.val(),
-            visitpath : $enrollVisitPath.val(),
-            recommender : $recommenderSearch.val(),
-            goal : $enrollWorkoutGoal.val(),
-            hour : $enrollWorkoutHour.val(),
-            interest : $enrollInterest.val(),
-            memo : $enrollMemo.val(),
-            selfworkout : $enrollSelfWorkout.val(),
-            gender : $enrollGender.val(),
-            sms : $enrollSMS.is(':checked'),
-            tm : $enrollTM.is(':checked')
-        };
-        let checkOk = false;
-        $(".userInfo").each(function (index,item){
-            if ($(this).val().trim() == ''){
-                console.log("필수항목을 입력해주세요");
-                $(this).css("border-color","#f88");
-                checkOk = false;
-            }else{
-                console.log(memberData);
-                checkOk = true;
-            }
-        })
-        if (checkOk){
-            // $.ajax({
-            //     url : "/admin/enroll",
-            //     type : 'post',
-            //     async: false,
-            //     data : memberData,
-            //     success:function () {
-            //         alert("등록 완료");
-            //     },
-            //     error:function(){
-            //         alert("등록 실패");
-            //     }
-            // })
-        }
-
-        // let msg = "인증번호";
-        // var templateParams = {
-        //     //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성!
-        //     message: msg
-        // };
-        // emailjs.init('M-uvfE52G7puSTuwi');
-        // emailjs.send('test_email', 'template_2n4pf7o', templateParams).then(function(response) {
-        //     console.log('SUCCESS!', response.status, response.text);
-        // }, function(error) {
-        //     console.log('FAILED...', error);
-        // });
-
-    });
 
     $enrollMemberButton.click(function (){
+        $modal.load("memberEnrollModal");
         $(".modal").fadeIn();
     });
-    $enrollCancelButton.click(function(){
-        $(".modal").fadeOut();
-    });
-
-    function searchAddress() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    addr += " " + extraAddr;
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                //우편번호
-                $enrollZipCode.val(data.zonecode);
-                //주소
-                $enrollAddress.val(addr);
-                //상세주소
-                $enrollAddressDetail.focus();
-            }
-        }).open();
-    }
-
 
 </script>
 <script>
@@ -691,9 +538,6 @@
     }
 
 </script>
-<script>
-    const $modal = $("#modal");
-    $modal.load("memberEnrollModal");
-</script>
+
 
 </html>

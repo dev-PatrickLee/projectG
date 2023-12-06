@@ -135,11 +135,11 @@ li {
     align-items: center;
 }
 .filter-confirm-button{
-    height: 30px;
     border: none;
     border-radius: 5px;
     background-color: navy;
     color: white;
+    height: 30px;
     width: 70px;
     font-weight: bolder;
     margin: 0 30px;
@@ -168,3 +168,78 @@ li {
 .notice-box{
     margin: 10px 0;
 }
+.modal{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.8);
+    top:0;
+    left:0;
+    z-index: 100;
+    display:none;
+}
+.modal-top-banner{
+    width: 100%;
+    height: 50px;
+    background-color: #4F6DF5;
+}
+.modal_content_container{
+    margin: 10px 1%;
+    width: 98%;
+}
+.enroll-button-container{
+    margin-top: 20px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+.user-registration-button{
+    border: none;
+    height: 30px;
+    width: 100px;
+    color: white;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+.modal_content{
+    width: 1000px;
+    height: 550px;
+    background: #fff;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-left: -500px;
+    margin-top: -250px;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 23px;
+    z-index: 200;
+}
+
+.modal-top-banner{
+    width: 100%;
+    height: 50px;
+    background-color: #4F6DF5;
+}
+.modal-info-table tr{
+    line-height: 300%;
+}
+.info-table {
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+.info-table tr{
+    line-height: 300%;
+}
+.td-info-title{
+    background-color: #ddd ;
+    width: 10%;
+    font-weight: bolder;
+}
+.td-info-top-title{
+    background-color: lightskyblue;
+}
+

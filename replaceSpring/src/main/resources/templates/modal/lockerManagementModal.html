@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="modal_content" title="클릭하면 창이 닫힙니다.">
+    <div class="modal-top-banner">
+        <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">라커분류설정</div>
+    </div>
+    <div class="modal_content_container">
+
+        <form action="/admin/lockerEnroll" method="get">
+            <table class="info-table">
+                <tr>
+                    <td class="td-info-top-title">라커명</td>
+                    <td class="td-info-top-title">개수</td>
+                    <td class="td-info-top-title">사용불가라커</td>
+                    <td class="td-info-top-title">숨김</td>
+                    <td class="td-info-top-title">관리</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        <input type="button" class="user-registration-button" style="background-color: #4444cc" value="수정">
+                        <input type="button" class="user-registration-button" style="background-color: #FF416C" value="삭제">
+                    </td>
+                </tr>
+            </table>
+
+
+            <div class="enroll-button-container">
+                <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; color: #FFFFFF">추가</button>
+                <button type="reset" class="user-registration-button enrollCancelButton" style="color: #333333;">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+<script>
+
+    $(".enrollCancelButton").click(function(){
+        $(".modal").fadeOut();
+        console.log("cancel button click");
+    });
+</script>
+</html>

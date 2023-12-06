@@ -96,6 +96,10 @@ public class AdminController {
     public String lockerManagement(){
         return "lockerManagement";
     }
+    @GetMapping("scheduleManagement")
+    public String scheduleManagement(){
+        return "scheduleManagement";
+    }
     @GetMapping("memberDetail")
     public String detail(){
         return "memberDetail";
@@ -106,6 +110,10 @@ public class AdminController {
         return "sidebar";
     }
 
+    @GetMapping("lockerManagementModal")
+    public String lockerManagementModal(){
+        return "modal/lockerManagementModal";
+    }
     @GetMapping("memberEnrollModal")
     public String memberEnrollModal(){
         return "modal/memberEnrollModal";
@@ -152,4 +160,5 @@ public class AdminController {
     public String wearableHistory(){
         return  "loadPage/wearableHistory";
     }
+
 }
