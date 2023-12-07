@@ -110,6 +110,10 @@ public class AdminController {
         return "sidebar";
     }
 
+    @GetMapping("documentEnrollModal")
+    public String documentEnrollModal(){
+        return "modal/documentEnrollModal";
+    }
     @GetMapping("lockerManagementModal")
     public String lockerManagementModal(){
         return "modal/lockerManagementModal";

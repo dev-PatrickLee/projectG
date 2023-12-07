@@ -139,66 +139,26 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
-    const $enrollButton = $("#enrollButton");
-    const $addressSearchButton = $("#addressSearchButton");
-
-    // 이름		id : enrollName
-    const $enrollName = $("#enrollName");
-
-    // 연락처		id : enrollPhone
-    const $enrollPhone = $("#enrollPhone");
-    // 이메일		id : enrollEmail
-    const $enrollEmail = $("#enrollEmail");
-    // SMS		id : enrollSMS
-    const $enrollSMS = $("#enrollSMS");
-    // TM		id : enrollTM
-    const $enrollTM = $("#enrollTM");
-    // 생년월일		id : enrollBirthday
-    const $enrollBirthday = $("#enrollBirthday");
-    // 주소		id : enrollAddress
-    const $enrollAddress = $("#enrollAddress");
-    const $enrollAddressDetail = $("#enrollAddressDetail");
-    const $enrollZipCode = $("#enrollZipCode");
-    // 등록구분		id : enrollType
-    const $enrollType = $("#enrollType");
-    // 방문경로		id : enrollVisitPath
-    const $enrollVisitPath = $("#enrollVisitPath");
-    // 추천인		id : recommenderSearch
-    const $recommenderSearch = $("#enrollRecommenderSearch");
-    // 운동목표		id : enrollWorkoutGoal
-    const $enrollWorkoutGoal = $("#enrollWorkoutGoal");
-    // 운동시간		id : workoutHour
-    const $enrollWorkoutHour = $("#enrollWorkoutHour");
-    // 관심종목		id : enrollInterest
-    const $enrollInterest = $("#enrollInterest");
-    // 메모		id : enrollMemo
-    const $enrollMemo = $("#enrollMemo");
-    // 개인운동		name : enroll-self-workout-check
-    let $enrollSelfWorkout = $('input[name="enroll-self-workout-check"]');
-    // 성별		name : enroll-gender-check
-    let $enrollGender = $('input[name="enroll-gender-check"]');
-
-
-    $enrollButton.click(function(){
+    $("#enrollButton").click(function(){
         let memberData = {
-            name : $enrollName.val(),
-            phone : $enrollPhone.val(),
-            email : $enrollEmail.val(),
-            birthday : $enrollBirthday.val(),
-            zipcode : $enrollZipCode.val() ,
-            address : $enrollAddress.val(),
-            addressdetail : $enrollAddressDetail.val(),
-            type : $enrollType.val(),
-            visitpath : $enrollVisitPath.val(),
-            recommender : $recommenderSearch.val(),
-            goal : $enrollWorkoutGoal.val(),
-            hour : $enrollWorkoutHour.val(),
-            interest : $enrollInterest.val(),
-            memo : $enrollMemo.val(),
-            selfworkout : $enrollSelfWorkout.val(),
-            gender : $enrollGender.val(),
-            sms : $enrollSMS.is(':checked'),
-            tm : $enrollTM.is(':checked')
+            name : $("#enrollName").val(),
+            phone : $("#enrollPhone").val(),
+            email : $("#enrollEmail").val(),
+            birthday : $("#enrollBirthday").val(),
+            zipcode : $("#enrollZipCode").val() ,
+            address : $("#enrollAddress").val(),
+            addressdetail : $("#enrollAddressDetail").val(),
+            type : $("#enrollType").val(),
+            visitpath : $("#enrollVisitPath").val(),
+            recommender : $("#enrollRecommenderSearch").val(),
+            goal : $("#enrollWorkoutGoal").val(),
+            hour : $("#enrollWorkoutHour").val(),
+            interest : $("#enrollInterest").val(),
+            memo : $("#enrollMemo").val(),
+            selfworkout : $('input[name="enroll-self-workout-check"]').val(),
+            gender : $('input[name="enroll-gender-check"]').val(),
+            sms : $("#enrollSMS").is(':checked'),
+            tm : $("#enrollTM").is(':checked')
         };
         let checkOk = false;
         $(".userInfo").each(function (index,item){
@@ -280,16 +240,17 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 //우편번호
-                $enrollZipCode.val(data.zonecode);
+                $("#enrollZipCode").val(data.zonecode);
                 //주소
-                $enrollAddress.val(addr);
+                $("#enrollAddress").val(addr);
                 //상세주소
-                $enrollAddressDetail.focus();
+                $("#enrollAddressDetail").focus();
             }
         }).open();
     }
     $(".enrollCancelButton").click(function(){
         $(".modal").fadeOut();
+        $(".modal").empty();
         console.log("cancel button click");
     });
 

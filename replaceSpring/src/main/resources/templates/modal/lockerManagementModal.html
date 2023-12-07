@@ -15,7 +15,7 @@
     <div class="modal_content_container">
 
         <form action="/admin/lockerEnroll" method="get">
-            <table class="info-table">
+            <table class="info-table" style="border-bottom: 1px solid #dddddd">
                 <tr>
                     <td class="td-info-top-title">라커명</td>
                     <td class="td-info-top-title">개수</td>
@@ -58,6 +58,8 @@
 
     $(".enrollCancelButton").click(function(){
         $(".modal").fadeOut();
+        $(".modal").empty();
+
         console.log("cancel button click");
     });
 </script>

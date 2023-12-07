@@ -140,7 +140,7 @@ li {
     background-color: navy;
     color: white;
     height: 30px;
-    width: 70px;
+    padding: 0 15px;
     font-weight: bolder;
     margin: 0 30px;
 }
