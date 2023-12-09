@@ -8,6 +8,14 @@
     <title>document history</title>
 </head>
 <body>
+<div class="filter-wrap">
+    <span class="filter-name">날짜</span>
+    <input type="date" class="filter-contents">
+    <span> ~ </span>
+    <input type="date" class="filter-contents">
+    <input type="button" value="조회" class="filter-confirm-button">
+    <input type="button" value="문진표 등록" class="filter-confirm-button" id="documentEnrollButton" style="background-color: #01B0F1;">
+</div>
 <table class="member-history-data-table">
     <tr class="member-history-data-title">
         <th>번호</th>
@@ -33,4 +41,10 @@
     </tr>
 </table>
 </body>
+<script>
+    $("#documentEnrollButton").click(function (){
+        $(".modal").load("documentEnrollModal");
+        $(".modal").fadeIn();
+    })
+</script>
 </html>

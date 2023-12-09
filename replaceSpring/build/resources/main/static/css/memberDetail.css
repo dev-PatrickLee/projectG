@@ -11,7 +11,7 @@ tr {
 
 table th, table td {
     font-size: 12px;
-    padding-left: 10px;
+    padding: 0 10px;
 }
 
 .checkbox-line {
@@ -460,19 +460,16 @@ div.margin span {
     padding-left: 10px;
     margin: 10px 0;
 }
-.filter-confirm-button{
-    margin: 15px 0;
-    height: 30px;
-    border: none;
-    background-color: navy;
-    color: white;
-    border-radius: 2px;
-    width: 70px;
-    font-weight: bolder;
-}
+
 .filter-contents{
     height: 30px;
     border: none;
     border-radius: 3px;
     width: 10%;
+}
+.documentEnrollContents{
+    width: 80%;
+}
+.member-info-table{
+    width: 100%;
 }

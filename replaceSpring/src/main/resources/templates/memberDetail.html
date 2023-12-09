@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 상세</title>
     <link rel="stylesheet" href="/css/memberDetail.css">
-    <link rel="stylesheet" href="/css/test.css">
     <link rel="stylesheet" href="/css/sideBar.css">
 </head>
 
@@ -412,13 +411,7 @@
                             <th id="wearableHistory" onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
                         </tr>
                     </table>
-                    <div class="filter-wrap">
-                        <span class="filter-name">날짜</span>
-                        <input type="date" class="filter-contents">
-                        <span> ~ </span>
-                        <input type="date" class="filter-contents">
-                        <input type="button" value="조회" class="filter-confirm-button">
-                    </div>
+
                     <div id="historyBody"></div>
 
                 </div>
@@ -524,6 +517,7 @@
         $modal.load("memberEnrollModal");
         $(".modal").fadeIn();
     });
+
 
 </script>
 <script>

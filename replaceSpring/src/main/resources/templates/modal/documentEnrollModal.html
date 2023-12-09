@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="modal_content" title="클릭하면 창이 닫힙니다.">
+    <div class="modal-top-banner">
+        <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">문진표 등록</div>
+    </div>
+    <div class="modal_content_container">
+
+        <form action="/admin/lockerEnroll" method="get">
+            <table class="info-table" style="border-bottom: 1px solid #dddddd; width: 500px; text-align: center">
+                <tr>
+                    <td class="td-info-title">등록일</td>
+                    <td colspan="4">
+                        <input type="date" style="width: 30%; float: left">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">운동목표</td>
+                    <td colspan="4">
+                        <select name="workOutGoal" id="documentWorkOutGoal" style="width: 30%; float: left">
+                            <option value="select">선택</option>
+                            <option value="diet">체중감량</option>
+                            <option value="strengthen">근력강화</option>
+                            <option value="recovery">재활</option>
+                            <option value="bodyRevision">체형교정</option>
+                            <option value="health">건강증진</option>
+                            <option value="fitness">체력증진</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">체형정보</td>
+                    <td colspan="4">
+                        <select name="workOutGoal" id="documentBodyInfo" style="width: 30%; float: left">
+                            <option value="select">선택</option>
+                            <option value="normal">정상</option>
+                            <option value="back">과후만</option>
+                            <option value="shoulder">과전만</option>
+                            <option value="pelvis">측만</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">통증정보</td>
+                    <td colspan="4">
+                        <select name="workOutGoal" id="documentPainInfo" style="width: 30%; float: left">
+                            <option value="select">선택</option>
+                            <option value="neck">목</option>
+                            <option value="back">허리</option>
+                            <option value="shoulder">어깨</option>
+                            <option value="pelvis">골반</option>
+                            <option value="knee">무릎</option>
+                            <option value="ankle">발목</option>
+                            <option value="ect">기타</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="td-info-title">
+                        인바디
+                    </td>
+                    <td class="td-info-title">체중(kg)</td>
+                    <td>
+                        <input type="number" class="documentEnrollContents">
+                    </td>
+                    <td class="td-info-title">근육량(kg)</td>
+                    <td>
+                        <input type="number" class="documentEnrollContents">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">체지방량(kg)</td>
+                    <td>
+                        <input type="number" class="documentEnrollContents">
+                    </td>
+                    <td class="td-info-title">체지방률(%)</td>
+                    <td>
+                        <input type="number" class="documentEnrollContents">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-info-title">신체점수(점)</td>
+                    <td>
+                        <input type="number" class="documentEnrollContents">
+                    </td>
+                    <td class="td-info-title"></td>
+                    <td>
+                    </td>
+                </tr>
+
+            </table>
+
+
+            <div class="enroll-button-container">
+                <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; color: #FFFFFF">추가</button>
+                <button type="reset" class="user-registration-button enrollCancelButton" style="color: #333333;">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    $(".enrollCancelButton").click(function(){
+        $(".modal").fadeOut();
+        $(".modal").empty();
+
+        console.log("cancel button click");
+    });
+
+</script>
+</html>
