@@ -273,25 +273,7 @@ div.margin span {
     display: inline-block;
     height: 20px;
 }
-#enrollAddressSearchButton{
-    display: inline-block;
-    padding: 0.5em 1em;
-    margin: 0.4em 0.15em;
-    border: 1px solid #ccc;
-    border-color: #dbdbdb #d2d2d2 #b2b2b2 #d2d2d3;
-    cursor: pointer;
-    color: #464646;
-    border-radius: 0.2em;
-    vertical-align: middle;
-    font-size: 1em;
-    line-height: 1.25em;
-    cursor: pointer;
-}
-#enrollAddressSearchButton:hover{
-    color: #464646;
-    text-decoration: none;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e5e5e5));
-}
+
 
 .member-attendance-info-box{
     display: inline-block;

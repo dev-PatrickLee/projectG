@@ -19,6 +19,7 @@ header{
     left: 0;
     width: 100%;
     height: 75px;
+    z-index: 100;
 }
 .container {
     margin-left: 12%;
@@ -142,12 +143,16 @@ li {
     height: 30px;
     padding: 0 15px;
     font-weight: bolder;
-    margin: 0 30px;
+    margin: auto 30px;
+}
+.filter-box{
+    display: flex;
+    padding: 5px 0;
 }
 .filter-contents{
     border: none;
     border-radius: 3px;
-    margin: 0 5px;
+    margin: auto 5px;
 }
 .filter-selection{
     width: 10%;
@@ -156,7 +161,7 @@ li {
 .filter-name{
     background-color: #999;
     border-radius: 3px;
-    margin: 0 5px;
+    margin: auto 5px;
     display: inline-block;
     text-align: center;
     padding: 5px 10px;
@@ -173,6 +178,7 @@ li {
     width:100%;
     height:100%;
     background: rgba(0,0,0,0.8);
+    justify-content: center;
     top:0;
     left:0;
     z-index: 100;
@@ -186,6 +192,9 @@ li {
 .modal_content_container{
     margin: 10px 1%;
     width: 98%;
+    height: inherit;
+    overflow: auto;
+    font-size: 0.8em;
 }
 .enroll-button-container{
     margin-top: 20px;
@@ -199,22 +208,19 @@ li {
     color: white;
     font-weight: bolder;
     border-radius: 5px;
-    margin: 10px 0px;
+    margin: 10px 0;
     cursor: pointer;
-    font-weight: bolder;
 }
 .modal_content{
+    top: 50%;
     width: 1000px;
     height: 550px;
     background: #fff;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    margin-left: -500px;
-    margin-top: -250px;
+    position: absolute;
     text-align: center;
-    box-sizing: border-box;
     line-height: 23px;
+    transform: translateY(-50%);
+    overflow: hidden;
     z-index: 200;
 }
 
@@ -228,18 +234,42 @@ li {
 }
 .info-table {
     margin: 0 auto;
-    padding: 20px;
     width: 100%;
+    border-top: 1px solid #ddd;
+    border-collapse: collapse;
+}
+.info-table td{
+    padding: 10px 5px;
+    text-align: left;
 }
 .info-table tr{
-    line-height: 300%;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 .td-info-title{
-    background-color: #ddd ;
+    background-color: #eee ;
+    text-align: center !important;
     width: 10%;
     font-weight: bolder;
 }
 .td-info-top-title{
     background-color: lightskyblue;
 }
-
+#enrollAddressSearchButton{
+    display: inline-block;
+    padding: 0.5em 1em;
+    margin: 0.4em 0.15em;
+    border: 1px solid;
+    border-color: #dbdbdb #d2d2d2 #b2b2b2 #d2d2d3;
+    cursor: pointer;
+    color: #464646;
+    border-radius: 0.2em;
+    vertical-align: middle;
+    font-size: 1em;
+    line-height: 1.25em;
+}
+#enrollAddressSearchButton:hover{
+    color: #464646;
+    text-decoration: none;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#e5e5e5));
+}

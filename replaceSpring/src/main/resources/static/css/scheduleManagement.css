@@ -21,9 +21,7 @@
     width: 100%;
     margin: 10px 0;
     overflow: auto;
-    overflow-x: auto;
-
-    height: 700px;
+    height: 800px;
 }
 
 .schedule-table{
@@ -37,12 +35,21 @@
 }
 
 .schedule-table th, schedule-table td {
+    padding: 2px 0;
+
+}
+.schedule-table th{
     position: sticky;
-    padding: 0;
     top: 0px;
-    left: 0px;
     width: 150px;
     min-width: 150px;
+    background-color: #ddddff;
+
+}
+.schedule-table th:first-child{
+    left: 0;
+    background: #dddddd;
+    z-index: 10;
 }
 .trainers-box{
     padding: 0;
@@ -51,15 +58,12 @@
     border-collapse: collapse;
     table-layout: fixed;
 }
-.trainers{
-    background-color: #ddddff;
-}
 
-.trainer-schedule-data td:first-child{
+
+.schedule-table td:first-child{
     width: 100px !important;
     padding: 0;
-    background: #dddddd;
+    background-color: #dddddd;
     position: sticky;
     left: 0;
-
 }

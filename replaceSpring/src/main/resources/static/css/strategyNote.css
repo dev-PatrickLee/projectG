@@ -1,9 +1,6 @@
 @charset "UTF-8";
 
-.filter-wrap{
 
-    height: 30px;
-}
 .top-info{
     background-color: #eee;
     border-radius: 5px;
@@ -32,11 +29,6 @@
 }
 .promotion{
     margin: 5px 0;
-}
-
-.container {
-    margin-left: 210px;
-    margin-top: 20px;
 }
 
 tr {
@@ -85,20 +77,6 @@ table {
     background: #fff;
 }
 
-.info-title-box-flex {
-    display: flex;
-    position: fixed;
-    justify-content: flex-start;
-}
-
-.info-title-box {
-    width: 100%;
-    height: 55px;
-    border-radius: 3px;
-    background: #fff;
-    box-shadow: 11px 13px 11px -14px grey;
-}
-
 .info-table-wrap {
     margin: 0 auto;
 
@@ -113,15 +91,6 @@ table {
     font-weight: bold;
 }
 
-
-
-.header-name{
-    padding-top: 18px;
-    position: relative;
-    width: 60%;
-    text-align: center;
-    font-weight: 600;
-}
 
 .button-container {
     text-align: right;
@@ -146,9 +115,6 @@ table {
     font-weight: bold;
 }
 
-.container-margin {
-    margin: 0 20px;
-}
 
 .board-info-box-layout {
     margin-top: 30px;
@@ -204,10 +170,6 @@ table {
     cursor: pointer;
 }
 
-.title-name {
-    position: absolute;
-    left: 250px;
-}
 .table-title{
     font-size: 20px;
 }

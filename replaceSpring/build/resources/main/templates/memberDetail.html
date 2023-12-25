@@ -463,13 +463,16 @@
                 if (sdate <=edate){
                     $calendar.children().eq(x).children().eq(y).text(sdate.getDate());
                     if (sdate.getFullYear() == todayDate.getFullYear() && sdate.getMonth() == todayDate.getMonth() && sdate.getDate() == todayDate.getDate()){
+                        // 오늘 날짜면 회색
                         $calendar.children().eq(x).children().eq(y).css("background-color","#999");
                     }
                     else{
                         if (y==0){
+                            // 일요일은 빨강날
                             $calendar.children().eq(x).children().eq(y).css("background-color","#fbb");
                         }
                         else if (y==6){
+                            // 토요일은 파란날
                             $calendar.children().eq(x).children().eq(y).css("background-color","#bbf");
                         }
                         else{
@@ -515,7 +518,7 @@
 
     $enrollMemberButton.click(function (){
         $modal.load("memberEnrollModal");
-        $(".modal").fadeIn();
+        $(".modal").css("display", "flex");
     });
 
 

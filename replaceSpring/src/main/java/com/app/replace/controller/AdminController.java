@@ -58,7 +58,7 @@ public class AdminController {
 
         model.addAttribute("list", memberVOList);
 
-        log.info("{}......", memberVOList);
+        log.info("result member info : {}......", memberVOList);
         return "memberList";
     }
     @GetMapping("enroll")
@@ -96,9 +96,9 @@ public class AdminController {
     public String lockerManagement(){
         return "lockerManagement";
     }
-    @GetMapping("scheduleManagement")
+    @GetMapping("dailyScheduleManagement")
     public String scheduleManagement(){
-        return "scheduleManagement";
+        return "dailyScheduleManagement";
     }
     @GetMapping("memberDetail")
     public String detail(){
@@ -108,6 +108,16 @@ public class AdminController {
     @GetMapping("sidebar")
     public String test(){
         return "sidebar";
+    }
+
+    @GetMapping("strategyNote")
+    public String StrategyNote(){
+        return "strategyNote";
+    }
+
+    @GetMapping("trainerScheduleManagement")
+    public String trainerScheduleManagement(){
+        return "trainerScheduleManagement";
     }
 
     @GetMapping("documentEnrollModal")
@@ -123,10 +133,6 @@ public class AdminController {
         return "modal/memberEnrollModal";
     }
 
-    @GetMapping("strategyNote")
-    public String StrategyNote(){
-        return "loadPage/strategyNote";
-    }
 
     @GetMapping("purchaseHistory")
     public String purchaseHistory(){

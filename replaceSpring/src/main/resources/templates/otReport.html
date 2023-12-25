@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 목록</title>
+  <link rel="stylesheet" href="../static/css/sideBar.css">
+  <link rel="stylesheet" href="../static/css/memberList.css">
+</head>
+
+<body>
+<header>
+  <div class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">회원목록</span>
+    </div>
+    <div class="user-info-container" >
+      <div style="margin-right: 5px">
+        testId
+      </div>
+      <span>/</span>
+      <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 내용 섹션 -->
+      <h3 class="page-title">
+        업무관리 &gt; OT보고서
+      </h3>
+      <hr class="title-line">
+      <div class="filter-wrap" style="display: block">
+        <div class="filter-box">
+          <span class="filter-name">진행일</span>
+          <input type="date" class="filter-contents filter-input-box-size" id="dateFilterStartDate">
+          <span>~</span>
+          <input type="date" class="filter-contents filter-input-box-size" id="dateFilterEndDate">
+
+          <span class="filter-name filter-space">담당강사</span>
+          <select name="filter-condition" id="staffSelection" class="filter-contents filter-input-box-size">
+            <option value="all">전체</option>
+          </select>
+
+          <span class="filter-name filter-space">진행강사</span>
+          <select name="filter-condition" id="trainerSelection" class="filter-contents filter-input-box-size">
+            <option value="all">전체</option>
+          </select>
+
+          <span class="filter-name filter-space">OT구분</span>
+          <select name="filter-condition" id="otSelection" class="filter-contents filter-input-box-size">
+            <option value="all">전체</option>
+          </select>
+          <span class="filter-name filter-space">PT</span>
+          <select name="filter-condition" id="currentPt" class="filter-contents filter-input-box-size">
+            <option value="all">전체</option>
+            <option value="inUse">사용중</option>
+            <option value="expired">만기</option>
+          </select>
+          <span class="filter-name filter-space">상태</span>
+          <select name="filter-condition" id="condition" class="filter-contents filter-input-box-size">
+            <option value="all">전체</option>
+            <option value="attend">출석</option>
+            <option value="absent">결석</option>
+            <option value="waiting">대기</option>
+            <option value="reservation">예약</option>
+            <option value="cancel">취소</option>
+            <option value="deleted">소멸</option>
+          </select>
+
+        </div>
+        <div class="filter-box">
+          <span class="filter-name">담당강사와 진행강사가 다른 경우</span>
+          <input type="checkbox" class="filter-contents">
+
+          <span class="filter-name filter-space">회원</span>
+          <select name="filter-condition" id="memberFilter" class="filter-contents filter-input-box-size">
+            <option value="all">이름</option>
+          </select>
+          <input type="text" class="filter-contents">
+
+
+          <span class="filter-name filter-space">정렬기준</span>
+          <select name="filter-condition" id="sortBy" class="filter-contents filter-input-box-size">
+            <option value="byPayDate">결제일</option>
+            <option value="byName">이름</option>
+            <option value="byAge">나이</option>
+            <option value="byMemberNumber">회원번호</option>
+            <option value="byBirthday">생일</option>
+          </select>
+
+
+
+          <input type="button" value="조회" class="filter-confirm-button">
+        </div>
+      </div>
+      <div class="member-statistics-wrap">
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            예약건수
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            취소건수
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            OT 실인원
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            FOT 실인원
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            GPT 실인원
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            14D 실인원
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+        <div class="member-statistic-box">
+          <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
+            PT상담 실인원
+          </div>
+          <div class="member-statistic-data">
+            n
+          </div>
+        </div>
+      </div>
+      <div>
+        ※ 검색조건에 따라 출력됩니다
+      </div>
+      <div style="margin: 10px 0">
+        <select name="numOfData" id="numOfData" style="width: 3%; height: 25px">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+        <div style="display: flex; float: right;">
+          <input type="button" value="담당강사 변경" class="member-list-controll-button">
+        </div>
+      </div>
+      <section class="board-info-box-layout">
+
+        <div class="board-info-box">
+
+          <div class="info-table-wrap">
+            <table class="member-list-table">
+              <tr class="member-list-header">
+                <th class="checkbox-line">
+                  <input type="checkbox">
+                </th>
+                <th>No</th>
+                <th>이름</th>
+                <th>연락처</th>
+                <th>운동목표</th>
+                <th>성별</th>
+                <th>나이</th>
+                <th>이용권 유효기간</th>
+                <th>PT</th>
+                <th>진행일시</th>
+                <th>OT구분</th>
+                <th>상태</th>
+                <th>프로그램</th>
+                <th>진행강사</th>
+                <th>담당강사</th>
+                <th>메모</th>
+              </tr>
+              <tr class="member-list-data">
+                <td class="checkbox-line">
+                  <input type="checkbox">
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>01012345678</td>
+                <td></td>
+                <td>남</td>
+                <td>20</td>
+                <td>2023-01-01~<br>2023-12-12</td>
+                <td>이용중</td>
+                <td>2023-01-01<br>01:00~01:50</td>
+                <td>OT</td>
+                <td>예약</td>
+                <td>머신</td>
+                <td>김철수<br>40</td>
+                <td>이영희세미</td>
+
+                <td>메모</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 페이지 버튼 -->
+      <div class="page-button-box-layout">
+        <div class="page-button-box">
+          <div class="">
+            <div class="page-button-margin">
+              <div>
+                <img src="/image/left_icon.png" class="left-button">
+              </div>
+            </div>
+          </div>
+          <!-- 현재 페이지 -->
+          <div>1</div>
+          <div class="">
+            <div class="page-button-margin">
+              <div>
+                <img src="/image/right_icon.png" class="right-button ">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
+</html>

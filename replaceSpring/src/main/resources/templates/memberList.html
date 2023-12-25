@@ -11,13 +11,20 @@
 </head>
 
 <body>
-<div>
-    <header class="info-title-box flex">
+<header>
+    <div class="info-title-box flex">
         <div class="header-name">
-            <span class="title-name">회원정보 관리</span>
+            <span class="title-name">회원목록</span>
         </div>
-    </header>
-</div>
+        <div class="user-info-container" >
+            <div style="margin-right: 5px">
+                testId
+            </div>
+            <span>/</span>
+            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+        </div>
+    </div>
+</header>
 <div class="wrap">
 
     <!-- 사이드 바 -->
@@ -204,30 +211,39 @@
                                 <th>RF카드</th>
                                 <th>APP</th>
                             </tr>
-
-                            <th:block th:each = "member : ${list}">
+                            <th:block th:if="${ #lists.isEmpty(list)}">
                                 <tr class="member-list-data">
-                                    <td class="checkbox-line">
-                                        <input type="checkbox">
-                                    </td>
-                                    <td th:text="${member.id}">1</td>
-                                    <td th:text="${member.memberEnrollDate}">2023-01-01</td>
-                                    <td>123456789</td>
-                                    <td th:text="${member.memberName}">홍길동</td>
-                                    <td th:text="${member.memberPhone}">010-1234-1234</td>
-                                    <td th:text="${member.memberGender}">남</td>
-                                    <td th:text="${member.memberAge}">20</td>
-                                    <td>이용중</td>
-                                    <td>2023-01-01</td>
-                                    <td>2024-01-01</td>
-                                    <td >365</td>
-                                    <td>390,000</td>
-                                    <td>2023-01-01</td>
-                                    <td>없음</td>
-                                    <td>김철수</td>
-                                    <td th:text="${member.id}">RF카드</td>
-                                    <td>Y</td>
+                                    <th colspan="18">
+                                        회원이 없습니다
+                                    </th>
                                 </tr>
+                            </th:block>
+                            <th:block th:if="${not #lists.isEmpty(list)}">
+                                <th:block th:each = "member : ${list}">
+                                    <tr class="member-list-data">
+                                        <td class="checkbox-line">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td th:text="${member.id}">1</td>
+                                        <td th:text="${member.memberEnrollDate}">2023-01-01</td>
+                                        <td>123456789</td>
+                                        <td th:text="${member.memberName}">홍길동</td>
+                                        <td th:text="${member.memberPhone}">010-1234-1234</td>
+                                        <td th:text="${member.memberGender}">남</td>
+                                        <td th:text="${member.memberAge}">20</td>
+                                        <td>이용중</td>
+                                        <td>2023-01-01</td>
+                                        <td>2024-01-01</td>
+                                        <td >365</td>
+                                        <td>390,000</td>
+                                        <td>2023-01-01</td>
+                                        <td>없음</td>
+                                        <td>김철수</td>
+                                        <td th:text="${member.id}">RF카드</td>
+                                        <td>Y</td>
+                                    </tr>
+                                </th:block>
+
                             </th:block>
                         </table>
                     </div>

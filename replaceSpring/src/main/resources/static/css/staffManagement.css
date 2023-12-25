@@ -1,0 +1,39 @@
+.staff-Management-layout-box{
+    width: 100%;
+}
+.staff-table-wrap{
+    width: 100%;
+}
+.staff-table{
+    width: 100%;
+    border: none;
+    text-align: center;
+    border-collapse: collapse;
+}
+.staff-table td{
+    padding: 5px 0;
+    font-size: 0.9em;
+}
+.staff-table th{
+    background-color: #ccddff;
+    border-right: 2px solid #FFFFFF;
+    padding: 3px 0;
+}
+.staff-table tr{
+    border-bottom: 1px solid #cccccc;
+}
+.staff-table tr:first-child{
+    border-bottom: none;
+}
+.staff-registration-button{
+    border: none;
+    height: 30px;
+    width: 100px;
+    color: white;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin: auto 0px;
+    margin-left: 40%;
+    cursor: pointer;
+    font-weight: bolder;
+}

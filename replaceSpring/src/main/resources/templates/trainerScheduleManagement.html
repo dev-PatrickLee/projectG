@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 목록</title>
+    <title>강사별 스케줄 관리</title>
     <link rel="stylesheet" href="/css/sideBar.css">
     <link rel="stylesheet" href="/css/scheduleManagement.css">
 
@@ -15,7 +15,7 @@
 <div>
     <header class="info-title-box flex">
         <div class="header-name">
-            <span class="title-name">강사스케줄 관리</span>
+            <span class="title-name">강사별 스케줄 관리</span>
         </div>
     </header>
 </div>
@@ -37,19 +37,18 @@
                     <span class="filter-name">예약일</span>
                     <input type="date" class="filter-contents filter-input-box-size" id="reservationDate">
 
-                    <span class="filter-name filter-space">구분</span>
+                    <span class="filter-name filter-space">강사</span>
                     <select name="scheduleFilter" id="scheduleFilter" class="filter-contents filter-input-box-size">
                         <option value="all">전체</option>
+                        <option value="all">test1 강사</option>
+                        <option value="all">test2 강사</option>
+                        <option value="all">test3 강사</option>
+                        <option value="all">test4 강사</option>
+                        <option value="all">test5 강사</option>
                     </select>
 
-                    <span class="filter-name filter-space">상태</span>
-                    <select name="filter-condition" id="rfFilter" class="filter-contents filter-input-box-size">
-                        <option value="all">전체</option>
-                    </select>
 
-                    <span class="filter-name filter-space">GX강사 포함</span>
-                    <input type="checkbox" name="isGXTrainerInclude">
-                    <input type="button" value="조회" class="filter-confirm-button">
+                    <input type="button" value="조회" class="filter-confirm-button" id="searchButton">
                 </div>
             </div>
             <div class="notice-box">
@@ -67,184 +66,108 @@
             </div>
             <section class="schedule-layout-box">
                 <table class="schedule-table">
-                    <tr class="trainers-box">
-                        <th  class="trainers"></th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
-                        <th class="trainers">test 트레이너</th>
+                    <tr class="trainers-box" id="dateTh">
+                        <th class="blankBox">시간</th>
 
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>00:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>01:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>02:00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>03:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>04:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>05:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>06:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>07:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>08:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>09:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>10:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>11:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>12:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>13:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>14:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>15:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>16:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>17:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>18:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>19:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>20:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>21:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>22:00</td>
-                        <td></td>
                     </tr>
                     <tr class="trainer-schedule-data">
                         <td>23:00</td>
-                        <td></td>
                     </tr>
+                    <tr>
+                        <td colspan="8" style="background-color: #ddddff;">합계</td>
+                        <td style="background-color: #ddddff;"></td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>OT</td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>FOT</td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>GPT</td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>14D</td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>PT</td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>GX</td>
+                    </tr>
+                    <tr class="trainer-schedule-data">
+                        <td>SELF</td>
+                    </tr>
+
 
                 </table>
             </section>
@@ -256,4 +179,61 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/sidebar.js"></script>
+<script>
+    document.getElementById('reservationDate').value = new Date().toISOString().substring(0, 10);
+
+</script>
+<script>
+    const $dateTh = $("#dateTh");
+    const $reservationDate = $("#reservationDate");
+    const $trainerSchedultDate = $(".trainer-schedule-data");
+    const $searchButton = $("#searchButton");
+    const days = "일월화수목금토";
+    let today = new Date();
+    $reservationDate.val(today.toISOString().substring(0,10));
+
+
+    setScheduleTable();
+    function setScheduleTable(){
+        let searchDate = $reservationDate.val().split("-");
+        let sdate = new Date(parseInt(searchDate[0]),parseInt(searchDate[1])-1,parseInt(searchDate[2]));
+
+        let edate = new Date(sdate.getFullYear(),sdate.getMonth(),sdate.getDate() + 8);
+
+        while(true){
+            let year = sdate.getFullYear();
+            let month = sdate.getMonth() +1;
+
+            let date = "";
+            if (sdate.getDate() < 10){
+                date += "0";
+            }
+            date += sdate.getDate();
+
+            let day = days[sdate.getDay()];
+
+            let curDate = year+"/"+month + "/" + date+"(" + day+ ")";
+
+            console.log(curDate);
+
+            $("<th class='scheduleData'>").text(curDate).appendTo($dateTh);
+            $("<td class='scheduleData'>").appendTo($trainerSchedultDate);
+
+            sdate.setDate(sdate.getDate()+1);
+
+            if (sdate >=edate)
+            {
+                break;
+            }
+        }
+    }
+    $searchButton.click(function (){
+        $(".scheduleData").remove();
+        setScheduleTable();
+    });
+
+
+
+
+</script>
 </html>

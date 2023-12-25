@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>직원 관리</title>
+  <link rel="stylesheet" href="/css/sideBar.css">
+  <link rel="stylesheet" href="/css/staffManagement.css">
+
+</head>
+
+<body>
+<div>
+  <header class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">직원 관리</span>
+    </div>
+  </header>
+</div>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 내용 섹션 -->
+      <h3 class="page-title">
+        환경설정 &gt; 직원관리
+      </h3>
+      <hr class="title-line">
+      <div class="filter-wrap" style="display: block">
+        <div class="filter-box">
+          <span class="filter-name">직책</span>
+          <select name="jobSelection" id="jobSelection" class="filter-contents filter-input-box-size">
+            <option value="none">선택</option>
+          </select>
+
+          <span class="filter-name filter-space">이름</span>
+          <select name="staffNameSelection" id="staffNameSelection" class="filter-contents filter-input-box-size">
+            <option value="none">선택</option>
+          </select>
+
+          <span class="filter-name filter-space">근무</span>
+          <select name="staffInActionSelection" id="staffInActionSelection" class="filter-contents filter-input-box-size">
+            <option value="none">선택</option>
+            <option value="working">근무중</option>
+            <option value="resting">휴식중</option>
+          </select>
+
+
+          <input type="button" value="조회" class="filter-confirm-button" id="searchButton">
+
+          <input type="button" value="직원등록" id="staffEnrollButton" class="staff-registration-button" style="background-color: #01B0F1;">
+        </div>
+      </div>
+
+      <section class="staff-Management-layout-box">
+        <div class="staff-table-wrap">
+          <table class="staff-table">
+            <tr>
+              <th>번호</th>
+              <th>지점</th>
+              <th>직원명</th>
+              <th>근로계약서</th>
+              <th>직책</th>
+              <th>아이디</th>
+              <th>입사일</th>
+              <th>퇴사일</th>
+              <th>연락처</th>
+              <th>광고</th>
+              <th>머슬랩</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>ㅇㅇ점</td>
+              <td>(name)</td>
+              <td>다운로드</td>
+              <td>트레이너</td>
+              <td>아이디</td>
+              <td>yyyy-MM-dd</td>
+              <td>yyyy-MM-dd</td>
+              <td>010-0000-0000</td>
+              <td>
+                <span>[등록/수정]</span>
+              </td>
+
+              <td>
+                <input type="button" value="승인요청" class="staff-registration-button" style="background-color: #01B0F1;margin: 0">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal" id="modal">
+  <div class="modal_content"
+       title="클릭하면 창이 닫힙니다.">
+    <div class="modal-top-banner">
+      <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">회원 등록</div>
+    </div>
+    <div class="modal_content_container">
+
+      <form action="/admin/enroll" method="get">
+        <table class="info-table">
+          <tr>
+            <td rowspan="4">
+              <a href="#" style="width: 100%; height: 100%">
+                <img src="" alt="profilePicture">
+              </a>
+            </td>
+            <td class="td-info-title">등록일</td>
+            <td>
+              <input disabled type="date" name="enrollDate" id="enrollDate">
+            </td>
+            <td class="td-info-title">팀구분</td>
+            <td>
+              <select name="teamSelection" id="teamSelection">
+                <option value="선택">선택</option>
+              </select>
+              <span>팀장</span>
+              <input type="checkbox">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title">직책</td>
+            <td>
+              <select name="positionSelection" id="positionSelection">
+                <option value="선택">선택</option>
+                <option value="weekend">주말인포</option>
+                <option value="manager">지점장</option>
+                <option value="submanager">부점장</option>
+                <option value="pt_captain">PT팀장</option>
+                <option value="trainer">트레이너</option>
+                <option value="morning">오전인포</option>
+                <option value="gx_trainer">GX강사</option>
+                <option value="freelancer">프리랜서</option>
+                <option value="cleaning">청소</option>
+                <option value="afternoon">오후인포</option>
+              </select>
+            </td>
+            <td class="td-info-title">직급</td>
+            <td>
+              <select name="rankSelection" id="rankSelection">
+                <option value="선택">선택</option>
+                <option value="yoga">요가</option>
+                <option value="zumba">줌바댄스</option>
+                <option value="pilates">필라테스</option>
+                <option value="broadcast">방송댄스</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title">이름</td>
+            <td>
+              <input type="text" name="name">
+            </td>
+            <td class="td-info-title">등급</td>
+            <td>
+
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title">연락처</td>
+            <td colspan="3">
+              <input type="number" name="phone" placeholder="휴대전화">
+            </td>
+          </tr>
+        </table>
+        <table class="info-table">
+          <tr>
+            <td class="td-info-title">주소</td>
+            <td colspan="3">
+              <input type="text" name="zipcode" id="enrollZipCode" class="info-input userInfo" style="width: 100px" placeholder="우편번호">
+              <input type="button" id="enrollAddressSearchButton" onclick="searchAddress()" value="우편번호 찾기">
+              <input type="text" name="address" id="enrollAddress" class="info-input userInfo" style="width: 300px" placeholder="주소">
+              <input type="text" name="address-detail" id="enrollAddressDetail"class="info-input" placeholder="상세주소">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title">계좌정보</td>
+            <td colspan="3">
+              <span>은행</span>
+              <select name="bank" id="bankName">
+                <option value="선택">선택</option>
+                <option value="shinhan">신한</option>
+                <option value="kb">국민</option>
+                <option value="ibk">기업</option>
+              </select>
+
+              <span>예금주</span>
+              <input type="text" name="accountOwner">
+
+              <span>계좌번호</span>
+              <input type="number" name="accountNumber">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title">근로계약서</td>
+            <td colspan="3">
+              <input type="file" name="employeementContract">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title" >기타정보</td>
+            <td>
+              <input type="text" name="extraInfo">
+            </td>
+            <td class="td-info-title" >RF카드</td>
+            <td>
+              <input type="text" disabled>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title" >아이디</td>
+            <td>
+              <input type="text" name="userId">
+            </td>
+            <td class="td-info-title" >비밀번호</td>
+            <td>
+              <input type="text" name="userPassword">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title" >입사일</td>
+            <td>
+              <input type="date" name="hiredDate">
+            </td>
+            <td class="td-info-title" >퇴사일</td>
+            <td>
+              <input type="date" name="retiredDate">
+            </td>
+          </tr>
+          <tr>
+
+            <td class="td-info-title" >담당강사</td>
+            <td>
+              <span>예</span>
+              <input type="radio" name="isCharge" value="true" checked>
+              <span>아니오</span>
+              <input type="radio" name="isCharge" value="false">
+
+            </td>
+            <td class="td-info-title" >담당TM</td>
+            <td>
+              <span>예</span>
+              <input type="radio" name="isTmCharge" value="true" checked>
+              <span>아니오</span>
+              <input type="radio" name="isTmCharge" value="false">
+            </td>
+
+          </tr>
+          <tr>
+            <td class="td-info-title" >전략노트</td>
+            <td>
+              <span>예</span>
+              <input type="radio" name="isStrategyNote" value="true" checked>
+              <span>아니오</span>
+              <input type="radio" name="isStrategyNote" value="false">
+
+            </td>
+            <td class="td-info-title" >GX강사</td>
+            <td>
+              <span>예</span>
+              <input type="radio" name="isGxTrainer" value="true" checked>
+              <span>아니오</span>
+              <input type="radio" name="isGxTrainer" value="false">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title" style="width: 15%" >프로필 노출<br>(PT문의)</td>
+            <td>
+              <span>예</span>
+              <input type="radio" name="isProfileReveil" value="true" checked>
+              <span>아니오</span>
+              <input type="radio" name="isProfileReveil" value="false">
+            </td>
+            <td class="td-info-title" >추가권한</td>
+            <td>
+              <div>
+                <input type="checkbox" name="isPurchaseUpdater">
+                <span>결제등록자 변경권한</span>
+              </div>
+              <div>
+                <input type="checkbox" name="isOnlyCheck">
+                <span>조회용계정</span>
+              </div>
+
+            </td>
+
+          </tr>
+          <tr>
+            <td class="td-info-title">주요약력</td>
+            <td style="line-height: normal" colspan="3">
+              <textarea name="memo" name="medicinalHistory" cols="50" rows="5"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-info-title">소개문구 <br>(TV/친절평가)</td>
+            <td style="line-height: normal" colspan="3">
+              <textarea name="memo" name="memo" cols="50" rows="5"></textarea>
+            </td>
+          </tr>
+        </table>
+        <div class="enroll-button-container">
+          <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; font-weight: bolder; color: #FFFFFF">등록</button>
+          <button type="reset" class="user-registration-button enrollCancelButton" style="color: #333333; font-weight: bolder">취소</button>
+        </div>
+      </form>
+
+    </div>
+
+
+  </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
+<script>
+  const $staffEnrollButton = $("#staffEnrollButton");
+  const $modal = $("#modal");
+
+  $staffEnrollButton.click(function(){
+    $modal.css("display", "flex");
+    $(".modal_content").css("width", "700px").css("height", "800px");
+
+  });
+  $(".enrollCancelButton").click(function (){
+    $modal.fadeOut();
+  })
+
+</script>
+
+</html>
