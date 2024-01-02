@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 목록</title>
+    <title>나의 급여</title>
     <link rel="stylesheet" href="../static/css/sideBar.css">
     <link rel="stylesheet" href="../static/css/memberList.css">
 </head>
@@ -35,92 +35,33 @@
         <div class="container-margin">
             <!-- 내용 섹션 -->
             <h3 class="page-title">
-                업무관리 &gt; OT보고서
+                업무관리 > 나의급여
             </h3>
             <hr class="title-line">
             <div class="filter-wrap" style="display: block">
                 <div class="filter-box">
-                    <span class="filter-name">진행일</span>
-                    <input type="date" class="filter-contents filter-input-box-size" id="dateFilterStartDate">
-                    <span>~</span>
-                    <input type="date" class="filter-contents filter-input-box-size" id="dateFilterEndDate">
-
-                    <span class="filter-name filter-space">진행강사</span>
-                    <select name="filter-condition" id="trainerSelection" class="filter-contents filter-input-box-size">
-                        <option value="all">전체</option>
+                    <span class="filter-name">지급년월</span>
+                    <select name="date-search-filter" id="dateSearchFilterStartYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
                     </select>
-
-                    <span class="filter-name filter-space">처리상태</span>
-                    <select name="filter-condition" id="progress" class="filter-contents filter-input-box-size">
-                        <option value="all">전체</option>
-                        <option value="attend">출석</option>
-                        <option value="absent">결석</option>
-                        <option value="cancel">취소</option>
-                        <option value="deleted">소멸</option>
+                    <select name="date-search-filter" id="dateSearchFilterStartMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
                     </select>
-                    <span class="filter-name filter-space">메모</span>
-                    <input type="text" id="memo" class="filter-contents filter-input-box-size">
-
-                </div>
-                <div class="filter-box">
-                    <span class="filter-name filter-space">회원</span>
-                    <select name="filter-condition" id="memberFilter" class="filter-contents filter-input-box-size">
-                        <option value="all">이름</option>
+                    <span style="margin: auto 5px;
+                                 display: inline-block;
+                                 text-align: center;
+                                 padding: 5px 0;
+                                 font-weight: bolder;">~</span>
+                    <select name="date-search-filter" id="dateSearchFilterEndYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
                     </select>
-                    <input type="text" class="filter-contents">
-
-
-                    <input type="checkbox" id="isOnDelete">
-                    <span class="filter-contents filter-space">소멸예정자료</span>
-
-                    <input type="checkbox" id="isPtWithoutClass">
-                    <span class="filter-contents">수업없는 PT이용권 (</span>
-                    <input type="checkbox" id="isBasedOnToday">
-                    <span class="filter-contents">현재일기준)</span>
-
-
-
+                    <select name="date-search-filter" id="dateSearchFilterEndMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
+                    </select>
 
                     <input type="button" value="조회" class="filter-confirm-button">
-                </div>
-            </div>
-            <div class="member-statistics-wrap">
-                <div class="member-statistic-box">
-                    <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
-                        예약건수
-                    </div>
-                    <div class="member-statistic-data">
-                        n
-                    </div>
-                </div>
-                <div class="member-statistic-box">
-                    <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
-                        취소건수
-                    </div>
-                    <div class="member-statistic-data">
-                        n
-                    </div>
-                </div>
-                <div class="member-statistic-box">
-                    <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
-                        출석건수
-                    </div>
-                    <div class="member-statistic-data">
-                        n
-                    </div>
-                </div>
-                <div class="member-statistic-box">
-                    <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
-                        결석건수
-                    </div>
-                    <div class="member-statistic-data">
-                        n
-                    </div>
-                </div>
 
-            </div>
-            <div>
-                ※ 검색조건에 따라 출력됩니다
+                </div>
             </div>
             <div style="margin: 10px 0">
                 <select name="numOfData" id="numOfData" style="width: 3%; height: 25px">
@@ -131,7 +72,9 @@
                     <option value="50">50</option>
                 </select>
                 <div style="display: flex; float: right;">
-                    <input type="button" value="세션소멸처리" class="member-list-controll-button">
+                    <input type="button" value="담당강사 배정" class="member-list-controll-button">
+                    <input type="button" value="SMS 발송" class="member-list-controll-button">
+                    <input type="button" value="TM전달" class="member-list-controll-button">
                 </div>
             </div>
             <section class="board-info-box-layout">
@@ -141,44 +84,41 @@
                     <div class="info-table-wrap">
                         <table class="member-list-table">
                             <tr class="member-list-header">
-                                <th class="checkbox-line">
-                                    <input type="checkbox">
-                                </th>
                                 <th>No</th>
-                                <th>이름</th>
-                                <th>연락처</th>
-                                <th>유효기간</th>
-                                <th>결제금액<br>(공급가액)</th>
-                                <th>수업단가</th>
-                                <th>결제상태</th>
-                                <th>진행회차</th>
+                                <th>지급년월</th>
+                                <th>직원명</th>
+                                <th>직책</th>
+                                <th>직급</th>
                                 <th>상태</th>
-                                <th>진행강사</th>
-                                <th>메모</th>
-                                <th>진행일시</th>
-                                <th>입장시간</th>
-                                <th>완료시간</th>
+                                <th>기본급 <br> (3.3% 적용)</th>
+                                <th>그외수당 <br> (3.3% 적용)</th>
+                                <th>공제총액</th>
+                                <th>총급여</th>
                             </tr>
-                            <tr class="member-list-data">
-                                <td class="checkbox-line">
-                                    <input type="checkbox">
-                                </td>
-                                <td>1</td>
-                                <td>홍길동</td>
-                                <td>01012345678</td>
-                                <td>2023-01-01~2024-01-01</td>
-                                <td>1000,000<br>(800,000)</td>
-                                <td>10,000</td>
-                                <td>일반</td>
-                                <td>10/30</td>
-                                <td>예약</td>
-                                <td>홍길동 프로</td>
-                                <td></td>
-                                <td>2023-01-01<br>11:00~11:50</td>
-                                <td>10:50</td>
-                                <td>11:55</td>
+                            <th:block th:if="${ #lists.isEmpty(list)}">
+                                <tr class="member-list-data">
+                                    <th colspan="18">
+                                        회원이 없습니다
+                                    </th>
+                                </tr>
+                            </th:block>
+                            <th:block th:if="${not #lists.isEmpty(list)}">
+                                <th:block th:each = "member : ${list}">
+                                    <tr class="member-list-data">
+                                        <td>1</td>
+                                        <td>2023-12</td>
+                                        <td>홍길동</td>
+                                        <td>지점장</td>
+                                        <td></td>
+                                        <td>지급대기</td>
+                                        <td>0 <br> (0)</td>
+                                        <td>0 <br> (0)</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                </th:block>
 
-                            </tr>
+                            </th:block>
                         </table>
                     </div>
                 </div>

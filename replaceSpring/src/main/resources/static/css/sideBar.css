@@ -128,7 +128,7 @@ li {
 }
 .filter-wrap{
     width: 99%;
-    background-color: #dddddd;
+    background-color: #f0f0f0;
     border-radius: 3px;
     padding: 5px 10px;
     margin: 10px 0;
@@ -159,7 +159,7 @@ li {
     height: 30px;
 }
 .filter-name{
-    background-color: #999;
+    background-color: #ccc;
     border-radius: 3px;
     margin: auto 5px;
     display: inline-block;
@@ -240,7 +240,7 @@ li {
 }
 .info-table td{
     padding: 10px 5px;
-    text-align: left;
+    text-align: center;
 }
 .info-table tr{
     border-top: 1px solid #ddd;

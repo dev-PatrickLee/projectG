@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>급여실적</title>
+  <link rel="stylesheet" href="../static/css/sideBar.css">
+  <link rel="stylesheet" href="../static/css/memberList.css">
+</head>
+
+<body>
+<header>
+  <div class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">회원관리</span>
+    </div>
+    <div class="user-info-container" >
+      <div style="margin-right: 5px">
+        testId
+      </div>
+      <span>/</span>
+      <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 내용 섹션 -->
+      <h3 class="page-title">
+        업무관리 > 급여실적
+      </h3>
+      <hr class="title-line">
+      <div class="filter-wrap" style="display: block">
+        <div class="filter-box">
+          <span class="filter-name">지급년월</span>
+          <select name="date-search-filter" id="dateSearchFilterStartYear" class="filter-contents filter-input-box-size">
+            <option value="byEnrollDate">2023</option>
+          </select>
+          <select name="date-search-filter" id="dateSearchFilterStartMonth" class="filter-contents filter-input-box-size">
+            <option value="byEnrollDate">01</option>
+          </select>
+          <span style="margin: auto 5px;
+                                 display: inline-block;
+                                 text-align: center;
+                                 padding: 5px 0;
+                                 font-weight: bolder;">~</span>
+          <select name="date-search-filter" id="dateSearchFilterEndYear" class="filter-contents filter-input-box-size">
+            <option value="byEnrollDate">2023</option>
+          </select>
+          <select name="date-search-filter" id="dateSearchFilterEndMonth" class="filter-contents filter-input-box-size">
+            <option value="byEnrollDate">01</option>
+          </select>
+
+          <input type="button" value="조회" class="filter-confirm-button">
+
+        </div>
+      </div>
+      <div style="margin: 10px 0">
+        <table class="info-table left-sort">
+          <tr>
+            <td class="td-info-title">
+              직책
+            </td>
+            <td>지점장</td>
+            <td class="td-info-title">
+              직급
+            </td>
+            <td>---</td>
+            <td class="td-info-title">
+              등급
+            </td>
+            <td>---</td>
+          </tr>
+          <tr>
+            <td class="td-info-title">지급기준</td>
+            <td colspan="4"> 기본급 0원</td>
+          </tr>
+          <tr>
+            <td class="td-info-title">지급기준상세</td>
+            <td colspan="4"></td>
+          </tr>
+        </table>
+      </div>
+      <span>
+        ※ 당월 급여정책에 따라 설정된 커미션을 자동계산 합니다. (단, 당월 누적매출에 따라 지급기준, 지급금액은 실시간 변동될 수 있습니다.)
+      </span>
+      <section class="board-info-box-layout">
+        <br>
+        <h3>
+          PT매출 기록(※ PT 결제만 보여줍니다.)
+        </h3>
+        <div class="board-info-box">
+          <div class="info-table-wrap" style="height: auto">
+            <table class="member-list-table" >
+              <tr class="member-list-header">
+                <th>No.</th>
+                <th>결제일</th>
+                <th>이름</th>
+                <th>상품명</th>
+                <th>전체횟수</th>
+                <th>결제금액</th>
+                <th>환불</th>
+                <th>결제수단</th>
+                <th>업무수당</th>
+              </tr>
+              <tr class="member-list-data ">
+                <td>0</td>
+                <td>2023-01-01</td>
+                <td>name</td>
+                <td>product</td>
+                <td>0</td>
+                <td>0 원</td>
+                <td>0</td>
+                <td>카드</td>
+                <td>0 원</td>
+              </tr>
+              <tr class="member-list-data list-data-result">
+                <td colspan="4">합계</td>
+                <td>0</td>
+                <td>0</td>
+                <td style="color: red;">0</td>
+                <td>---</td>
+                <td>0</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <br>
+        <h3>
+          PT수업 기록(※ PT 결제건을 기준으로 보여줍니다. (공급가액 = 판매금액 - 부가세))
+        </h3>
+        <div class="board-info-box">
+          <div class="info-table-wrap" style="height: auto">
+            <table class="member-list-table">
+              <tr class="member-list-header">
+                <th rowspan="2">No.</th>
+                <th rowspan="2">이름</th>
+                <th rowspan="2">상품명</th>
+                <th rowspan="2">결제일</th>
+                <th rowspan="2">유효기간</th>
+                <th rowspan="2">결제금액</th>
+                <th rowspan="2">전체횟수</th>
+                <th rowspan="2">수업단가</th>
+                <th>총출석</th>
+                <th>당월출석</th>
+                <th>수업료</th>
+                <th>업무수당</th>
+                <th>당월출석일</th>
+              </tr>
+              <tr class="member-list-header">
+                <th>총결석</th>
+                <th>당월결석</th>
+                <th>수업료</th>
+                <th>업무수당</th>
+                <th>당월결석일</th>
+              </tr>
+              <tr class="member-list-data">
+
+              </tr>
+              <tr class="member-list-data list-data-result">
+
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 페이지 버튼 -->
+      <div class="page-button-box-layout">
+        <div class="page-button-box">
+          <div class="">
+            <div class="page-button-margin">
+              <div>
+                <img src="/image/left_icon.png" class="left-button">
+              </div>
+            </div>
+          </div>
+          <!-- 현재 페이지 -->
+          <div>1</div>
+          <div class="">
+            <div class="page-button-margin">
+              <div>
+                <img src="/image/right_icon.png" class="right-button ">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
+</html>

@@ -41,7 +41,12 @@ table td {
 .member-list-data td:nth-child(even){
     background-color: #f0f0f0;
 }
-
+.list-data-result{
+    background-color: #f0f0f0;
+}
+.list-data-result td{
+    font-weight: bold;
+}
 
 table {
     text-align : center;
@@ -182,4 +187,10 @@ table {
     width: 100%;
     height: 500px;
     overflow: auto;
+}
+.info-table{
+    text-align: center;
+}
+.left-sort td{
+    text-align: left !important;
 }
