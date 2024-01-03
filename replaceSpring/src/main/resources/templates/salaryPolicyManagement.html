@@ -1,10 +1,591 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급여정책관리</title>
+    <link rel="stylesheet" href="../static/css/sideBar.css">
+    <link rel="stylesheet" href="../static/css/memberList.css">
+    <link rel="stylesheet" href="../static/css/memberDetail.css">
 </head>
+
 <body>
-$END$
+<header>
+    <div class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">급여정책관리</span>
+        </div>
+        <div class="user-info-container" >
+            <div style="margin-right: 5px">
+                testId
+            </div>
+            <span>/</span>
+            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+        </div>
+    </div>
+</header>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 내용 섹션 -->
+            <h3 class="page-title">
+                회계관리 > 급여정책관리
+            </h3>
+            <hr class="title-line">
+            <div class="filter-wrap" style="display: block">
+                <div class="filter-box">
+                    <span class="filter-name">귀속년월</span>
+                    <select name="date-search-filter" id="dateSearchFilterStartYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
+                    </select>
+                    <select name="date-search-filter" id="dateSearchFilterStartMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
+                    </select>
+
+                    </select>
+
+                    <input type="button" value="조회" class="filter-confirm-button">
+
+                </div>
+            </div>
+            <div style="margin: 10px 0">
+                <div>
+                    <span>※ 마감처리 체크시 해당월의 급여정책과 급여를 등록 수정할 수 없습니다.</span>
+                    <br>
+                    <span>※ 이달에 설정된 정책은 이달의 매출에 대한 설정이며 다음달 급여지금의 기준이 됩니다</span>
+                    <br>
+                    <span>※ 직원별 급여를 지급 하기 전에 정책을 먼저 수정 후 급여를 등록해야 합니다. (정책이 수정되어도 이미 등록한 급여가 수정되지 않습니다.)</span>
+                    <br>
+                    <span>※ 데이터 수정 방지를 위해 급여가 모두 지급된 후에는 "마감" 처리를 통해 수정이 불가능하도록 관리합니다.</span>
+                    <br>
+                    <span>※ FC매출 : 회원군 + 라커 + 운동복 + 가입비 + 양수비 + 일일이용권</span>
+                </div>
+                <br><br>
+                <div>
+                    <table class="member-history-title-talbe" style="width: 20%">
+                        <tbody>
+                        <tr class="member-history-title-box">
+                            <th id="purchaseHistory" onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
+                            <th id="visitHistory" onclick="titleActive(this)" class="member-history-title">출입내역</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="info-table-wrap" style="height: auto">
+                    <h2>총괄매니저</h2>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(순수익 커미션)<br><span style="color: #01B0F1">[A1]</span></th>
+                            <th colspan="7">타겟(총 FC매출)   &   타겟(총 PT매출)     커미션(적용순수익)  <span style="color: red">(※ 적용순수익 + 순매출 = 적용지출 손익산출자료 기준)</span></th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <div>
+                                    <span>기본 커미션 : </span><input type="text" style="display: inline-block"><span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="member-list-table" style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(순수익 커미션)<br><span style="color: #01B0F1">[A2]</span></th>
+                            <th colspan="7">타겟(총 FC+PT매출)     커미션(적용순수익)</th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h2>FC관리자</h2>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(매출 커미션)<br><span style="color: #01B0F1">[B1]</span></th>
+                            <th colspan="7">타겟(총 FC매출)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;커미션(총 FC매출)  <span style="color: red">(※ 매출의 커미션 계산시 매출의 부가세 제외하고 계산)</span></th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="member-list-table" style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(성과급)<br><span style="color: #01B0F1">[B2]</span></th>
+                            <th colspan="7">타겟(총 FC매출)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성과급</th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h2 style="display: inline-block">PT관리자</h2>
+                    <span style="color: red">※ PT순수익 x 총 PT순매출(공급가액*결제수수료) * 전직원 PT급여(매니저,AM, PT팀장,트레이너,프리랜서의 기본급 + 전체 PT수당) (공제포함/본인포함)</span>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(순수익 커미션)<br><span style="color: #01B0F1">[C1]</span></th>
+                            <th colspan="7">타겟(총 PT매출)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;커미션(PT순수익)</th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h2>FC담당</h2>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">건별타겟<br>(커미션)<br><span style="color: #01B0F1">[D1]</span></th>
+                            <th colspan="7">회원권 결제금액(건당)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;커미션(건당)  <span style="color: red">(※ 환불시 환불금액에 상관없이 전체 지급된 인센티브를 차감)</span></th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h2>PT담당</h2>
+                    <select name="ptPositionSelection" id="ptPositionSelection">
+                        <option value="staff">정직원</option>
+                    </select>
+                    <span style="color: red">※ E1, E2 지급방식 계산을 위해 트레이너 등급을 먼저 선택해주세요. (E3, E4는 공통사용)</span>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(수업료)<br><span style="color: #01B0F1">[E1]</span></th>
+                            <th colspan="7">타겟(나의 PT매출)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수업료  <span style="color: red">(※ 수업 단가 = PT결제금액(공급가액)/PT횟수(서비스 포함))</span></th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="member-list-table" style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">매출타겟<br>(매출커미션 <br>+ 수업료)<br><span style="color: #01B0F1">[E2]</span></th>
+                            <th colspan="7">타겟(나의 PT매출)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매출커미션 + 수업료   <span style="color: red">(※ 매출의 커미션 계산시 매출의 부가세 제외하고 계산)</span></th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">총합 매출 타겟<br>(수업료)<br><span style="color: #01B0F1">[E3]</span></th>
+                            <th colspan="7">타겟(총 FC매출)   &   타겟(총 PT매출)     수업료</th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                <div>
+                                    <span>기본 커미션 : </span><input type="text" style="display: inline-block"><span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>~</span>
+                                    <input type="number">
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="number">
+                                    <span>%</span>
+                                </div>
+                                <br>
+
+                                <input type="text" class="user-registration-button" style="background-color: #c0c0c0; text-align: center; width: 70px; height: 25px; margin: 3px 100px" value="추가">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header">
+                            <th rowspan="2">고정수업료<br><span style="color: #01B0F1">[E4]</span></th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="7" style="text-align: left; padding-left: 5px">
+                                ※ 타겟 설정 없이 지급되는 직원의 개별 수업료 설정 (프리렌서 등) - 직원별 급여설정에서 수업료를 설정하세요.
+                            </td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <h2 style="display: inline-block">PT '결석' 수업료 정책</h2>
+                    <span style="color: red">※ 전체 정책으로 자동 설정 되어있습니다.</span>
+                    <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
+                        <tr class="member-list-header" style="text-align: left">
+                            <th colspan="8" style="padding-left: 50px">'결석' 수업에 대한 수업료 지급 여부</th>
+                        </tr>
+
+
+                        <tr class="member-list-data">
+                            <td colspan="8" style="text-align: left; padding-left: 50px">
+                                <div>
+                                    <span style="font-weight: bold">적용 여부&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="radio" name="isApply" value="true">
+                                    <span style="margin-right: 20px">적용</span>
+                                    <input type="radio" name="isApply" value="false">
+                                    <span>미적용</span>
+                                </div>
+                                <br>
+                                <div>
+                                    <span style="font-weight: bold">수업료&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="radio" name="paymentSelect" value="fixed">
+                                    <span>고정 금액</span>
+                                    <input type="number" style="margin-right: 30px">
+                                    <input type="radio" name="paymentSelect" value="efficiency">
+                                    <span>효율</span>
+                                    <input type="number">
+                                    <span style="margin-right: 30px">%</span>
+                                    <input type="radio" name="paymentSelect" value="onAttendance">
+                                    <span>출석동일</span>
+
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+
+            </section>
+
+            <!-- 페이지 버튼 -->
+            <div class="page-button-box-layout">
+                <div class="page-button-box">
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/left_icon.png" class="left-button">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 현재 페이지 -->
+                    <div>1</div>
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/right_icon.png" class="right-button ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
 </html>

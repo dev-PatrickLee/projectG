@@ -1,10 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급여마감</title>
+    <link rel="stylesheet" href="../static/css/sideBar.css">
+    <link rel="stylesheet" href="../static/css/memberList.css">
 </head>
+
 <body>
-$END$
+<header>
+    <div class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">회원관리</span>
+        </div>
+        <div class="user-info-container" >
+            <div style="margin-right: 5px">
+                testId
+            </div>
+            <span>/</span>
+            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+        </div>
+    </div>
+</header>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 내용 섹션 -->
+            <h3 class="page-title">
+                회계관리 > 급여마감
+            </h3>
+            <hr class="title-line">
+            <div class="filter-wrap" style="display: block">
+                <div class="filter-box">
+                    <span class="filter-name">지급년월</span>
+                    <select name="date-search-filter" id="dateSearchFilterStartYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
+                    </select>
+                    <select name="date-search-filter" id="dateSearchFilterStartMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
+                    </select>
+                    <span style="margin: auto 5px;
+                                 display: inline-block;
+                                 text-align: center;
+                                 padding: 5px 0;
+                                 font-weight: bolder;">~</span>
+                    <select name="date-search-filter" id="dateSearchFilterEndYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
+                    </select>
+                    <select name="date-search-filter" id="dateSearchFilterEndMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
+                    </select>
+
+                    <input type="button" value="조회" class="filter-confirm-button">
+
+                </div>
+            </div>
+            <div style="margin: 10px 0">
+                <div>
+                    <h3 style="display: inline-block">2020-01 급여마감</h3>
+                    <input type="checkbox">
+                    <input type="text" class="user-registration-button" style="background-color: #000000; text-align: center; width: 70px; height: 25px; margin: 3px 0" value="등록">
+                    <span>※ 마감처리 체크시 해당월의 급여정책과 급여를 등록 수정할 수 없습니다.</span>
+                </div>
+            </div>
+            <div class="board-info-box">
+                <div class="info-table-wrap" style="height: auto">
+                    <table class="member-list-table">
+                        <tr class="member-list-header">
+                            <th rowspan="2">No.</th>
+                            <th rowspan="2">이름<br>(직원코드)</th>
+                            <th>직책</th>
+                            <th>입사일</th>
+                            <th>계좌번호</th>
+                            <th>기본급</th>
+                            <th>업무수당</th>
+                            <th>그외지급</th>
+                            <th>지급총액</th>
+                            <th rowspan="2">총급여</th>
+                        </tr>
+                        <tr class="member-list-header">
+                            <th>직급</th>
+                            <th>퇴사일</th>
+                            <th>기타정보</th>
+                            <th>소득세<br>(주민세)</th>
+                            <th>4대보험</th>
+                            <th>그외공제</th>
+                            <th>공제총액</th>
+                        </tr>
+
+                        <tr class="member-list-data">
+                            <td rowspan="2">3</td>
+                            <td rowspan="2">홍길동<br>123456</td>
+                            <td>AM</td>
+                            <td>2018-01-01</td>
+                            <td>신한 123456789789</td>
+                            <td>2,000,000</td>
+                            <td>1,000,000</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td rowspan="2">2,800,000</td>
+                        </tr>
+                        <tr class="member-list-data">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>200,000</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr class="member-list-data list-data-result">
+                            <td rowspan="2" colspan="5">합계</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td rowspan="2">0</td>
+                        </tr>
+                        <tr class="member-list-data list-data-result">
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+
+            </section>
+
+            <!-- 페이지 버튼 -->
+            <div class="page-button-box-layout">
+                <div class="page-button-box">
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/left_icon.png" class="left-button">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 현재 페이지 -->
+                    <div>1</div>
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/right_icon.png" class="right-button ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
 </html>

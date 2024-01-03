@@ -1,10 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급여관리</title>
+    <link rel="stylesheet" href="../static/css/sideBar.css">
+    <link rel="stylesheet" href="../static/css/memberList.css">
 </head>
+
 <body>
-$END$
+<header>
+    <div class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">회원관리</span>
+        </div>
+        <div class="user-info-container" >
+            <div style="margin-right: 5px">
+                testId
+            </div>
+            <span>/</span>
+            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+        </div>
+    </div>
+</header>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 내용 섹션 -->
+            <h3 class="page-title">
+                회계관리 > 급여관리
+            </h3>
+            <hr class="title-line">
+            <div class="filter-wrap" style="display: block">
+                <div class="filter-box">
+                    <span class="filter-name">지급년월</span>
+                    <select name="date-search-filter" id="dateSearchFilterStartYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
+                    </select>
+                    <select name="date-search-filter" id="dateSearchFilterStartMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
+                    </select>
+                    <span style="margin: auto 5px;
+                                 display: inline-block;
+                                 text-align: center;
+                                 padding: 5px 0;
+                                 font-weight: bolder;">~</span>
+                    <select name="date-search-filter" id="dateSearchFilterEndYear" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">2023</option>
+                    </select>
+                    <select name="date-search-filter" id="dateSearchFilterEndMonth" class="filter-contents filter-input-box-size">
+                        <option value="byEnrollDate">01</option>
+                    </select>
+
+                    <span class="filter-name">직책</span>
+                    <select name="date-search-filter" id="positionSelection" class="filter-contents filter-input-box-size">
+                        <option value="all">선택</option>
+                    </select>
+
+                    <span class="filter-name">이름</span>
+                    <select name="date-search-filter" id="nameSelection" class="filter-contents filter-input-box-size">
+                        <option value="all">선택</option>
+                    </select>
+
+                    <input type="button" value="조회" class="filter-confirm-button">
+
+                </div>
+            </div>
+            <div style="margin: 10px 0">
+                <div>
+                    <h4 style="display: inline-block">급여 일괄 등록</h4>
+                    <input type="text">
+                    <input type="text" class="user-registration-button" style="background-color: #FF416C; text-align: center; width: 70px; height: 25px; margin: 3px 0" value="등록">
+                    <span>※ 이미 등록된 급여일을 다시 등록하시면 개별 설정값이 초기화 됩니다.</span>
+                </div>
+                <div >
+                    <h4 style="display: inline-block">상태 일괄 변경</h4>
+                    <input type="text">
+                    <input type="text" class="user-registration-button" style="background-color: #000000; text-align: center; width: 70px; height: 25px; margin: 3px 0" value="변경">
+                    <span>※ 급여 지급 후 지급 상태를 변경하세요.</span>
+                </div>
+
+            </div>
+                <div class="board-info-box">
+                    <div class="info-table-wrap" style="height: auto">
+                        <table class="member-list-table">
+                            <tr class="member-list-header">
+                                <th class="checkbox-line">
+                                    <input type="checkbox">
+                                </th>
+                                <th>No.</th>
+                                <th>지급년월</th>
+                                <th>이름</th>
+                                <th>직책</th>
+                                <th>상태</th>
+                                <th>기본급<br>(실지급액)</th>
+                                <th>그외수당<br>(실지급액)</th>
+                                <th>지급총액</th>
+                                <th>공제총액</th>
+                                <th>총급여</th>
+                                <th>특이사항</th>
+                            </tr>
+
+                            <tr class="member-list-data">
+                                <td class="checkbox-line">
+                                    <input type="checkbox">
+                                </td>
+                                <td>3</td>
+                                <td>2020-01</td>
+                                <td>홍길동</td>
+                                <td>AM</td>
+                                <td>지급완료</td>
+                                <td>1,000,000<br>(967,000)</td>
+                                <td>1,000,000<br>(967,000)</td>
+                                <td>2,000,000</td>
+                                <td>66,000</td>
+                                <td>1,937,000</td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <br>
+
+            </section>
+
+            <!-- 페이지 버튼 -->
+            <div class="page-button-box-layout">
+                <div class="page-button-box">
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/left_icon.png" class="left-button">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 현재 페이지 -->
+                    <div>1</div>
+                    <div class="">
+                        <div class="page-button-margin">
+                            <div>
+                                <img src="/image/right_icon.png" class="right-button ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
 </html>
