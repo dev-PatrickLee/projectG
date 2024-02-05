@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT출석통계</title>
+  <link rel="stylesheet" href="/css/sideBar.css">
+  <link rel="stylesheet" href="/css/memberList.css">
+  <link rel="stylesheet" href="/css/memberDetail.css">
+
+</head>
+
+<body>
+<header>
+  <div class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">PT출석통계</span>
+    </div>
+    <div class="user-info-container" >
+      <div style="margin-right: 5px">
+        testId
+      </div>
+      <span>/</span>
+      <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 내용 섹션 -->
+      <h3 class="page-title">
+        통계 > PT출석통계
+      </h3>
+      <hr class="title-line">
+      <div class="filter-wrap" style="display: block">
+        <div class="filter-box">
+          <span class="filter-name">결제일</span>
+
+          <input type="date" class="filter-contents">
+          <span style="padding: 5px 0">~</span>
+          <input type="date" class="filter-contents">
+
+
+          <input type="radio" name="filterBy" style="margin-right: 5px" value="시간별" class="filter-space" checked>
+          <span class="" style="padding: 5px 0">시간별</span>
+
+          <input type="radio" name="filterBy" style="margin-right: 5px" value="강사별" class="filter-space">
+          <span style="padding: 5px 0">강사별</span>
+          <select name="date-search-filter-trainer" id="dateSearchFiltertrainer" class="filter-contents filter-input-box-size filter-space">
+            <option value="none">선택</option>
+            <option value="1">홍길동</option>
+          </select>
+
+          <input type="button" value="조회" class="filter-confirm-button" id="filterApplyBtn">
+
+        </div>
+
+      </div>
+      <div>
+        <span><strong style="color: #3c97bf">█</strong>예약</span>
+        <span><strong style="color: #ee1111">█</strong>출석</span>
+      </div>
+      <div style="margin: 10px 0; overflow: auto">
+        <div class="chartBox">
+          <canvas id="myChart" style="height: 300px; width: 2000px"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="info-table-wrap" style="height: auto;">
+          <section class="board-info-box-layout" style="width: 100%">
+
+            <div class="board-info-box" style="width: 100%">
+
+              <div class="info-table" style="overflow: auto">
+                <table class="member-list-table" style="table-layout: auto; width: 4000px">
+                  <tr class="member-list-header" id="tableHeaderRow">
+                    <th class="fixedBox" rowspan="2" id="filterBy" style="border-left: none; border-right: none">날짜</th>
+                    <th class="fixedBox1" rowspan="2">예약</th>
+                    <th class="fixedBox2" rowspan="2">출석</th>
+                    <th class="fixedBox3" rowspan="2">출석률</th>
+
+                  </tr>
+                  <tr class="member-list-header" id="reservationAttendAbsent">
+
+                  </tr>
+                  <tr class="member-list-data list-data-result">
+                    <td class="fixedBox" style="width: 150px">합계</td>
+                    <td class="fixedBox1">100</td>
+                    <td class="fixedBox2">50</td>
+                    <td class="fixedBox3">50%</td>
+                  </tr>
+                  <tr class="member-list-data member-data-row">
+                    <td class="fixedBox">2024-01-01</td>
+                    <td class="fixedBox1">100</td>
+                    <td class="fixedBox2">50</td>
+                    <td class="fixedBox3">50%</td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <br>
+
+      </section>
+
+      <!-- 페이지 버튼 -->
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/js/sidebar.js"></script>
+<script>
+  const $historyTitles = $(".member-history-title");
+  const $historyBody = $("#historyBody");
+  function titleActive(data){
+    $historyTitles.removeClass("active-title");
+    $(data).addClass("active-title");
+    $(".info-table-wrap").toggle();
+
+  }
+
+</script>
+<script>
+  const tableHeaderRow = $("#tableHeaderRow");
+
+  for (i = 0; i < 24; i++){
+    let child = "<th colspan='3'>"+i+"</th>";
+    tableHeaderRow.append(child);
+  }
+
+  const reservationAttendAbsent = $("#reservationAttendAbsent");
+  for(i=0;i<24;i++){
+    let child = "<th>예약</th><th>출석</th><th>결석</th>";
+    reservationAttendAbsent.append(child);
+  }
+</script>
+<script>
+
+  const $memberListTable = $(".member-list-table");
+
+  let labelContainer = [];
+  let dataContainer = [];
+  let dataContainer2 = [];
+  let colorContainer = [];
+  let colorContainer2 = [];
+  let labelDisplay = [];
+  let labelDisplay2 = [];
+  let numOfRandomGen = 24;
+
+
+
+
+  for (let i = 0;i<numOfRandomGen; i++){
+    let val=Math.floor(Math.random() * 30);
+    let val2=Math.floor(Math.random() * val);
+    labelContainer.push('test'+ (i+1));
+    dataContainer.push(val);
+    dataContainer2.push(val2);
+    colorContainer.push('#3c97bf');
+    colorContainer2.push('#ee1111')
+    labelDisplay.push(false);
+    labelDisplay2.push(false);
+  }
+  const ctx = document.getElementById('myChart');
+
+  $("#myChart").css('width',numOfRandomGen <= 24 ? '100%' : numOfRandomGen * 50 +'px');
+
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labelContainer,
+      datasets: [
+        {
+          label: '예약',
+          data:dataContainer,
+          borderWidth: 0,
+          borderColor: colorContainer,
+          backgroundColor : colorContainer,
+          hoverBackgroundColor: '#ddddff',
+          datalabels:{
+            display: labelDisplay,
+            color: 'black'
+          }
+        },
+        {
+          label: '출석',
+          data:dataContainer2,
+          borderWidth: 0,
+          borderColor: colorContainer2,
+          backgroundColor : colorContainer2,
+          hoverBackgroundColor: '#ffdddd',
+          datalabels:{
+            display: labelDisplay,
+            color: 'black'
+          }
+        }
+      ]
+    },
+    options: {
+      legend:{
+        display: false
+      },
+      plugins:{
+        legend:{
+          display: false,
+        },
+        datalabels:{
+          anchor:'end',
+          align: 'top'
+
+        },
+        title:{
+          display: true
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+          // min:0,
+          // max:1000000
+        },
+        x:{
+          grid:{
+            display : false
+          }
+        }
+
+      },
+      responsive:false,
+      maintainAspectRatio:false,
+      animation:{
+        duration:0
+      }
+    },
+    plugins: [ChartDataLabels],
+    textAlign:"center",
+    textBaseline:"bottom"
+
+  });
+
+  ctx.onclick = (evt) =>{
+    const res = myChart.getElementsAtEventForMode(
+            evt,
+            'nearest',
+            { intersect: true },
+            true
+    );
+    if (res.length === 0) {
+      return;
+    }
+    if (myChart.data.datasets[0].datalabels.display[res[0].index]) {
+      myChart.data.datasets[0].datalabels.display[res[0].index] = false;
+      myChart.data.datasets[0].backgroundColor[res[0].index] = '#3c97bf';
+      myChart.data.datasets[1].datalabels.display[res[0].index] = false;
+      myChart.data.datasets[1].backgroundColor[res[0].index] = '#ee1111';
+    }else{
+      myChart.data.datasets[0].datalabels.display[res[0].index] = true;
+      myChart.data.datasets[0].backgroundColor[res[0].index] = '#ddddff';
+      myChart.data.datasets[1].datalabels.display[res[0].index] = true;
+      myChart.data.datasets[1].backgroundColor[res[0].index] = '#ffdddd';
+    }
+
+    myChart.update();
+  };
+
+
+
+  $("#filterApplyBtn").click(function (){
+    $('input[name="filterBy"]').each(function (){
+      if ($(this).prop('checked')){
+        let radioVal = $(this).val();
+        $("#filterBy").text(radioVal);
+        $("#dateSearchFilterStartMonth").css("display","block");
+
+        switch (radioVal){
+          case "시간별":
+            numOfRandomGen = 24;
+            $memberListTable.toggle();
+            break;
+
+          case "강사별":
+            numOfRandomGen = 50;
+            $memberListTable.toggle();
+            break;
+        }
+
+      }
+    });
+    labelContainer = [];
+    dataContainer = [];
+    dataContainer2 = [];
+    colorContainer = [];
+    colorContainer2 = [];
+    labelDisplay = [];
+    labelDisplay2 = [];
+    for (let i = 0;i<numOfRandomGen; i++){
+      let val=Math.floor(Math.random() * 30);
+      let val2=Math.floor(Math.random() * val);
+      labelContainer.push('test'+ (i+1));
+      dataContainer.push(val);
+      dataContainer2.push(val2);
+      colorContainer.push('#3c97bf');
+      colorContainer2.push('#ee1111')
+      labelDisplay.push(false);
+      labelDisplay2.push(false);
+    }
+    myChart.canvas.parentNode.style.width = numOfRandomGen <= 24 ? '100%' : numOfRandomGen * 50 +'px';
+
+    $("#myChart").css('width',numOfRandomGen <= 24 ? '100%' : numOfRandomGen * 50 +'px');
+    myChart.resize();
+
+
+    addData();
+  })
+  function addData() {
+    myChart.data.labels = labelContainer;
+    myChart.data.datasets[0].data = dataContainer;
+    myChart.data.datasets[0].borderColor = colorContainer;
+    myChart.data.datasets[0].backgroundColor = colorContainer;
+    myChart.data.datasets[0].datalabels.display = labelDisplay;
+    myChart.data.datasets[1].data = dataContainer2;
+    myChart.data.datasets[1].borderColor = colorContainer2;
+    myChart.data.datasets[1].backgroundColor = colorContainer2;
+    myChart.data.datasets[1].datalabels.display = labelDisplay2;
+    myChart.update();
+  }
+
+
+
+</script>
+
+</html>

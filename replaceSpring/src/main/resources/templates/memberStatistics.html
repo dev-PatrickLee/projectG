@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원통계</title>
+  <link rel="stylesheet" href="/css/sideBar.css">
+  <link rel="stylesheet" href="/css/memberList.css">
+  <link rel="stylesheet" href="/css/memberDetail.css">
+
+</head>
+
+<body>
+<header>
+  <div class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">회원통계</span>
+    </div>
+    <div class="user-info-container" >
+      <div style="margin-right: 5px">
+        testId
+      </div>
+      <span>/</span>
+      <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 내용 섹션 -->
+      <h3 class="page-title">
+        통계 > 회원통계
+      </h3>
+      <hr class="title-line">
+      <div class="filter-wrap" style="display: block">
+        <div class="filter-box">
+          <span class="filter-name">등록일</span>
+
+          <input type="date" class="filter-contents">
+          <span style="padding: 5px 0">~</span>
+          <input type="date" class="filter-contents">
+
+
+          <input type="radio" name="filterBy" style="margin-right: 5px" value="일별" class="filter-space" checked>
+          <span class="" style="padding: 5px 0">일별</span>
+
+          <input type="radio" name="filterBy" style="margin-right: 5px" value="월별" class="filter-space">
+          <span style="padding: 5px 0">월별</span>
+
+          <input type="button" value="조회" class="filter-confirm-button" id="filterApplyBtn">
+
+        </div>
+      </div>
+      <div style="margin: 10px 0; overflow: auto">
+        <div class="chartBox">
+          <canvas id="myChart" style="height: 300px; width: 2000px"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="info-table-wrap" style="height: auto;">
+          <section class="board-info-box-layout" style="width: 100%">
+
+            <div class="board-info-box" style="width: 100%">
+
+              <div class="info-table">
+                <table class="member-list-table" style="table-layout: auto; width: 2000px">
+                  <tr class="member-list-header">
+                    <th class="fixedBox" rowspan="2" id="filterBy" style="border-left: none">일별</th>
+                    <th rowspan="2">가망고객수</th>
+                    <th rowspan="2">회원수</th>
+                    <th colspan="6">연령</th>
+                    <th colspan="2">성별</th>
+                    <th colspan="6">방문경로</th>
+                  </tr>
+                  <tr class="member-list-header">
+                    <th>10</th>
+                    <th>20</th>
+                    <th>30</th>
+                    <th>40</th>
+                    <th>50</th>
+                    <th>60이상</th>
+                    <th>남</th>
+                    <th>여</th>
+                    <th>소개</th>
+                    <th>문자</th>
+                    <th>온라인광고</th>
+                    <th>홈페이지</th>
+                    <th>오프라인광고</th>
+                    <th>직접방문</th>
+                  </tr>
+                  <tr class="member-list-data list-data-result">
+                    <td class="fixedBox">합계</td>
+                    <td>6</td>
+                    <td>14</td>
+                    <td>9</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>14</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                  <tr class="member-list-data">
+                    <td class="fixedBox">2024-01-01</td>
+                    <td>6</td>
+                    <td>14</td>
+                    <td>9</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>14</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+
+
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <br>
+
+      </section>
+
+      <!-- 페이지 버튼 -->
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/js/sidebar.js"></script>
+<script>
+  const $historyTitles = $(".member-history-title");
+  const $historyBody = $("#historyBody");
+  function titleActive(data){
+    $historyTitles.removeClass("active-title");
+    $(data).addClass("active-title");
+    $(".info-table-wrap").toggle();
+
+  }
+
+</script>
+<script>
+
+  let labelContainer = [];
+  let dataContainer = [];
+  let colorContainer = [];
+  let labelDisplay = [];
+  let anchors = [];
+  let aligns = [];
+  let numOfRandomGen = 30;
+
+
+  for (let i = 0;i<numOfRandomGen; i++){
+    // let val=Math.floor(Math.random() * 2000000) - 1000000;
+    let val=Math.floor(Math.random() * 1000000);
+    labelContainer.push(i+1);
+    dataContainer.push(val);
+    colorContainer.push('#dddddd');
+    labelDisplay.push(false);
+    anchors.push(val>=0 ? 'end' : 'start');
+    aligns.push(val>=0 ? 'top' : 'bottom');
+  }
+  const ctx = document.getElementById('myChart');
+
+  $("#myChart").css('width',numOfRandomGen <= 30 ? '100%' : numOfRandomGen * 50 +'px');
+
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labelContainer,
+      datasets: [{
+        label: '',
+        data:dataContainer,
+        borderWidth: 0,
+        borderColor: colorContainer,
+        backgroundColor : colorContainer,
+        hoverBackgroundColor: '#888888',
+        datalabels:{
+          display: labelDisplay,
+          color: 'black'
+        }
+      }]
+    },
+    options: {
+      legend:{
+        display: false
+      },
+      plugins:{
+        legend:{
+          display: false,
+        },
+        datalabels:{
+          anchor:anchors,
+          align: aligns
+
+        },
+        title:{
+          display: true
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+          // min:0,
+          // max:1000000
+        },
+        x:{
+          grid:{
+            display : false
+          }
+        }
+
+      },
+      responsive:false,
+      maintainAspectRatio:false,
+      animation:{
+        duration:0
+      }
+    },
+    plugins: [ChartDataLabels],
+    textAlign:"center",
+    textBaseline:"bottom"
+
+  });
+
+  ctx.onclick = (evt) =>{
+    const res = myChart.getElementsAtEventForMode(
+            evt,
+            'nearest',
+            { intersect: true },
+            true
+    );
+    if (res.length === 0) {
+      return;
+    }
+    if (myChart.data.datasets[0].datalabels.display[res[0].index]) {
+      myChart.data.datasets[0].datalabels.display[res[0].index] = false;
+      myChart.data.datasets[0].backgroundColor[res[0].index] = '#dddddd';
+
+    }else{
+      myChart.data.datasets[0].datalabels.display[res[0].index] = true;
+      myChart.data.datasets[0].backgroundColor[res[0].index] = '#444444';
+
+    }
+
+    myChart.update();
+  };
+
+
+
+  $("#filterApplyBtn").click(function (){
+    $('input[name="filterBy"]').each(function (){
+      if ($(this).prop('checked')){
+        let radioVal = $(this).val();
+        $("#filterBy").text(radioVal);
+        $("#dateSearchFilterStartMonth").css("display","block");
+
+        switch (radioVal){
+          case "일별":
+            numOfRandomGen = 30;
+            break;
+
+          case "월별":
+            numOfRandomGen = 12;
+            break;
+        }
+
+      }
+    });
+    labelContainer =[];
+    dataContainer = [];
+    colorContainer = [];
+    labelDisplay = [];
+    anchors = [];
+    aligns = [];
+    for (let i = 0;i<numOfRandomGen; i++){
+      let val=Math.floor(Math.random() * 2000000) - 1000000;
+      // let val=Math.floor(Math.random() * 1000000);
+      labelContainer.push('test' + (i+1));
+      dataContainer.push(val);
+      colorContainer.push('#dddddd');
+      labelDisplay.push(false);
+      anchors.push(val>=0 ? 'end' : 'start');
+      aligns.push(val>=0 ? 'top' : 'bottom');
+    }
+    myChart.canvas.parentNode.style.width = numOfRandomGen <= 30 ? '100%' : numOfRandomGen * 50 +'px';
+
+    $("#myChart").css('width',numOfRandomGen <= 30 ? '100%' : numOfRandomGen * 50 +'px');
+    myChart.resize();
+
+
+    addData();
+  })
+  function addData() {
+    myChart.data.labels = labelContainer;
+    myChart.data.datasets[0].data = dataContainer;
+    myChart.data.datasets[0].borderColor = colorContainer;
+    myChart.data.datasets[0].backgroundColor = colorContainer;
+    myChart.data.datasets[0].datalabels.display = labelDisplay;
+    myChart.options.plugins.datalabels.anchor = anchors;
+    myChart.options.plugins.datalabels.align = aligns;
+    myChart.update();
+  }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>출입기록</title>
+  <link rel="stylesheet" href="/css/sideBar.css">
+  <link rel="stylesheet" href="/css/memberList.css">
+  <link rel="stylesheet" href="/css/memberDetail.css">
+
+</head>
+
+<body>
+<header>
+  <div class="info-title-box flex">
+    <div class="header-name">
+      <span class="title-name">출입기록</span>
+    </div>
+    <div class="user-info-container" >
+      <div style="margin-right: 5px">
+        testId
+      </div>
+      <span>/</span>
+      <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+  <!-- 사이드 바 -->
+
+  <aside class="side-bar"></aside>
+
+  <div class="container">
+    <div class="container-margin">
+      <!-- 내용 섹션 -->
+      <h3 class="page-title">
+        통계 > 출입기록
+      </h3>
+      <hr class="title-line">
+      <div class="filter-wrap" style="display: block">
+        <div class="filter-box">
+          <span class="filter-name">출입일</span>
+
+          <input type="date" class="filter-contents" style="width: 7%">
+          <span style="padding: 5px 0">~</span>
+          <input type="date" class="filter-contents" style="width: 7%">
+
+
+          <span class="filter-name filter-space">회원</span>
+          <select name="date-search-filter-trainer" id="dateSearchFilterTrainer" class="filter-contents filter-input-box-size" style="width: 5%">
+            <option value="byName">이름</option>
+            <option value="byPhone">연락처</option>
+          </select>
+          <input type="text" class="filter-contents" style="width: 7%">
+
+          <span class="filter-name filter-space">RF카드</span>
+          <input type="text" class="filter-contents" style="width: 7%">
+
+          <input type="checkbox" name="otherGymMemberCheck" style="margin-right: 5px;" class="filter-space">
+          <span style="padding: 5px 0">타지점회원</span>
+
+          <span class="filter-name filter-space">정렬</span>
+          <select name="date-search-filter-trainer" id="sortBy" class="filter-contents filter-input-box-size" style="width: 5%">
+            <option value="byEnterTime">입실일시</option>
+            <option value="byPhone">연락처</option>
+            <option value="byName">이름</option>
+          </select>
+
+          <input type="button" value="조회" class="filter-confirm-button" id="filterApplyBtn">
+
+        </div>
+
+      </div>
+      <div>
+        <select name="pagenation" id="pagenation">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+
+      <div>
+        <div class="info-table-wrap" style="height: auto;">
+          <section class="board-info-box-layout" style="width: 100%">
+
+            <div class="board-info-box" style="width: 100%; border: none">
+
+              <div class="info-table">
+                <table class="member-list-table" style="table-layout: auto">
+                  <tr class="member-list-header" id="tableHeaderRow">
+                    <th>No.</th>
+                    <th>입실일시(당일입실횟수)</th>
+                    <th>이름</th>
+                    <th>연락처</th>
+                    <th>성별</th>
+                    <th>나이</th>
+                    <th>RF카드번호</th>
+                    <th>담당강사</th>
+                    <th>당일수업</th>
+                    <th>수업시간</th>
+                    <th>입실횟수<br>(최근 30일 이내)</th>
+                    <th>타지점이용</th>
+                    <th>사진</th>
+
+                  </tr>
+
+                  <tr class="member-list-data member-data-row">
+                    <td>0000</td>
+                    <td>yyyy-MM-dd hh:mm:ss (10)</td>
+                    <td>홍길동</td>
+                    <td>01012345678</td>
+                    <td>남</td>
+                    <td>30</td>
+                    <td>123456</td>
+                    <td>김철수 점장</td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td>/8</td>
+                    <td><a href="#" style="color: blue; font-weight: bold">보기</a></td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+          </section>
+          <div class="page-button-box-layout">
+            <div class="page-button-box">
+              <div class="">
+                <div class="page-button-margin">
+                  <div>
+                    <img src="/image/left_icon.png" class="left-button">
+                  </div>
+                </div>
+              </div>
+              <!-- 현재 페이지 -->
+              <div>1</div>
+              <div class="">
+                <div class="page-button-margin">
+                  <div>
+                    <img src="/image/right_icon.png" class="right-button ">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      </section>
+
+      <!-- 페이지 버튼 -->
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+<script src="/js/sidebar.js"></script>
+
+</html>

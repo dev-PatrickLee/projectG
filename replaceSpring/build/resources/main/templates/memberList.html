@@ -45,22 +45,30 @@
                         <option value="byEnrollDate">등록일</option>
                     </select>
                     <input type="date" class="filter-contents filter-input-box-size" id="dateFilterStart">
-                    <span>~</span>
+                    <span style="padding: 5px 0">~</span>
                     <input type="date" class="filter-contents filter-input-box-size" id="dateFilterEnd">
 
                     <span class="filter-name filter-space">상태</span>
                     <select name="filter-condition" id="conditionFilter" class="filter-contents filter-input-box-size">
-                        <option value="validMember">유효회원</option>
+                        <option value="all">전체</option>
+                        <option value="valid">유효회원</option>
+                        <option value="expired">만기회원</option>
+                        <option value="mayExpired">만기예정</option>
                     </select>
+                    <input type="number" name="expirationDate" id="expirationDateInput" style="display: none; border: none">
 
                     <span class="filter-name filter-space">RF카드</span>
                     <select name="filter-condition" id="rfFilter" class="filter-contents filter-input-box-size">
                         <option value="all">전체</option>
+                        <option value="Y">발행</option>
+                        <option value="N">미발행</option>
                     </select>
 
                     <span class="filter-name filter-space">앱설치</span>
                     <select name="filter-condition" id="appFilter" class="filter-contents filter-input-box-size">
                         <option value="all">전체</option>
+                        <option value="Y">설치</option>
+                        <option value="N">미설치</option>
                     </select>
                     <span class="filter-name filter-space">담당강사</span>
                     <select name="filter-condition" id="trainer" class="filter-contents filter-input-box-size">
@@ -83,7 +91,7 @@
                     <select name="filter-condition" id="memberFilter" class="filter-contents filter-input-box-size">
                         <option value="all">이름</option>
                     </select>
-                    <input type="text" class="filter-contents">
+                    <input type="text" style="border: none">
 
 
                     <span class="filter-name filter-space">정렬기준</span>
@@ -278,4 +286,16 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/sidebar.js"></script>
+<script>
+    const $conditionFilter = $("#conditionFilter");
+    const $expirationDateInput = $("#expirationDateInput");
+
+    $conditionFilter.change(function(){
+        if ($conditionFilter.val() === "mayExpired"){
+            $expirationDateInput.css("display", "block");
+        }else{
+            $expirationDateInput.css("display", "none");
+        }
+    })
+</script>
 </html>

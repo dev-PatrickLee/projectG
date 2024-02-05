@@ -10,7 +10,7 @@ import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class MapperTests {
+public class MapperTest {
     @Autowired
     public MemberDAO memberDAO;
 
@@ -22,4 +22,3 @@ public class MapperTests {
 
 
 }
-

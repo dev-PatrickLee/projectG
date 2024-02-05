@@ -35,7 +35,6 @@ table {
 .board-info-box {
     width: 400px;
     border: 0.0625rem solid #f2f2f2;
-    box-shadow: 11px 13px 11px -14px grey;
     background: #fff;
 }
 
@@ -255,20 +254,20 @@ div.margin span {
     display: inline-block;
     margin-left: 10px;
     margin-top: 10px;
+    height: 500px;
 }
 .calendar-table{
     text-align: center;
     width: 100%;
-    height: 91%;
+    height: 90%;
     border-collapse: collapse;
     border: 2px solid #bbb;
     table-layout: fixed;
 }
-.calendar-table th, calendar-table td{
-    font-size: 12px;
+#calendar th, #calendar td{
+    font-size: 0.8em !important;
     padding: 0;
 }
-
 .info-input{
     display: inline-block;
     height: 20px;
@@ -287,11 +286,14 @@ div.margin span {
     background-size: contain;
     margin-left: 1%;
 }
-.member-img {
-
+.member-img-container{
+    height: 320px;
     margin: 0 auto;
-    width: 100%;
+}
+.member-img {
+    margin: 0 auto;
     height: 100%;
+    width: 100%;
 }
 .member-calendar-img-container{
     display: flex;
@@ -305,6 +307,7 @@ div.margin span {
     display: inline-block;
     width: 100%;
     text-align: left;
+    margin-top: 10px;
 }
 .member-info-flex{
     display: flex;
@@ -434,13 +437,6 @@ div.margin span {
     background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
     background: linear-gradient(to right, #93F9B9, #1D976C);
 
-}
-.filter-wrap{
-    width: 100%;
-    background-color: #dddddd;
-    border-radius: 3px;
-    padding-left: 10px;
-    margin: 10px 0;
 }
 
 .filter-contents{

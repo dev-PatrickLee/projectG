@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출입통계</title>
+    <link rel="stylesheet" href="/css/sideBar.css">
+    <link rel="stylesheet" href="/css/memberList.css">
+    <link rel="stylesheet" href="/css/memberDetail.css">
+
+</head>
+
+<body>
+<header>
+    <div class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">출입통계</span>
+        </div>
+        <div class="user-info-container" >
+            <div style="margin-right: 5px">
+                testId
+            </div>
+            <span>/</span>
+            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
+        </div>
+    </div>
+</header>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 내용 섹션 -->
+            <h3 class="page-title">
+                통계 > 출입통계
+            </h3>
+            <hr class="title-line">
+            <div class="filter-wrap" style="display: block">
+                <div class="filter-box">
+                    <span class="filter-name">출입일</span>
+                    <select name="date-search-filter-trainer" id="dateSearchFilterYear" class="filter-contents filter-input-box-size" style="width: 5%">
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                    <select name="date-search-filter-trainer" id="dateSearchFilterMonth" class="filter-contents filter-input-box-size" style="width: 5%">
+                        <option value="1">1월</option>
+                        <option value="2">2월</option>
+                        <option value="3">3월</option>
+                        <option value="4">4월</option>
+                        <option value="5">5월</option>
+                        <option value="6">6월</option>
+                        <option value="7">7월</option>
+                        <option value="8">8월</option>
+                        <option value="9">9월</option>
+                        <option value="10">10월</option>
+                        <option value="11">11월</option>
+                        <option value="12">12월</option>
+                    </select>
+
+                    <input type="button" value="조회" class="filter-confirm-button" id="filterApplyBtn">
+
+                </div>
+            </div>
+            <h3>
+                시간대별 입실인원수 (X:시간 , Y:인원수) *중복 X
+            </h3>
+            <div style="margin: 10px 0; overflow: auto">
+                <div class="chartBox">
+                    <canvas id="byTimeChart" style="height: 300px; width: 2000px"></canvas>
+                </div>
+            </div>
+            <br>
+            <h3>
+                시간대별 입실인원수 (X:시간 , Y:인원수) *중복 O
+            </h3>
+            <div style="margin: 10px 0; overflow: auto">
+                <div class="chartBox">
+                    <canvas id="byTimeChartDuplicant" style="height: 300px; width: 2000px"></canvas>
+                </div>
+            </div>
+            <br>
+            <h3>
+                일별 입실인원수 (X:시간 , Y:인원수)
+            </h3>
+            <div style="margin: 10px 0; overflow: auto">
+                <div class="chartBox">
+                    <canvas id="byDayChart" style="height: 300px; width: 2000px"></canvas>
+                </div>
+            </div>
+
+            </section>
+
+            <!-- 페이지 버튼 -->
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/js/sidebar.js"></script>
+<script>
+    const $historyTitles = $(".member-history-title");
+    const $historyBody = $("#historyBody");
+    function titleActive(data){
+        $historyTitles.removeClass("active-title");
+        $(data).addClass("active-title");
+        $(".info-table-wrap").toggle();
+
+    }
+
+</script>
+<script>
+
+    let labelContainer = [];
+    let dataContainer = [];
+    let colorContainer = [];
+    let labelDisplay = [];
+    let numOfRandomGen = 24;
+
+
+    for (let i = 0;i<numOfRandomGen; i++){
+        // let val=Math.floor(Math.random() * 2000000) - 1000000;
+        let val=Math.floor(Math.random() * 100);
+        labelContainer.push(i+1);
+        dataContainer.push(val);
+        colorContainer.push('#dddddd');
+        if (val <= 0){
+            labelDisplay.push(true);
+        }else{
+            labelDisplay.push(false);
+        }
+    }
+    const ctx = document.getElementById('byTimeChart');
+
+    $("#byTimeChart").css('width','100%');
+
+    const byTimeChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labelContainer,
+            datasets: [{
+                label: '',
+                data:dataContainer,
+                borderWidth: 0,
+                borderColor: colorContainer,
+                backgroundColor : colorContainer,
+                hoverBackgroundColor: '#888888',
+                datalabels:{
+                    display: labelDisplay,
+                    color: 'black'
+                }
+            }]
+        },
+        options: {
+            legend:{
+                display: false
+            },
+            plugins:{
+                legend:{
+                    display: false,
+                },
+                datalabels:{
+                    anchor:'end',
+                    align: 'top'
+
+                },
+                title:{
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                    // min:0,
+                    // max:1000000
+                },
+                x:{
+                    grid:{
+                        display : false
+                    }
+                }
+
+            },
+            responsive:false,
+            maintainAspectRatio:false,
+            animation:{
+                duration:0
+            }
+        },
+        plugins: [ChartDataLabels],
+        textAlign:"center",
+        textBaseline:"bottom"
+
+    });
+
+    ctx.onclick = (evt) =>{
+        const res = byTimeChart.getElementsAtEventForMode(
+            evt,
+            'nearest',
+            { intersect: true },
+            true
+        );
+        if (res.length === 0) {
+            return;
+        }
+        if (byTimeChart.data.datasets[0].datalabels.display[res[0].index]) {
+            byTimeChart.data.datasets[0].datalabels.display[res[0].index] = false;
+            byTimeChart.data.datasets[0].backgroundColor[res[0].index] = '#dddddd';
+
+        }else{
+            byTimeChart.data.datasets[0].datalabels.display[res[0].index] = true;
+            byTimeChart.data.datasets[0].backgroundColor[res[0].index] = '#444444';
+
+        }
+
+        byTimeChart.update();
+    };
+
+
+
+
+
+
+</script>
+<script>
+    let labelContainer2 = [];
+    let dataContainer2 = [];
+    let colorContainer2 = [];
+    let labelDisplay2 = [];
+    let numOfRandomGen2 = 30;
+    for (let i = 0;i<numOfRandomGen2; i++){
+        // let val=Math.floor(Math.random() * 2000000) - 1000000;
+        let val=Math.floor(Math.random() * 100);
+        labelContainer2.push(i+1);
+        dataContainer2.push(val);
+        colorContainer2.push('#dddddd');
+        if (val <= 0){
+            labelDisplay2.push(true);
+        }else{
+            labelDisplay2.push(false);
+        }
+    }
+    const ctx2 = document.getElementById('byDayChart');
+
+    $("#byDayChart").css('width','100%');
+
+    const byDayChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: labelContainer2,
+            datasets: [{
+                label: '',
+                data:dataContainer2,
+                borderWidth: 0,
+                borderColor: colorContainer2,
+                backgroundColor : colorContainer2,
+                hoverBackgroundColor: '#888888',
+                datalabels:{
+                    display: labelDisplay2,
+                    color: 'black'
+                }
+            }]
+        },
+        options: {
+            legend:{
+                display: false
+            },
+            plugins:{
+                legend:{
+                    display: false,
+                },
+                datalabels:{
+                    anchor:'end',
+                    align: 'top'
+
+                },
+                title:{
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                    // min:0,
+                    // max:1000000
+                },
+                x:{
+                    grid:{
+                        display : false
+                    }
+                }
+
+            },
+            responsive:false,
+            maintainAspectRatio:false,
+            animation:{
+                duration:0
+            }
+        },
+        plugins: [ChartDataLabels],
+        textAlign:"center",
+        textBaseline:"bottom"
+
+    });
+
+    ctx2.onclick = (evt) =>{
+        const res = byDayChart.getElementsAtEventForMode(
+            evt,
+            'nearest',
+            { intersect: true },
+            true
+        );
+        if (res.length === 0) {
+            return;
+        }
+        if (byDayChart.data.datasets[0].datalabels.display[res[0].index]) {
+            byDayChart.data.datasets[0].datalabels.display[res[0].index] = false;
+            byDayChart.data.datasets[0].backgroundColor[res[0].index] = '#dddddd';
+
+        }else{
+            byDayChart.data.datasets[0].datalabels.display[res[0].index] = true;
+            byDayChart.data.datasets[0].backgroundColor[res[0].index] = '#444444';
+
+        }
+
+        byDayChart.update();
+    };
+</script>
+<script>
+    let labelContainer3 = [];
+    let dataContainer3 = [];
+    let colorContainer3 = [];
+    let labelDisplay3 = [];
+    let numOfRandomGen3 = 30;
+    for (let i = 0;i<numOfRandomGen3; i++){
+        // let val=Math.floor(Math.random() * 2000000) - 1000000;
+        let val=Math.floor(Math.random() * 100);
+        labelContainer3.push(i+1);
+        dataContainer3.push(val);
+        colorContainer3.push('#dddddd');
+        if (val <= 0){
+            labelDisplay3.push(true);
+        }else{
+            labelDisplay3.push(false);
+        }
+    }
+    const ctx3 = document.getElementById('byTimeChartDuplicant');
+
+    $("#byTimeChartDuplicant").css('width','100%');
+
+    const byTimeChartDuplicant = new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: labelContainer3,
+            datasets: [{
+                label: '',
+                data:dataContainer3,
+                borderWidth: 0,
+                borderColor: colorContainer3,
+                backgroundColor : colorContainer3,
+                hoverBackgroundColor: '#888888',
+                datalabels:{
+                    display: labelDisplay3,
+                    color: 'black'
+                }
+            }]
+        },
+        options: {
+            legend:{
+                display: false
+            },
+            plugins:{
+                legend:{
+                    display: false,
+                },
+                datalabels:{
+                    anchor:'end',
+                    align: 'top'
+
+                },
+                title:{
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                    // min:0,
+                    // max:1000000
+                },
+                x:{
+                    grid:{
+                        display : false
+                    }
+                }
+
+            },
+            responsive:false,
+            maintainAspectRatio:false,
+            animation:{
+                duration:0
+            }
+        },
+        plugins: [ChartDataLabels],
+        textAlign:"center",
+        textBaseline:"bottom"
+
+    });
+
+    ctx3.onclick = (evt) =>{
+        const res = byTimeChartDuplicant.getElementsAtEventForMode(
+            evt,
+            'nearest',
+            { intersect: true },
+            true
+        );
+        if (res.length === 0) {
+            return;
+        }
+        if (byTimeChartDuplicant.data.datasets[0].datalabels.display[res[0].index]) {
+            byTimeChartDuplicant.data.datasets[0].datalabels.display[res[0].index] = false;
+            byTimeChartDuplicant.data.datasets[0].backgroundColor[res[0].index] = '#dddddd';
+
+        }else{
+            byTimeChartDuplicant.data.datasets[0].datalabels.display[res[0].index] = true;
+            byTimeChartDuplicant.data.datasets[0].backgroundColor[res[0].index] = '#444444';
+
+        }
+
+        byTimeChartDuplicant.update();
+    };
+</script>
+
+</html>

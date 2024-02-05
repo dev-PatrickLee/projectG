@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<ul style="overflow: revert; padding: 0px">
+<ul class="side-bar-container" style=" padding: 0px">
     <div class="side-bar-first">menu</div>
     <hr>
     <li class="side-list">
@@ -55,12 +55,45 @@
     </li>
     <li class="side-list">
         <a href="#" class="side-option">업무관리</a>
+        <div class="sub-list">
+            <hr>
+            <a href="/admin/otReport" class="sub-option">OT히스토리</a>
+            <a href="/admin/ptReport" class="sub-option">PT세션차트</a>
+            <a href="#" class="sub-option">업무보고서</a>
+            <a href="/admin/mySalary" class="sub-option">나의급여</a>
+            <a href="/admin/salaryResult" class="sub-option">급여실적</a>
+            <a href="#" class="sub-option">지출요청</a>
+            <a href="#" class="sub-option">나의레벨</a>
+
+        </div>
     </li>
     <li class="side-list">
-        <a href="#" class="side-option">회계관리</a>
+        <a href="javascript:;" onclick="clickOption(this)" class="side-option">회계관리</a>
+        <div class="sub-list">
+            <hr>
+            <a href="#" class="sub-option">결제내역</a>
+            <a href="/admin/salaryManagement" class="sub-option">급여관리</a>
+            <a href="/admin/salaryClose" class="sub-option">급여마감</a>
+            <a href="/admin/salaryPolicyManagement" class="sub-option">급여정책관리</a>
+            <a href="#" class="sub-option">지출요청관리</a>
+            <a href="#" class="sub-option">현금출납부</a>
+            <a href="#" class="sub-option">결제수단별매출</a>
+            <a href="/admin/incomeResult" class="sub-option">손익산출자료</a>
+            <a href="#" class="sub-option">거래처관리</a>
+            <a href="#" class="sub-option">계정과목관리</a>
+        </div>
     </li>
     <li class="side-list">
-        <a href="#" class="side-option">통계</a>
+        <a href="javascript:;" onclick="clickOption(this)" class="side-option">통계</a>
+        <div class="sub-list">
+            <hr>
+            <a href="/admin/salesStatistics" class="sub-option">매출통계</a>
+            <a href="/admin/memberStatistics" class="sub-option">회원통계</a>
+            <a href="/admin/ptAttendanceStatistics" class="sub-option">PT출석통계</a>
+            <a href="/admin/visitHistoryPage" class="sub-option">출입통계</a>
+            <a href="/admin/visitStatistics" class="sub-option">출입기록</a>
+
+        </div>
     </li>
     <li class="side-list">
         <a href="#" class="side-option">환경설정</a>

@@ -3,10 +3,9 @@
 tr{
     line-height: 15px;
 }
-.member-list-table tr {
-    border-bottom: 0.5px solid #c60a164d;
+.member-list-table{
+    text-align: center;
 }
-
 .member-list-table th{
     padding: 10px 0;
     border: 1px solid white;
@@ -15,10 +14,11 @@ tr{
 }
 .member-list-table td{
     padding: 10px 0;
+    border-bottom: 1px solid #d5d5d5;
+    border-top: 1px solid #d5d5d5;
 }
 .member-list-header{
     background-color: #dddddd;
-    border-bottom: 2px solid black;
 }
 .member-list-table{
     border-bottom: 2px solid black;
@@ -38,10 +38,22 @@ table th, table td {
 table td {
     font-weight: 300;
 }
+
 .member-list-data td:nth-child(even){
     background-color: #f0f0f0;
 }
+.member-list-data td:nth-child(odd){
+     background-color: #ffffff;
+ }
 
+.list-data-result td{
+    font-weight: bold;
+    background-color: #f0f0f0 !important;
+
+}
+.red-box td{
+    background-color: #ff9999 !important;
+}
 
 table {
     text-align : center;
@@ -152,6 +164,7 @@ table {
 }
 .filter-input-box-size{
     width: 6%;
+    height: 30px;
 }
 .member-statistics-wrap{
     margin: 20px 0;
@@ -182,7 +195,43 @@ table {
     width: 100%;
     height: 500px;
     overflow: auto;
+    display: block;
 }
 .info-table{
     text-align: center;
+}
+.left-sort td{
+    text-align: left !important;
+}
+.staff-list-wrap{
+    width: 15%;
+    display: inline-block;
+    margin: 0 5px;
+    height: 80%;
+
+
+}
+.staff-salary-detail-setting-wrap{
+    display: inline-block;
+    width: 100%;
+    margin: 0 5px;
+
+}
+.staff-list-box{
+    border: 2px solid #d3d3d3;
+    height: 100%;
+    overflow: auto  ;
+    padding: 0;
+}
+.staff-list-box li{
+    height: 25px;
+    padding: 5px;
+
+}
+.staff-list-box li:hover{
+    background-color: #e0e0e0;
+}
+.info-setting-contents{
+    display: block;
+    height: 15px;
 }

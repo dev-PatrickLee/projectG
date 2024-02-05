@@ -96,7 +96,7 @@ public class AdminController {
     public String lockerManagement(){
         return "lockerManagement";
     }
-    @GetMapping("dailyScheduleManagement")
+    @GetMapping("dailyScheduleManagement")//일별 스케줄 관리
     public String scheduleManagement(){
         return "dailyScheduleManagement";
     }
@@ -110,15 +110,79 @@ public class AdminController {
         return "sidebar";
     }
 
-    @GetMapping("strategyNote")
+    @GetMapping("strategyNote")//전략 노트
     public String StrategyNote(){
         return "strategyNote";
     }
 
-    @GetMapping("trainerScheduleManagement")
+    @GetMapping("trainerScheduleManagement")//강사별 스케줄 관리
     public String trainerScheduleManagement(){
         return "trainerScheduleManagement";
     }
+
+
+    @GetMapping("otReport")//ot보고서
+    public String otReport(){
+        return "otReport";
+    }
+
+    @GetMapping("ptReport")//pt보고서
+    public String ptReport(){
+        return "ptReport";
+    }
+
+    @GetMapping("mySalary")//나의 급여
+    public String mySalary(){
+        return "mySalary";
+    }
+    @GetMapping("salaryClose")//급여 마감
+    public String salaryClose(){
+        return "salaryClose";
+    }
+    @GetMapping("salaryManagement")//급여관리
+    public String salaryManagement(){
+        return "salaryManagement";
+    }
+    @GetMapping("salaryPolicyManagement")//급여정책관리
+    public String salaryPolicyManagement(){
+        return "salaryPolicyManagement";
+    }
+    @GetMapping("salaryResult")//급여실적
+    public String salaryResult(){
+        return "salaryResult";
+    }
+    @GetMapping("incomeResult")//손익산출자료
+    public String incomeResult(){
+        return "incomeResult";
+    }
+    @GetMapping("staffManagement")//직원관리
+    public String staffManagement(){
+        return "staffManagement";
+    }
+    @GetMapping("salesStatistics")
+    public String salesStatistics(){
+        return "salesStatistics";
+    }
+    @GetMapping("memberStatistics")
+    public String memberStatistics(){
+        return "memberStatistics";
+    }
+    @GetMapping("ptAttendanceStatistics")
+    public String ptAttendanceStatistics(){
+        return "ptAttendanceStatistics";
+    }
+    @GetMapping("visitHistoryPage")
+    public String visitHistoryPage(){
+        return "visitHistory";
+    }
+    @GetMapping("visitStatistics")
+    public String visitStatistics(){
+        return "visitStatistics";
+    }
+
+
+
+
 
     @GetMapping("documentEnrollModal")
     public String documentEnrollModal(){

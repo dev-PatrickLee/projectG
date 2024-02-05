@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>급여정책관리</title>
-    <link rel="stylesheet" href="../static/css/sideBar.css">
-    <link rel="stylesheet" href="../static/css/memberList.css">
-    <link rel="stylesheet" href="../static/css/memberDetail.css">
+    <link rel="stylesheet" href="/css/sideBar.css">
+    <link rel="stylesheet" href="/css/memberList.css">
+    <link rel="stylesheet" href="/css/memberDetail.css">
 </head>
 
 <body>
@@ -72,15 +72,15 @@
                     <table class="member-history-title-talbe" style="width: 20%">
                         <tbody>
                         <tr class="member-history-title-box">
-                            <th id="purchaseHistory" onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
-                            <th id="visitHistory" onclick="titleActive(this)" class="member-history-title">출입내역</th>
+                            <th id="settingSalaryPolicyByPosition" onclick="titleActive(this)" class="member-history-title active-title">업무별 급여정책 설정</th>
+                            <th id="settingSalaryPolicyByStaff" onclick="titleActive(this)" class="member-history-title">직원별 급여정책 설정</th>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div>
-                <div class="info-table-wrap" style="height: auto">
+                <div class="info-table-wrap settingSalaryPolicyByPosition" style="height: auto;">
                     <h2>총괄매니저</h2>
                     <table class="member-list-table"  style="border-bottom: 2px solid #d3d3d3">
                         <tr class="member-list-header">
@@ -555,6 +555,151 @@
                         </tr>
                     </table>
                 </div>
+
+                <div class="info-table-wrap settingSalaryPolicyByStaff" style="display: none">
+                    <div style="display: flex">
+                        <div class="staff-list-wrap">
+                            <div style="height: auto; margin: 10px 0">
+                                <h3 style="display: inline-block">직원</h3>
+                                <input type="text" class="user-registration-button" style="background-color: #01B0F1; text-align: center; width: 70px; height: 25px; float: right; display: block; margin: 0" value="추가">
+                            </div>
+                            <ul class="staff-list-box">
+                                <li>직원 01</li>
+                                <li>직원 02</li>
+                                <li>직원 03</li>
+                                <li>직원 04</li>
+                                <li>직원 05</li>
+                                <li>직원 06</li>
+                                <li>직원 07</li>
+                                <li>직원 08</li>
+                                <li>직원 09</li>
+                                <li>직원 10</li>
+                            </ul>
+
+                        </div>
+                        <div class="staff-salary-detail-setting-wrap">
+                            <input type="text" class="user-registration-button" style="background-color: #333333; text-align: center; width: 70px; height: 25px; margin: 10px 0; float: right" value="저장">
+                            <table class="info-table info-setting-table">
+                                <tr>
+                                    <td class="td-info-title">입사일</td>
+                                    <td>2024-01-01</td>
+                                    <td class="td-info-title">이름</td>
+                                    <td>홍길동</td>
+                                    <td class="td-info-title">퇴사일</td>
+                                    <td>2025-01-01</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-info-title">직책</td>
+                                    <td>트레이너</td>
+                                    <td class="td-info-title">직급</td>
+                                    <td></td>
+                                    <td class="td-info-title">등급</td>
+                                    <td>
+                                        <select name="rankSelect" id="rankSelect">
+                                            <option value="none" selected>선택</option>
+                                            <option value="staff">정직원</option>
+                                            <option value="freelancer">프리렌서</option>
+                                        </select>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="td-info-title">기본급</td>
+                                    <td>
+                                        <input type="number" id="defaultSalary">
+                                    </td>
+                                    <td class="td-info-title">소득세(3.3%)</td>
+                                    <td></td>
+                                    <td class="td-info-title"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="td-info-title" rowspan="9">업무수당 정책</td>
+                                    <td colspan="5">
+                                    <span>
+                                        총괄매니저
+                                    </span>
+                                        <select name="salaryPolicySelect" id="ManagerSalaryPolicySelect">
+                                            <option value="none" selected>선택</option>
+                                            <option value="A1">업무별 급여정책 [A1]</option>
+                                            <option value="A2">업무별 급여정책 [A2]</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                    <span>
+                                        FC 관리자
+                                    </span>
+                                        <select name="salaryPolicySelect" id="fcAdminSalaryPolicySelect">
+                                            <option value="none" selected>선택</option>
+                                            <option value="B1">업무별 급여정책 [B1]</option>
+                                            <option value="B2">업무별 급여정책 [B2]</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                    <span>
+                                        PT 관리자
+                                    </span>
+                                        <select name="salaryPolicySelect" id="ptAdminSalaryPolicySelect">
+                                            <option value="none" selected>선택</option>
+                                            <option value="C1">업무별 급여정책 [C1]</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                    <span>
+                                        FC 담당
+                                    </span>
+                                        <select name="salaryPolicySelect" id="fcStaffSalaryPolicySelect">
+                                            <option value="none" selected>선택</option>
+                                            <option value="D1">업무별 급여정책 [D1]</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                    <span>
+                                        PT 담당
+                                    </span>
+                                        <select name="salaryPolicySelect" id="ptStaffSalaryPolicySelect">
+                                            <option value="none" selected>선택</option>
+                                            <option value="E1">업무별 급여정책 [E1]</option>
+                                            <option value="E2">업무별 급여정책 [E2]</option>
+                                            <option value="E3">업무별 급여정책 [E3]</option>
+                                            <option value="E4">업무별 급여정책 [E4]</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        GX담당
+                                    </td>
+                                    <td colspan="4" style="align-items: center">
+                                        <div style="display: flex">
+                                            <div style="display: inline-block">
+                                                <span class="info-setting-contents"style="margin: 8px">줌바</span>
+                                                <span class="info-setting-contents"style="margin: 8px">요가</span>
+                                                <span class="info-setting-contents"style="margin: 8px">필라테스</span>
+                                                <span class="info-setting-contents"style="margin: 8px">방공댄스</span>
+                                            </div>
+                                            <div style="display: inline-block">
+                                                <input class="info-setting-contents" type="number" value="0" style="text-align: right; margin: 3px">
+                                                <input class="info-setting-contents" type="number" value="0" style="text-align: right; margin: 3px">
+                                                <input class="info-setting-contents" type="number" value="0" style="text-align: right; margin: 3px">
+                                                <input class="info-setting-contents" type="number" value="0" style="text-align: right; margin: 3px">
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <br>
 
@@ -588,4 +733,15 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/sidebar.js"></script>
+<script>
+    const $historyTitles = $(".member-history-title");
+    const $historyBody = $("#historyBody");
+    function titleActive(data){
+        $historyTitles.removeClass("active-title");
+        $(data).addClass("active-title");
+        $(".info-table-wrap").toggle();
+        
+    }
+
+</script>
 </html>

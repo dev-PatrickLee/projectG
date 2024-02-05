@@ -1,155 +1,124 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 급여</title>
-    <link rel="stylesheet" href="../static/css/sideBar.css">
-    <link rel="stylesheet" href="../static/css/memberList.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/test.css">
 </head>
-
 <body>
-<header>
-    <div class="info-title-box flex">
-        <div class="header-name">
-            <span class="title-name">회원목록</span>
-        </div>
-        <div class="user-info-container" >
-            <div style="margin-right: 5px">
-                testId
-            </div>
-            <span>/</span>
-            <a href="#"style="color: black; margin-left: 5px">로그아웃</a>
-        </div>
-    </div>
-</header>
-<div class="wrap">
-
-    <!-- 사이드 바 -->
-
-    <aside class="side-bar"></aside>
-
-    <div class="container">
-        <div class="container-margin">
-            <!-- 내용 섹션 -->
-            <h3 class="page-title">
-                업무관리 > 나의급여
-            </h3>
-            <hr class="title-line">
-            <div class="filter-wrap" style="display: block">
-                <div class="filter-box">
-                    <span class="filter-name">지급년월</span>
-                    <select name="date-search-filter" id="dateSearchFilterStartYear" class="filter-contents filter-input-box-size">
-                        <option value="byEnrollDate">2023</option>
-                    </select>
-                    <select name="date-search-filter" id="dateSearchFilterStartMonth" class="filter-contents filter-input-box-size">
-                        <option value="byEnrollDate">01</option>
-                    </select>
-                    <span style="margin: auto 5px;
-                                 display: inline-block;
-                                 text-align: center;
-                                 padding: 5px 0;
-                                 font-weight: bolder;">~</span>
-                    <select name="date-search-filter" id="dateSearchFilterEndYear" class="filter-contents filter-input-box-size">
-                        <option value="byEnrollDate">2023</option>
-                    </select>
-                    <select name="date-search-filter" id="dateSearchFilterEndMonth" class="filter-contents filter-input-box-size">
-                        <option value="byEnrollDate">01</option>
-                    </select>
-
-                    <input type="button" value="조회" class="filter-confirm-button">
-
-                </div>
-            </div>
-            <div style="margin: 10px 0">
-                <select name="numOfData" id="numOfData" style="width: 3%; height: 25px">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
-                </select>
-                <div style="display: flex; float: right;">
-                    <input type="button" value="담당강사 배정" class="member-list-controll-button">
-                    <input type="button" value="SMS 발송" class="member-list-controll-button">
-                    <input type="button" value="TM전달" class="member-list-controll-button">
-                </div>
-            </div>
-            <section class="board-info-box-layout">
-
-                <div class="board-info-box">
-
-                    <div class="info-table-wrap">
-                        <table class="member-list-table">
-                            <tr class="member-list-header">
-                                <th>No</th>
-                                <th>지급년월</th>
-                                <th>직원명</th>
-                                <th>직책</th>
-                                <th>직급</th>
-                                <th>상태</th>
-                                <th>기본급 <br> (3.3% 적용)</th>
-                                <th>그외수당 <br> (3.3% 적용)</th>
-                                <th>공제총액</th>
-                                <th>총급여</th>
-                            </tr>
-                            <th:block th:if="${ #lists.isEmpty(list)}">
-                                <tr class="member-list-data">
-                                    <th colspan="18">
-                                        회원이 없습니다
-                                    </th>
-                                </tr>
-                            </th:block>
-                            <th:block th:if="${not #lists.isEmpty(list)}">
-                                <th:block th:each = "member : ${list}">
-                                    <tr class="member-list-data">
-                                        <td>1</td>
-                                        <td>2023-12</td>
-                                        <td>홍길동</td>
-                                        <td>지점장</td>
-                                        <td></td>
-                                        <td>지급대기</td>
-                                        <td>0 <br> (0)</td>
-                                        <td>0 <br> (0)</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                </th:block>
-
-                            </th:block>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 페이지 버튼 -->
-            <div class="page-button-box-layout">
-                <div class="page-button-box">
-                    <div class="">
-                        <div class="page-button-margin">
-                            <div>
-                                <img src="/image/left_icon.png" class="left-button">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 현재 페이지 -->
-                    <div>1</div>
-                    <div class="">
-                        <div class="page-button-margin">
-                            <div>
-                                <img src="/image/right_icon.png" class="right-button ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="chartBox">
+    <canvas id="myChart" style="height: 300px; width: auto"></canvas>
 </div>
+<div class="info" >
+    This is the extra info box :
 </div>
-</body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="/js/sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+<script>
+
+    let dataContainer = [];
+    let colorContainer = [];
+    let labelDisplay = [];
+    let anchors = [];
+    let aligns = [];
+
+    for (let i = 0;i<12; i++){
+        let val=Math.floor(Math.random() * 2000000) - 1000000;
+        dataContainer.push(val);
+        colorContainer.push('#dddddd');
+        labelDisplay.push(false);
+        anchors.push(val>=0 ? 'end' : 'start');
+        aligns.push(val>=0 ? 'top' : 'bottom');
+    }
+    const ctx = document.getElementById('myChart');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1월', '2월', '3월', '4월', '5월', '6월','7월', '8월', '9월', '10월', '11월', '12월'],
+            datasets: [{
+                label: '',
+                data:dataContainer,
+                borderWidth: 0,
+                borderColor: colorContainer,
+                backgroundColor : colorContainer,
+                hoverBackgroundColor: '#888888',
+                datalabels:{
+                    display: labelDisplay,
+                    color: 'black'
+                }
+            }]
+        },
+        options: {
+            legend:{
+                display: false
+            },
+            plugins:{
+                legend:{
+                    display: false,
+                },
+                datalabels:{
+                    anchor:anchors,
+                    align: aligns
+
+                },
+                title:{
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    // beginAtZero: true
+                    min:-1000000,
+                    max:1000000
+                },
+                x:{
+                    grid:{
+                        display : false
+                    }
+                }
+            },
+            responsive:false,
+            maintainAspectRatio:false,
+            animation:{
+                duration:0
+            }
+        },
+        plugins: [ChartDataLabels],
+        textAlign:"center",
+        textBaseline:"bottom"
+
+    });
+    ctx.onclick = (evt) =>{
+        const res = chart.getElementsAtEventForMode(
+            evt,
+            'nearest',
+            { intersect: true },
+            true
+        );
+        if (res.length === 0) {
+            return;
+        }
+        if (chart.data.datasets[0].datalabels.display[res[0].index]) {
+            chart.data.datasets[0].datalabels.display[res[0].index] = false;
+            chart.data.datasets[0].backgroundColor[res[0].index] = '#dddddd';
+
+        }else{
+            chart.data.datasets[0].datalabels.display[res[0].index] = true;
+            chart.data.datasets[0].backgroundColor[res[0].index] = '#444444';
+
+        }
+
+        chart.update()
+    };
+
+</script>
+
+
+
 </html>
