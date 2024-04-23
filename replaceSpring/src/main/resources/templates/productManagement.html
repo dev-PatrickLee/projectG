@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 관리</title>
+    <link rel="stylesheet" href="/css/sideBar.css">
+    <link rel="stylesheet" href="/css/staffManagement.css">
+
+</head>
+
+<body>
+<div>
+    <header class="info-title-box flex">
+        <div class="header-name">
+            <span class="title-name">상품 관리</span>
+        </div>
+    </header>
+</div>
+<div class="wrap">
+
+    <!-- 사이드 바 -->
+
+    <aside class="side-bar"></aside>
+
+    <div class="container">
+        <div class="container-margin">
+            <!-- 내용 섹션 -->
+            <h3 class="page-title">
+                환경설정 &gt; 상품관리
+            </h3>
+            <hr class="title-line">
+            <div class="filter-wrap" style="display: block">
+                <div class="filter-box">
+                    <span class="filter-name">가격</span>
+                    <select name="jobSelection" id="jobSelection" class="filter-contents filter-input-box-size">
+                        <option value="none" selected>선택</option>
+                        <option value="none">100,000</option>
+                        <option value="none">300,000</option>
+                        <option value="none">500,000</option>
+                        <option value="none">800,000</option>
+                        <option value="none">1000,000</option>
+                        <option value="none">2000,000</option>
+                    </select>
+
+                    <span class="filter-name filter-space">상품종류</span>
+                    <select name="staffNameSelection" id="staffNameSelection" class="filter-contents filter-input-box-size">
+                        <option value="none" selected>선택</option>
+                        <option value="none">PT</option>
+                        <option value="none">GPT</option>
+                        <option value="none">선택</option>
+                    </select>
+
+                    <span class="filter-name filter-space">기간</span>
+                    <select name="staffInActionSelection" id="staffInActionSelection" class="filter-contents filter-input-box-size">
+                        <option value="none" selected>선택</option>
+                        <option value="working">1개월</option>
+                        <option value="resting">3개월</option>
+                        <option value="resting">6개월</option>
+                        <option value="resting">1년</option>
+                        <option value="resting">3년</option>
+                        <option value="resting">5년</option>
+                        <option value="resting">10년</option>
+                    </select>
+
+
+                    <input type="button" value="조회" class="filter-confirm-button" id="searchButton">
+
+                    <input type="button" value="상품등록" id="staffEnrollButton" class="staff-registration-button" style="background-color: #01B0F1;">
+                </div>
+            </div>
+
+            <section class="staff-Management-layout-box">
+                <div class="staff-table-wrap">
+                    <table class="staff-table">
+                        <tr>
+                            <th>번호</th>
+                            <th>지점</th>
+                            <th>상품명</th>
+                            <th>기간</th>
+                            <th>가격</th>
+                        </tr>
+                        <th:block th:if="${ #lists.isEmpty(datas)}">
+                            <tr>
+                                <td colspan="11"><span><strong>상품이 없습니다.</strong></span></td>
+                            </tr>
+                        </th:block>
+                        <th:block th:each="product, productStat : ${datas}" th:if="${not #lists.isEmpty(datas)}">
+                            <tr>
+                                <td th:text="${productStat.count}">1</td>
+                                <td th:text="${product.gymName}">헬스jang</td>
+                                <td th:text="${product.productName}">PT</td>
+                                <td th:text="${product.productExpireDates}+'개월'">1개월</td>
+                                <td th:text="${product.productPrice}">100,000</td>
+                            </tr>
+                        </th:block>
+
+
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal" id="modal">
+    <div class="modal_content" title="클릭하면 창이 닫힙니다.">
+        <div class="modal-top-banner">
+            <div style="font-weight: bolder; padding-top: 10px;padding-left: 10px; display: inline-block; float: left; font-size: 30px; color: white">상품 등록</div>
+        </div>
+        <div class="modal_content_container">
+
+            <form action="/admin/enrollProduct" method="get">
+                <table class="staff-info-table">
+                    <tr>
+                        <td class="td-info-title" style="width: 15%" >상품명</td>
+                        <td>
+                            <input type="text" id="productName" name="productName">
+                        </td>
+                        <td class="td-info-title" >기간</td>
+                        <td>
+                            <input type="number" placeholder="개월수" style="display: inline-block" name="productExpireDates">
+                            <span>개월</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-info-title" style="width: 15%" >가격</td>
+                        <td>
+                            <input type="number" id="productPrice" name="productPrice" style="display: inline-block">
+                            <span>원</span>
+                        </td>
+                        <td class="td-info-title" >상품종류</td>
+                        <td>
+                            <label for="productType"></label>
+                            <select id="productType" name="productName">
+                                <option value="선택">선택</option>
+                                <option value="PT">PT</option>
+                                <option value="GPT">GPT</option>
+                                <option value="GX">GX</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="enroll-button-container">
+                    <button type="submit" id="enrollButton" class="user-registration-button" style="background-color: #01B0F1; font-weight: bolder; color: #FFFFFF">등록</button>
+                    <button type="reset" class="user-registration-button enrollCancelButton" style="color: #333333; font-weight: bolder">취소</button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/sidebar.js"></script>
+<script>
+    const $staffEnrollButton = $("#staffEnrollButton");
+    const $modal = $("#modal");
+    const $enrollDate = $("#enrollDate");
+    let today = new Date();
+    function getYmd10() {
+        let d = new Date();
+        return d.getFullYear() + "-" + ((d.getMonth()+1)>9 ? (d.getMonth()+1).toString() : "0"+(d.getMonth()+1)) + "-" + (d.getDate()>9 ? d.getDate().toString() : "0"+d.getDate().toString());
+    }
+    $staffEnrollButton.click(function(){
+        $modal.css("display", "flex");
+        $(".modal_content").css("width", "700px").css("height", "400px");
+        $enrollDate.val(getYmd10());
+    });
+    $(".enrollCancelButton").click(function (){
+        $modal.fadeOut();
+    })
+</script>
+
+</html>

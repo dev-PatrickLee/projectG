@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.replace.mapper.FileMapper">
+    <select id="select" resultType="fileVO">
+        SELECT ID, FILE_PATH,FILE_UUID,FILE_NAME,FILE_TYPE, MEMBER_ID
+        FROM TBL_FILE
+        WHERE MEMBER_ID = #{memberId}
+    </select>
+    <insert id="insert">
+        INSERT INTO TBL_FILE(ID, FILE_PATH,FILE_UUID,FILE_NAME,FILE_TYPE, MEMBER_ID)
+        VALUES (SEQ_FILE.NEXTVAL,#{filePath},#{fileUuid},#{fileName},#{fileType},#{memberId})
+    </insert>
+</mapper>

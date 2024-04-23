@@ -34,7 +34,7 @@
                     <td class="td-info-title">연락처</td>
                     <td colspan="3">
                         <input type="text" name="phone" id="enrollPhone" class="userInfo">
-                        <input type="checkbox" name="sms" id="enrollSMS" value="on"> SMS동의
+                        <input type="checkbox" name="sms" id="enrollSMS"> SMS동의
                         <input type="checkbox" name="tm" id="enrollTM"> TM동의
                     </td>
                     <td class="td-info-title">생년월일</td>
@@ -84,12 +84,13 @@
                 <tr>
                     <td class="td-info-title">개인운동</td>
                     <td>
-                        <input type="radio" name="enroll-self-workout-check"  value="예" checked="checked"> 예
-                        <input type="radio" name="enroll-self-workout-check"  value="아니오"> 아니오
+                        <input type="radio" name="enroll-self-workout-check"  value="true" checked="checked"> 예
+                        <input type="radio" name="enroll-self-workout-check"  value="false"> 아니오
                     </td>
                     <td class="td-info-title">운동목표</td>
                     <td>
                         <select name="goal" id="enrollWorkoutGoal">
+                            <option value="선택">선택</option>
                             <option value="다이어트" selected="selected">다이어트</option>
                             <option value="근력증강">근력증강</option>
                             <option value="보디빌딩">보디빌딩</option>
@@ -249,9 +250,8 @@
         }).open();
     }
     $(".enrollCancelButton").click(function(){
-        $(".modal").fadeOut();
+        modalOff()
         $(".modal").empty();
-        console.log("cancel button click");
     });
 
 </script>

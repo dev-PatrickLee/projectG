@@ -29,14 +29,14 @@
     border-collapse: collapse;
     table-layout: fixed;
     border: 0px;
+
 }
 .schedule-table tr:nth-child(odd){
     background-color:  #dddddd;
 }
 
-.schedule-table th, schedule-table td {
-    padding: 2px 0;
-
+.schedule-table th, .schedule-table td {
+    padding: 0;
 }
 .schedule-table th{
     position: sticky;
@@ -60,6 +60,7 @@
 }
 
 
+
 .schedule-table td:first-child{
     width: 100px !important;
     padding: 0;
@@ -67,3 +68,4 @@
     position: sticky;
     left: 0;
 }
+

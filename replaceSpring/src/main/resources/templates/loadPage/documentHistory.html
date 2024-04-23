@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -28,24 +29,32 @@
         <th>운동목표</th>
         <th>통증정보</th>
     </tr>
-    <tr class="history-data">
-        <td>n</td>
-        <td>yyyy-MM-dd</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-    </tr>
+    <th:block th:if="${!#lists.isEmpty(documentList)}" th:each = "documents,index : ${documentList}">
+        <tr class="history-data">
+            <td th:text="${index.index}">n</td>
+            <td th:text="${documents.documentDate}">yyyy-MM-dd</td>
+            <td th:text="${documents.documentWeight}">0</td>
+            <td th:text="${documents.documentMuscle}">0</td>
+            <td th:text="${documents.documentFatKg}">0</td>
+            <td th:text="${documents.documentFatPercent}">0</td>
+            <td th:text="${documents.documentBodyScore}">0</td>
+            <td th:text="${documents.documentGoal}">0</td>
+            <td th:text="${documents.documentPainInfo}">0</td>
+        </tr>
+    </th:block>
+    <th:block th:if="${#lists.isEmpty(documentList)}">
+        <tr class="history-data">
+            <td colspan="9" style="font-weight: bolder">데이터가 없습니다</td>
+        </tr>
+    </th:block>
 </table>
 </body>
+<script src="/js/sidebar.js"></script>
 <script>
     $("#documentEnrollButton").click(function (){
 
         $(".modal").load("documentEnrollModal");
-        $(".modal").css('display', 'flex');
+        modalOn();
     })
 </script>
 </html>

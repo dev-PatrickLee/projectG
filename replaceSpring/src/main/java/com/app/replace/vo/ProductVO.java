@@ -10,12 +10,13 @@ import org.springframework.stereotype.Component;
 public class ProductVO {
     long id;
     String productName;
+    int productExpireDates;
     int productPrice;
-    long staffId;
+    long gymId;
 }
 //    TBL_PRODUCT
 //      ID (PK)
 //      NAME
 //      PRICE
 //      STAFF_ID (FK) 담당강사
-//
+//      PRODUCT_EXPIRE_DATES

@@ -229,7 +229,7 @@ RF(QR) 카드 번호	nnnnnn
 상품		회원권 n개월
 유효기간		yyyy-MM-dd ~ yyyy-MM-dd
 담당강사		홍길동 프리
-지점		강남점
+지점		(지점이름)점
 
 =============================
 OT(무료체험 PT) 내역
@@ -336,17 +336,71 @@ red : 여자
 
 모든 모달창 점검
 
+-----------------
+유효회원 - 다음달만 수강이 없을때
+문진표 등록일 입력 유/무
+지점에 회원/직원 소속 (점장 1명)
+락커 정보
+------------------
+문진표 번호 회원중심 순번
+라커관리창 : 각 라커에서 회원이름 클릭시 회원정보로 이동
+------------------
 
+상품 table
+-상품번호
+-상품이름
+-결제일자
+-시작일자
+-종료일자
+-결제수단(현금/카드)
+-현금:영수증 발행번호
+-카드:카드사 이름, 승인번호)
 
+회원 프로필 이미지 파일 -> thumbnailator 사용해서 용량 줄이기
 
+스케줄 
+-id
+-강사정보
+-일자
+-시간
+-수강정보
+-수강횟수(	GPT경우 00(무한))
 
+스케줄에 출석/노쇼/수업취소 옵션추가
 
+member
+-id
+-name
+-email
+-password
+-phone
+-zipcode
+-address
+-address detail
+-enroll date
+-RF card
+-gym id
 
+--------------
+gym
+-id
+-name
+-zipcode
+-address
+-address detail
+-phone
+-member id
 
+MEMBER_NAME, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_PHONE, MEMBER_ZIPCODE, MEMBER_ADDRESS, GYM_ID
 
+MEMBER_GENDER, MEMBER_BIRTHDAY, MEMBER_VISIT_PATH
 
+스케줄
+-한칸에 2개 들어갈수 있음
+-정렬됨
+-상태 : 셀프, 예약, 취소, 완료
 
-
+신규 시설 등록창 ***
 
 
 

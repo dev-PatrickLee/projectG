@@ -69,6 +69,9 @@
                 <table class="schedule-table">
                     <tr class="trainers-box">
                         <th  class="trainers"></th>
+                        <th:block th:each="data : ${datas}">
+                            <th class="trainers" th:text="${}"></th>
+                        </th:block>
                         <th class="trainers">test 트레이너</th>
                         <th class="trainers">test 트레이너</th>
                         <th class="trainers">test 트레이너</th>

@@ -68,121 +68,254 @@
                 </section>
 
                 <div class="member-info-flex">
-                    <section class="board-info-box-layout">
-                        <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block; font-size: xx-large;">회원 정보</div>
-                        <div class="member-info-button-container">
-                            <button type="button" class="user-registration-button" id="wearable-button"  style="background-color: #FF416C">웨어러블</button>
-                            <button type="button" class="user-registration-button" id="detail-button" style="background-color: #01B0F1">상세</button>
-                            <button type="button" class="user-registration-button" id="edit-button" style="background-color: #333333">저장</button>
-                        </div>
-                        <table class="info-table info-setting-table" style="height: 450px">
-                            <!--                        회원코드 , 등록일 , 앱설치-->
-                            <tr>
-                                <td class="td-info-title">회원 코드</td>
-                                <td></td>
-                                <td class="td-info-title">등록일</td>
-                                <td></td>
-                                <td class="td-info-title">앱설치</td>
-                                <td></td>
-                            </tr>
 
-                            <!--                        이름 , RF카드 , 성별-->
-                            <tr>
-                                <td class="td-info-title">이름</td>
-                                <td>
-                                    <input type="text" style="width: 80%">
-                                </td>
-                                <td class="td-info-title">RF카드</td>
-                                <td></td>
-                                <td class="td-info-title">성별</td>
-                                <td>
-                                    <input type="radio" name="gender-check"  value="M"> 남성
-                                    <input type="radio" name="gender-check"  value="F"> 여성
-                                </td>
-                            </tr>
-
-                            <!--                        연락처 2 , 생년월일 1-->
-                            <tr>
-                                <td class="td-info-title">연락처</td>
-                                <td colspan="3">
-                                    <input type="text">
-                                    <a href="#" class="messageButton">문자</a>
-                                    <input type="checkbox"> SMS동의
-                                    <input type="checkbox"> TM동의
-                                </td>
-                                <td class="td-info-title">생년월일</td>
-                                <td>
-                                    <input type="text" style="width: 90%">
-                                </td>
-                            </tr>
-
-                            <!--                        주소 3-->
-                            <tr>
-                                <td class="td-info-title">주소</td>
-                                <td colspan="5"></td>
-
-                            </tr>
-
-                            <!--                        등록구분 , 방문경로 , 추천인-->
-                            <tr>
-                                <td class="td-info-title">등록구분</td>
-                                <td></td>
-                                <td class="td-info-title">방문경로</td>
-                                <td>
-                                    <select name="visitPath" id="visitPath">
-                                        <option value="선택">선택</option>
-                                        <option value="홈페이지">홈페이지</option>
-                                        <option value="광고">광고</option>
-                                        <option value="추천인">추천인</option>
-                                    </select>
-                                </td>
-                                <td class="td-info-title">추천인</td>
-                                <td></td>
-                            </tr>
-
-                            <!--                        담당TM , 이메일 , 적립금-->
-                            <tr>
-                                <td class="td-info-title">담당TM</td>
-                                <td></td>
-                                <td class="td-info-title">이메일</td>
-                                <td></td>
-                                <td class="td-info-title">적립금</td>
-                                <td></td>
-                            </tr>
-
-                            <!--                        담당강사 , 개인운동 , 운동목표-->
-                            <tr>
-                                <td class="td-info-title">담당강사</td>
-                                <td></td>
-                                <td class="td-info-title">개인운동</td>
-                                <td>
-                                    <input type="radio" name="solo-activity"  value="Y"> 예
-                                    <input type="radio" name="solo-activity"  value="N"> 아니오
-                                </td>
-                                <td class="td-info-title">운동목표</td>
-                                <td>
-                                    <select name="goalOfActiviry" id="goalOfActiviry">
-                                        <option value="선택">선택</option>
-                                        <option value="건강">건강</option>
-                                        <option value="다이어트">다이어트</option>
-                                        <option value="근력증가">근력증가</option>
-                                        <option value="보디빌딩">보디빌딩</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <!--                        메모 3-->
-                            <tr style="line-height: normal">
-                                <td class="td-info-title">메모</td>
-                                <td colspan="5">
-                                    <textarea name="enrollMemo" id="memberMemo" cols="80" rows="5"></textarea>
-                                </td>
-
-                            </tr>
+                    <th:block th:if="${member != null}">
+                        <section class="board-info-box-layout">
 
 
-                        </table>
-                    </section>
+                            <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block; font-size: xx-large;">회원 정보</div>
+                            <div class="member-info-button-container">
+                                <button type="button" class="user-registration-button" id="wearableButton"  style="background-color: #FF416C">웨어러블</button>
+                                <button type="button" class="user-registration-button" id="detailButton" style="background-color: #01B0F1">상세</button>
+                                <button type="button" class="user-registration-button" id="updateButton" style="background-color: #333333">저장</button>
+                            </div>
+
+                            <table class="info-table info-setting-table" style="height: 450px">
+                                <!--                        회원코드 , 등록일 , 앱설치-->
+                                <tr>
+                                    <td class="td-info-title">회원 코드</td>
+                                    <td>
+                                        <span id="memberId" th:text="${member.id}" style="font-weight: bolder"></span>
+                                    </td>
+                                    <td class="td-info-title">등록일</td>
+                                    <td th:text="${member.memberEnrollDate}"></td>
+                                    <td class="td-info-title">앱설치</td>
+                                    <td></td>
+                                </tr>
+
+                                <!--                        이름 , RF카드 , 성별-->
+                                <tr>
+                                    <td class="td-info-title">이름</td>
+                                    <td>
+                                        <input type="text" style="width: 80%" name="name" th:value="${member.memberName}">
+                                    </td>
+                                    <td class="td-info-title">RF카드</td>
+                                    <td th:text="${member.memberRfCard}"></td>
+                                    <td class="td-info-title">성별</td>
+                                    <td>
+                                        <input type="radio" name="gender" value="M" th:checked="${member.memberGender}"> 남성
+                                        <input type="radio" name="gender" value="F" th:checked="!${member.memberGender}"> 여성
+                                    </td>
+                                </tr>
+
+                                <!--                        연락처 2 , 생년월일 1-->
+                                <tr>
+                                    <td class="td-info-title">연락처</td>
+                                    <td colspan="3">
+                                        <input type="text" name="phone" th:value="${member.memberPhone}">
+                                        <a href="#" class="messageButton">문자</a>
+                                        <input type="checkbox" name="sms" value="true" th:checked="${member.memberSmsAgreement}"> SMS동의
+                                        <input type="checkbox" name="tm" value="true" th:checked="${member.memberTmAgreement}"> TM동의
+                                    </td>
+                                    <td class="td-info-title">생년월일</td>
+                                    <td>
+                                        <input type="date" name="birthday" style="width: 90%" th:value="${member.memberBirthday}">
+                                    </td>
+                                </tr>
+
+                                <!--                        주소 3-->
+                                <tr>
+                                    <td class="td-info-title">주소</td>
+                                    <td colspan="5" th:text="${member.memberZipcode} + ' ' + ${member.memberAddress} + ' ' + ${member.memberAddressDetail}"></td>
+
+                                </tr>
+
+                                <!--                        등록구분 , 방문경로 , 추천인-->
+                                <tr>
+                                    <td class="td-info-title">등록구분</td>
+                                    <td th:text="${member.memberEnrollType}"></td>
+                                    <td class="td-info-title">방문경로</td>
+                                    <td>
+                                        <select name="visitPath" id="visitPath">
+                                            <option th:selected="${member.memberVisitPath}=='소개'" value="소개" selected="selected">소개</option>
+                                            <option th:selected="${member.memberVisitPath}=='TM'" value="TM">TM</option>
+                                            <option th:selected="${member.memberVisitPath}=='문자'" value="문자">문자</option>
+                                            <option th:selected="${member.memberVisitPath}=='홈페이지'" value="홈페이지">홈페이지</option>
+                                            <option th:selected="${member.memberVisitPath}=='오프라인광고'" value="오프라인광고">오프라인광고</option>
+                                            <option th:selected="${member.memberVisitPath}=='온라인광고'" value="온라인광고">온라인광고</option>
+                                            <option th:selected="${member.memberVisitPath}=='직접방문'" value="직접방문">직접방문</option>
+                                        </select>
+                                    </td>
+                                    <td class="td-info-title">추천인</td>
+                                    <td></td>
+                                </tr>
+
+                                <!--                        담당TM , 이메일 , 적립금-->
+                                <tr>
+                                    <td class="td-info-title">담당TM</td>
+                                    <td></td>
+                                    <td class="td-info-title">이메일</td>
+                                    <td th:text="${member.memberEmail}"></td>
+                                    <td class="td-info-title">적립금</td>
+                                    <td></td>
+                                </tr>
+
+                                <!--                        담당강사 , 개인운동 , 운동목표-->
+                                <tr>
+                                    <td class="td-info-title">담당강사</td>
+                                    <td></td>
+                                    <td class="td-info-title">개인운동</td>
+                                    <td>
+                                        <input type="radio" name="selfActivity" value="true" th:checked="${member.memberSelfAgreement}" > 예
+                                        <input type="radio" name="selfActivity" value="false" th:checked="!${member.memberSelfAgreement}"> 아니오
+                                    </td>
+                                    <td class="td-info-title">운동목표</td>
+                                    <td>
+                                        <select name="goal" id="goalOfActiviry">
+                                            <option th:selected="${member.memberGoal}=='선택'" value="선택">선택</option>
+                                            <option th:selected="${member.memberGoal}=='다이어트'" value="다이어트" selected="selected">다이어트</option>
+                                            <option th:selected="${member.memberGoal}=='근력증강'" value="근력증강">근력증강</option>
+                                            <option th:selected="${member.memberGoal}=='보디빌딩'" value="보디빌딩">보디빌딩</option>
+                                            <option th:selected="${member.memberGoal}=='건강'" value="건강">건강</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <!--                        메모 3-->
+                                <tr style="line-height: normal">
+                                    <td class="td-info-title">메모</td>
+                                    <td colspan="5">
+                                        <textarea name="memo" id="memberMemo" cols="80" rows="5" th:text="${member.memberMemo}"></textarea>
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </section>
+                    </th:block>
+                    <th:block th:if="${member == null}">
+                        <section class="board-info-box-layout">
+                            <form action="/admin/update">
+                                <div style="font-weight: bolder; margin-bottom: 9px; display: inline-block; font-size: xx-large;">회원 정보</div>
+                                <div class="member-info-button-container">
+                                    <button type="button" class="user-registration-button" id="wearable-button"  style="background-color: #FF416C">웨어러블</button>
+                                    <button type="button" class="user-registration-button" id="detail-button" style="background-color: #01B0F1">상세</button>
+                                    <button type="submit" class="user-registration-button" id="edit-button" style="background-color: #333333">저장</button>
+                                </div>
+
+                                <table class="info-table info-setting-table" style="height: 450px">
+                                    <!--                        회원코드 , 등록일 , 앱설치-->
+                                    <tr>
+                                        <td class="td-info-title">회원 코드</td>
+                                        <td></td>
+                                        <td class="td-info-title">등록일</td>
+                                        <td></td>
+                                        <td class="td-info-title">앱설치</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <!--                        이름 , RF카드 , 성별-->
+                                    <tr>
+                                        <td class="td-info-title">이름</td>
+                                        <td>
+                                            <input type="text" style="width: 80%">
+                                        </td>
+                                        <td class="td-info-title">RF카드</td>
+                                        <td></td>
+                                        <td class="td-info-title">성별</td>
+                                        <td>
+                                            <input type="radio" name="gender-check"  value="M"> 남성
+                                            <input type="radio" name="gender-check"  value="F"> 여성
+                                        </td>
+                                    </tr>
+
+                                    <!--                        연락처 2 , 생년월일 1-->
+                                    <tr>
+                                        <td class="td-info-title">연락처</td>
+                                        <td colspan="3">
+                                            <input type="text">
+                                            <a href="#" class="messageButton">문자</a>
+                                            <input type="checkbox"> SMS동의
+                                            <input type="checkbox"> TM동의
+                                        </td>
+                                        <td class="td-info-title">생년월일</td>
+                                        <td>
+                                            <input type="text" style="width: 90%">
+                                        </td>
+                                    </tr>
+
+                                    <!--                        주소 3-->
+                                    <tr>
+                                        <td class="td-info-title">주소</td>
+                                        <td colspan="5"></td>
+
+                                    </tr>
+
+                                    <!--                        등록구분 , 방문경로 , 추천인-->
+                                    <tr>
+                                        <td class="td-info-title">등록구분</td>
+                                        <td></td>
+                                        <td class="td-info-title">방문경로</td>
+                                        <td>
+                                            <select name="visitPath" id="visitPath">
+                                                <option value="선택">선택</option>
+                                                <option value="홈페이지">홈페이지</option>
+                                                <option value="광고">광고</option>
+                                                <option value="추천인">추천인</option>
+                                            </select>
+                                        </td>
+                                        <td class="td-info-title">추천인</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <!--                        담당TM , 이메일 , 적립금-->
+                                    <tr>
+                                        <td class="td-info-title">담당TM</td>
+                                        <td></td>
+                                        <td class="td-info-title">이메일</td>
+                                        <td></td>
+                                        <td class="td-info-title">적립금</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <!--                        담당강사 , 개인운동 , 운동목표-->
+                                    <tr>
+                                        <td class="td-info-title">담당강사</td>
+                                        <td></td>
+                                        <td class="td-info-title">개인운동</td>
+                                        <td>
+                                            <input type="radio" name="solo-activity"  value="Y"> 예
+                                            <input type="radio" name="solo-activity"  value="N"> 아니오
+                                        </td>
+                                        <td class="td-info-title">운동목표</td>
+                                        <td>
+                                            <select name="goalOfActiviry" id="goalOfActiviry">
+                                                <option value="선택">선택</option>
+                                                <option value="건강">건강</option>
+                                                <option value="다이어트">다이어트</option>
+                                                <option value="근력증가">근력증가</option>
+                                                <option value="보디빌딩">보디빌딩</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <!--                        메모 3-->
+                                    <tr style="line-height: normal">
+                                        <td class="td-info-title">메모</td>
+                                        <td colspan="5">
+                                            <textarea name="enrollMemo" id="memberMemo" cols="80" rows="5"></textarea>
+                                        </td>
+
+                                    </tr>
+
+
+                                </table>
+                            </form>
+
+                        </section>
+
+                    </th:block>
                     <section class="board-calender-box">
                         <div class="member-calendar-img-container">
                             <div class="member-attendance-info-box">
@@ -271,9 +404,24 @@
 
                             <div class="member-img-info-box">
                                 <div class="table-title">회원 사진</div>
-                                <div class="member-img-container">
-                                    <img src="/image/user_icon.png" alt="member-img" class="member-img">
-                                </div>
+                                
+                                <label for="profileInput">
+                                    <button type="button">
+                                        <div>
+                                            <picture>
+                                                <label for="profileInput">
+                                                    <th:block th:if="${member != null}">
+                                                        <img th:src="@{/file/display?memberId=} + ${member.id}" alt="member-img" class="member-profile-img" id="profileImg">
+                                                    </th:block>
+                                                    <th:block th:if="${member == null}">
+                                                        <img src="/image/user_icon.png" alt="member-img" class="member-profile-img" id="profileImg">
+                                                    </th:block>
+                                                </label>
+                                                <input type="file" id="profileInput" accept="image/*" style="display: none">
+                                            </picture>
+                                        </div>
+                                    </button>
+                                </label>
                             </div>
                         </div>
                         <div class="member-locker-info-wrap">
@@ -393,27 +541,26 @@
 
                     </section>
                 </div>
-                <div class="member-history-wrap">
-                    <table class="member-history-title-talbe">
-                        <tr class="member-history-title-box">
-                            <th id="purchaseHistory" onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
-                            <th id="visitHistory" onclick="titleActive(this)" class="member-history-title">출입내역</th>
-                            <th id="otHistory" onclick="titleActive(this)" class="member-history-title">OT내역</th>
-                            <th id="ptHistory" onclick="titleActive(this)" class="member-history-title">PT내역</th>
-                            <th id="documentHistory" onclick="titleActive(this)" class="member-history-title">문진표</th>
-                            <th id="recommendHistory" onclick="titleActive(this)" class="member-history-title">추천내역</th>
-                            <th id="lockerHistory" onclick="titleActive(this)" class="member-history-title">라커이력</th>
-                            <th id="updateHistory" onclick="titleActive(this)" class="member-history-title">수정이력</th>
-                            <th id="wearableHistory" onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
-                        </tr>
-                    </table>
+                <th:block th:if="${member != null}">
+                    <div class="member-history-wrap">
+                        <table class="member-history-title-talbe">
+                            <tr class="member-history-title-box">
+                                <th id="purchaseHistory" onclick="titleActive(this)" class="member-history-title active-title">결제내역</th>
+                                <th id="visitHistory" onclick="titleActive(this)" class="member-history-title">출입내역</th>
+                                <th id="otHistory" onclick="titleActive(this)" class="member-history-title">OT내역</th>
+                                <th id="ptHistory" onclick="titleActive(this)" class="member-history-title">PT내역</th>
+                                <th id="documentHistory" onclick="titleActive(this)" class="member-history-title">문진표</th>
+                                <th id="recommendHistory" onclick="titleActive(this)" class="member-history-title">추천내역</th>
+                                <th id="lockerHistory" onclick="titleActive(this)" class="member-history-title">라커이력</th>
+                                <th id="updateHistory" onclick="titleActive(this)" class="member-history-title">수정이력</th>
+                                <th id="wearableHistory" onclick="titleActive(this)" class="member-history-title">웨어러블 운동 이력</th>
+                            </tr>
+                        </table>
 
-                    <div id="historyBody"></div>
+                        <div id="historyBody"></div>
 
-                </div>
-
-
-
+                    </div>
+                </th:block>
             </div>
         </div>
     </div>
@@ -514,12 +661,13 @@
 
     $enrollMemberButton.click(function (){
         $modal.load("memberEnrollModal");
-        $(".modal").css("display", "flex");
-    });
+        modalOn();
+    })
 
 
 </script>
 <script>
+
     const $historyTitles = $(".member-history-title");
     const $historyBody = $("#historyBody");
 
@@ -527,9 +675,85 @@
     function titleActive(data){
         $historyTitles.removeClass("active-title");
         $(data).addClass("active-title");
-        $historyBody.load($(data).attr('id'))
+        $historyBody.load("/admin/"+$(data).attr('id'),"memberId="+$("#memberId").text(),function(){
+            console.info($(data).attr('id')+" selected");
+        });
     }
 
+</script>
+<script>
+    const updateButton = $("#updateButton");
+
+
+
+    updateButton.click(function (){
+        let params = {
+            // memberId : $("input[name=memberId]").val(),
+            memberId : $("#memberId").text(),
+            name:$("input[name=name]").val(),
+            gender:$("input[name=gender]").val(),
+            phone:$("input[name=phone]").val(),
+            sms:$("input[name=sms]").is(':checked'),
+            tm:$("input[name=tm]").is(':checked'),
+            birthday:$("input[name=birthday]").val(),
+            visitPath:$("select[name=visitPath]").val(),
+            selfActivity:$("input[name=selfActivity]:checked").val(),
+            goal:$("select[name=goal]").val(),
+            memo:$("textarea[name=memo]").val()
+        }
+        console.log(params);
+        $.ajax({
+           url:"/admin/update",
+           type:'get',
+           async:false,
+           data : params,
+           success:function (){
+               alert("회원정보 저장 완료");
+           },
+           error:function(){
+               alert("회원정보 저장 실패");
+           }
+        });
+        saveFile();
+    })
+</script>
+<script>
+    const $profileInput = $("#profileInput");
+    const $profileImg = $("#profileImg");
+
+    $profileInput.on("change",function (){
+       let imgURL = window.URL.createObjectURL($profileInput[0].files[0]);
+        $profileImg.prop("src",imgURL);
+    });
+    function saveFile(){
+        let file = $profileInput[0].files[0];
+        let fileData = new FormData();
+        fileData.append("uploadFile",file);
+        fileData.append("memberId",$("#memberId").text());
+        $.ajax({
+            url : "/file/upload",
+            type : 'post',
+            data : fileData,
+            contentType: false,
+            processData: false,
+            success:function (uuid) {
+                console.log("파일 저장 성공 : " + uuid);
+            },
+            error:function(){
+                console.log("파일 저장 실패");
+            }
+        })
+    }
+</script>
+<script>
+    let profileSize = window.innerWidth * 0.17;
+    $profileImg.width(profileSize);
+    $profileImg.height(profileSize);
+    window.addEventListener(`resize`, function(){
+        profileSize = window.innerWidth * 0.17;
+        $profileImg.width(profileSize);
+        $profileImg.height(profileSize);
+    });
 </script>
 
 

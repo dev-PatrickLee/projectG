@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.replace.mapper.CustomerMapper">
+    <insert id="insert">
+        BEGIN
+        INSERT INTO TBL_MEMBER(ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_PHONE, MEMBER_ZIPCODE, MEMBER_ADDRESS, MEMBER_ADDRESS_DETAIL, GYM_ID)
+        VALUES (SEQ_MEMBER.NEXTVAL, #{memberName},#{memberEmail},#{memberPassword},#{memberPhone},#{memberZipcode},#{memberAddress},#{memberAddressDetail},#{gymId});
+
+        INSERT INTO TBL_CUSTOMER(ID, MEMBER_GENDER, MEMBER_BIRTHDAY, MEMBER_VISIT_PATH,MEMBER_MEMO, MEMBER_ID)
+        VALUES (SEQ_CUSTOMER.NEXTVAL, #{memberGender}, #{memberBirthday}, #{memberVisitPath}, #{memberMemo},SEQ_MEMBER.CURRVAL);
+        END;
+    </insert>
+    <update id="updateById">
+        BEGIN
+        UPDATE TBL_MEMBER
+        SET MEMBER_NAME = #{memberName}, MEMBER_PHONE = #{memberPhone}
+        WHERE ID = #{id};
+
+        UPDATE TBL_CUSTOMER
+        SET MEMBER_GENDER = #{memberGender},MEMBER_TM_AGREEMENT = #{memberTmAgreement},MEMBER_SMS_AGREEMENT = #{memberSmsAgreement}, MEMBER_BIRTHDAY = #{memberBirthday}, MEMBER_VISIT_PATH = #{memberVisitPath}, MEMBER_SELF_AGREEMENT = #{memberSelfAgreement} ,MEMBER_GOAL = #{memberGoal}, MEMBER_MEMO = #{memberMemo}
+        WHERE MEMBER_ID = #{id};
+        END;
+    </update>
+</mapper>

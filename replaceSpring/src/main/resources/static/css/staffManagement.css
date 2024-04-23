@@ -37,3 +37,18 @@
     cursor: pointer;
     font-weight: bolder;
 }
+.staff-info-table{
+    margin: 0 auto;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    border-collapse: collapse;
+}
+.staff-info-table tr{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.staff-info-table td{
+    padding: 10px 5px;
+    text-align: left;
+    width: auto;
+}

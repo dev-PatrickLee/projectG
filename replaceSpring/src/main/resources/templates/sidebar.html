@@ -8,11 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-<ul class="side-bar-container" style=" padding: 0px">
+<ul class="side-bar-container" style=" padding: 0px;">
     <div class="side-bar-first">menu</div>
     <hr>
     <li class="side-list">
-        <a href="/admin/memberDetail" class="side-option">메인</a>
+        <a href="/admin/main" class="side-option">메인</a>
     </li>
     <li class="side-list">
         <a href="javascript:;" onclick="clickOption(this)" class="side-option">회원관리</a>
@@ -96,7 +96,15 @@
         </div>
     </li>
     <li class="side-list">
-        <a href="#" class="side-option">환경설정</a>
+        <a href="javascript:;" onclick="clickOption(this)" class="side-option">환경설정</a>
+        <div class="sub-list">
+            <hr>
+            <a href="#" class="sub-option">전용게시판</a>
+            <a href="/admin/staffManagement" class="sub-option">직원관리</a>
+            <a href="#" class="sub-option">문자관리</a>
+            <a href="#" class="sub-option">수정이력</a>
+            <a href="/admin/productManagement" class="sub-option">상품관리</a>
+        </div>
     </li>
 </ul>
 </body>

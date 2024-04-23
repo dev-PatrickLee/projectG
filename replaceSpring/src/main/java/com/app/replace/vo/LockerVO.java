@@ -10,10 +10,13 @@ import org.springframework.stereotype.Component;
 public class LockerVO {
     long id;
     int lockerNumber;
-    String lockerEndDate;
-    String lockerType;
-    long storeId;
+    String lockerGender;
+    String lockerPassword;
+    String lockerExpireDate;
+    int lockerRemainDate;
+    String lockerStatus;
     long memberId;
+    long gymId;
 }
 
 //    TBL_LOCKER

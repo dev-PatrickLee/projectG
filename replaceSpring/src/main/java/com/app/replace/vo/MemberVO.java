@@ -8,27 +8,16 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class MemberVO {
-    long id;
-    String memberName;
-    String memberEmail;
-    String memberPassword;
-    String memberPhone;
-    String memberGender;
-    String memberBirthday;
-    String memberZipcode;
-    String memberAddress;
-    String memberAddressDetail;
-    String memberEnrollDate;
-    String memberEnrollType;
-    String memberGoal;
-    String memberInterest;
-    String memberVisitPath;
-    String memberWorkoutHour;
-    String memberRfCard;
-    String memberSmsAgreement;
-    String memberTmAgreement;
-    String memberSelfAgreement;
-    String memberType;
-    String memberMemo;
-    String memberAge;
+    private long id;
+    private String memberName;
+    private String memberEmail;
+    private String memberPassword;
+    private String memberPhone;
+    private String memberZipcode;
+    private String memberAddress;
+    private String memberAddressDetail;
+    private String memberEnrollDate;
+    private String memberRfCard;
+    private String memberAge;
+    private long gymId;
 }

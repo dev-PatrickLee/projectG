@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.replace.mapper.ScheduleMapper">
+    <select id="selectAllTrainerSchedule" resultType="scheduleDTO">
+        SELECT SC.ID,SCHEDULE_NAME, SCHEDULE_TYPE,SCHEDULE_START_HOUR, SCHEDULE_START_MIN, SCHEDULE_END_HOUR, SCHEDULE_END_MIN, SCHEDULE_STATUS, SCHEDULE_DATE, ST.ID "STAFF_ID", M.MEMBER_NAME
+        FROM (
+                 SELECT ID, SCHEDULE_NAME, SCHEDULE_TYPE, SCHEDULE_START_HOUR, SCHEDULE_START_MIN, SCHEDULE_END_HOUR, SCHEDULE_END_MIN, SCHEDULE_STATUS, SCHEDULE_DATE, STAFF_ID
+                 FROM TBL_SCHEDULE
+                 WHERE SCHEDULE_DATE = #{dateFilter}
+             ) SC RIGHT OUTER JOIN TBL_STAFF ST
+                                              ON SC.STAFF_ID = ST.ID
+                             JOIN TBL_MEMBER M
+                                  ON ST.MEMBER_ID = M.ID
+        ORDER BY SCHEDULE_START_HOUR ASC, SCHEDULE_START_MIN ASC
+    </select>
+</mapper>

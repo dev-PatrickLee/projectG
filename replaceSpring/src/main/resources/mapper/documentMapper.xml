@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.replace.mapper.DocumentMapper">
+    <select id="selectAll" resultType="documentVO">
+        SELECT ID, DOCUMENT_DATE, DOCUMENT_GOAL, DOCUMENT_BODY_INFO, DOCUMENT_PAIN_INFO, DOCUMENT_WEIGHT, DOCUMENT_MUSCLE, DOCUMENT_FAT_KG, DOCUMENT_FAT_PERCENT, DOCUMENT_BODY_SCORE, MEMBER_ID
+        FROM TBL_DOCUMENT
+        WHERE MEMBER_ID = #{memberId}
+        ORDER BY ID
+    </select>
+    <insert id="insert">
+        INSERT INTO TBL_DOCUMENT(ID, DOCUMENT_DATE, DOCUMENT_GOAL, DOCUMENT_BODY_INFO, DOCUMENT_PAIN_INFO, DOCUMENT_WEIGHT, DOCUMENT_MUSCLE, DOCUMENT_FAT_KG, DOCUMENT_FAT_PERCENT, DOCUMENT_BODY_SCORE, MEMBER_ID)
+        VALUES((SELECT COUNT(ID) + 1 FROM TBL_DOCUMENT WHERE MEMBER_ID = #{memberId}), #{documentDate}, #{documentGoal},#{documentBodyInfo},#{documentPainInfo}, #{documentWeight},#{documentMuscle},#{documentFatKg},#{documentFatPercent},#{documentBodyScore},#{memberId})
+    </insert>
+</mapper>

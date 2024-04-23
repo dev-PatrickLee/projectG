@@ -9,14 +9,13 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class ScheduleVO {
     long id;
+    String scheduleName;
+    String scheduleType;
+    int scheduleStartHour;
+    int scheduleStartMin;
+    int scheduleEndHour;
+    int scheduleEndMin;
     String scheduleDate;
-    String scheduleEndTime;
-    long staffId;
+    int staffId;
 }
-//    TBL_SCHEDULE
-//      ID (PK)
-//      DATE
-//      START_TIME
-//      END_TIME
-//      STAFF_ID (FK)
-//
+

@@ -45,6 +45,9 @@ table td {
 .member-list-data td:nth-child(odd){
      background-color: #ffffff;
  }
+.member-list-data{
+    cursor: pointer;
+}
 
 .list-data-result td{
     font-weight: bold;

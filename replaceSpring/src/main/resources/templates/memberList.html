@@ -113,8 +113,8 @@
                     <div class="member-statistic-data" style="background-color: #01B0F199; color: darkblue;">
                         전체회원
                     </div>
-                    <div class="member-statistic-data">
-                        n
+                    <div class="member-statistic-data" th:text="${memberCount}">
+                        0
                     </div>
                 </div>
                 <div class="member-statistic-box">
@@ -228,11 +228,11 @@
                             </th:block>
                             <th:block th:if="${not #lists.isEmpty(list)}">
                                 <th:block th:each = "member : ${list}">
-                                    <tr class="member-list-data">
+                                    <tr class="member-list-data" th:onclick="|location.href='@{/admin/memberDetail(id=${member.id})}'|">
                                         <td class="checkbox-line">
                                             <input type="checkbox">
                                         </td>
-                                        <td th:text="${member.id}">1</td>
+                                        <td class="memberId" th:text="${member.id}">1</td>
                                         <td th:text="${member.memberEnrollDate}">2023-01-01</td>
                                         <td>123456789</td>
                                         <td th:text="${member.memberName}">홍길동</td>
@@ -297,5 +297,12 @@
             $expirationDateInput.css("display", "none");
         }
     })
+</script>
+<script>
+    // $.each($(".member-list-data"),function (index,obj){
+    //    $(obj).click(function(){
+    //        console.log($(obj).find(".memberId").text());
+    //    })
+    // });
 </script>
 </html>

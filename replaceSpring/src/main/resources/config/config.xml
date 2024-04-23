@@ -3,6 +3,19 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.app.replace.vo.MemberVO" alias="memberVO"/>
+        <typeAlias type="com.app.replace.vo.DocumentVO" alias="documentVO"/>
+        <typeAlias type="com.app.replace.vo.FileVO" alias="fileVO"/>
+        <typeAlias type="com.app.replace.vo.GymVO" alias="gymVO"/>
+        <typeAlias type="com.app.replace.vo.ScheduleVO" alias="scheduleVO"/>
+        <typeAlias type="com.app.replace.vo.ProductVO" alias="productVO"/>
+
+
+        <typeAlias type="com.app.replace.dto.MemberDTO" alias="memberDTO"/>
+        <typeAlias type="com.app.replace.dto.StaffDTO" alias="staffDTO"/>
+        <typeAlias type="com.app.replace.dto.ScheduleDTO" alias="scheduleDTO"/>
+        <typeAlias type="com.app.replace.dto.ProductDTO" alias="productDTO"/>
+
+
     </typeAliases>
 </configuration>
 

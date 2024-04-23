@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.replace.mapper.GymMapper">
+    <insert id="insert">
+        INSERT INTO TBL_GYM(ID, GYM_NAME, GYM_ZIPCODE, GYM_ADDRESS, GYM_ADDRESS_DETAIL, GYM_PHONE)
+        VALUES (SEQ_GYM.NEXTVAL, #{gymName}, #{gymZipcode}, #{gymAddress}, #{gymAddressDetail}, #{gymPhone})
+    </insert>
+    <select id="selectAll" resultType="gymVO">
+        SELECT ID, GYM_NAME, GYM_ZIPCODE, GYM_ADDRESS, GYM_ADDRESS_DETAIL, GYM_PHONE
+        FROM TBL_GYM
+    </select>
+</mapper>

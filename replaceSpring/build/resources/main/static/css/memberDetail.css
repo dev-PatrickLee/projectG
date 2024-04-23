@@ -97,7 +97,11 @@ hr {
 .member-img-box {
     margin-top: 20px;
 }
-
+.member-profile-img
+{
+    width: 300px;
+    height: 300px;
+}
 .member-nickname-box {
     margin-top : 10px;
     text-align: center;
@@ -214,23 +218,25 @@ div.margin span {
 }
 .board-task-box{
     background-color: #e9e9e9;
-    height: 70px;
+    height: 60px;
     border-radius: 5px;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
 }
 
 .button-container {
     display: inline-block;
-    float: right;
     height: 50px;
-    margin: 10px 0px;
-    margin-right: 40%;
+    margin: 0px 5px;
 }
 .daily-task-container{
-    display: inline-block;
+    display: flex;
     background-color: #bbb;
     height: 50px;
-    margin: 10px 10px;
-
+    margin: 5px;
+    width: 40%;
+    align-items: center;
     border-radius: 5px;
 }
 
@@ -238,11 +244,9 @@ div.margin span {
     display: inline-block;
     margin-right: 10px;
     margin-left: 5px;
-    margin-top: 10px;
 }
 .daily-task-notice-container{
     vertical-align: middle;
-    margin-right: 10px;
     display: inline-block;
 }
 .member-info-button-container{
@@ -369,6 +373,7 @@ div.margin span {
     text-align: center;
     font-size: 0.8em;
     border-right: 1px solid white;
+    cursor: pointer;
 }
 .member-history-title:hover{
     background-color: #DDDDDD;
@@ -377,6 +382,7 @@ div.margin span {
     border: none;
     height: 50px;
 }
+
 .active-title{
     background-color: #4444cc !important;
     color: white !important;
