@@ -163,7 +163,7 @@ public class AdminController {
     public String trainerScheduleManagement(Model model){
         LocalDate date = LocalDate.now(ZoneId.of("Asia/Seoul"));
         model.addAttribute("datas",scheduleDAO.selectAllTrainerSchedule(date.toString()));
-         model.addAttribute("dateFilter",date);
+        model.addAttribute("dateFilter",date);
         return "trainerScheduleManagement";
     }
     @GetMapping("trainerScheduleManagementFilter")

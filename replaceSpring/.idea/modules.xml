@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/replace.main.iml" filepath="$PROJECT_DIR$/.idea/modules/replace.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/replace.test.iml" filepath="$PROJECT_DIR$/.idea/modules/replace.test.iml" />
     </modules>
   </component>
 </project>

@@ -576,7 +576,6 @@
 <script src="/js/sidebar.js"></script>
 
 <script>
-
     const $calendar = $("#calendar");
     const $dateOfToday = $("#dateOfToday");
 
@@ -622,8 +621,6 @@
                             $calendar.children().eq(x).children().eq(y).css("background-color","#fff");
                         }
                     }
-
-
                     sdate.setDate(sdate.getDate()+1);
                 }
 
@@ -635,9 +632,7 @@
     function clearCalendar(){
         for (let x = 2; x < 8; x++){
             for (let y = 0; y<7; y++){
-
                 $calendar.children().eq(x).children().eq(y).text("");
-
             }
 
         }
@@ -664,7 +659,6 @@
         modalOn();
     })
 
-
 </script>
 <script>
 
@@ -683,8 +677,6 @@
 </script>
 <script>
     const updateButton = $("#updateButton");
-
-
 
     updateButton.click(function (){
         let params = {
